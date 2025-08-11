@@ -1,0 +1,55 @@
+name: Send Contact Email
+
+on:
+  repository_dispatch:
+    types: [contact_form_submission]
+
+jobs:
+  send-email:
+    runs-on: ubuntu-latest
+    
+    env:
+      SENDGRID_API_KEY: ${{ secrets.SENDGRID_API_KEY }}
+      
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          
+      - name: Install dependencies
+        run: npm install @sendgrid/mail
+        
+      - name: Send email
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const sgMail = require('@sendgrid/mail');
+            sgMail.setApiKey(process.env.SENDGRID_API_KEY);
+            
+            const { name, company, email, phone, message } = context.payload.client_payload;
+            
+            const msg = {
+              to: 'tiparrot96@gmail.com',
+              from: 'noreply@lifesync.app',
+              subject: 'New Enterprise Sales Inquiry',
+              html: `
+                <h2>New Sales Inquiry</h2>
+                <p><strong>Name:</strong> ${name}</p>
+                <p><strong>Company:</strong> ${company}</p>
+                <p><strong>Email:</strong> ${email}</p>
+                <p><strong>Phone:</strong> ${phone}</p>
+                <h3>Message:</h3>
+                <p>${message.replace(/\n/g, '<br>')}</p>
+              `,
+            };
+            
+            try {
+              await sgMail.send(msg);
+              console.log('Email sent successfully');
+            } catch (error) {
+              core.setFailed(`Error sending email: ${error.message}`);
+            }
