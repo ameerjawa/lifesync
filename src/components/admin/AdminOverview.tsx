@@ -10,7 +10,8 @@ import {
   CreditCard,
   CheckCircle,
   XCircle,
-  AlertCircle
+  AlertCircle,
+  Building
 } from 'lucide-react';
 import {
   BarChart,
@@ -41,6 +42,13 @@ export function AdminOverview() {
     premiumUsers: 320,
     enterpriseUsers: 30,
     averageUserLifetime: 8.2
+  };
+
+  const businessStats = {
+    totalBusinesses: 45,
+    activeBusinesses: 38,
+    monthlyBusinessRevenue: 125000,
+    averageTeamSize: 5.2
   };
 
   const revenueData = [
@@ -140,6 +148,24 @@ export function AdminOverview() {
               <p className="text-sm font-medium text-gray-500">Active Trials</p>
               <p className="text-2xl font-semibold text-gray-900">{stats.activeTrials}</p>
               <p className="text-sm text-green-600">+8 new today</p>
+            </div>
+          </div>
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.4 }}
+          className="rounded-lg bg-white p-6 shadow-lg"
+        >
+          <div className="flex items-center">
+            <div className="rounded-full bg-purple-100 p-3">
+              <Building className="h-6 w-6 text-purple-600" />
+            </div>
+            <div className="ml-4">
+              <p className="text-sm font-medium text-gray-500">Business Accounts</p>
+              <p className="text-2xl font-semibold text-gray-900">{businessStats.totalBusinesses}</p>
+              <p className="text-sm text-purple-600">{businessStats.activeBusinesses} active</p>
             </div>
           </div>
         </motion.div>

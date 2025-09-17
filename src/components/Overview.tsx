@@ -204,7 +204,7 @@ export function Overview() {
           <div className="rounded-lg bg-white p-6 shadow-sm">
             <h3 className="mb-4 text-lg font-semibold text-gray-900">Quick Actions</h3>
             <div className="space-y-3">
-              <button className="flex w-full items-center justify-between rounded-lg border p-4 hover:bg-gray-50">
+              <button onClick={()=> console.log("test")} className="flex w-full items-center justify-between rounded-lg border p-4 hover:bg-gray-50">
                 <div className="flex items-center">
                   <Brain className="mr-3 h-5 w-5 text-gray-400" />
                   <span className="font-medium text-gray-700">Add Task</span>

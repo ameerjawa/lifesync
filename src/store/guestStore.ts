@@ -1,6 +1,8 @@
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
 import { supabase } from '../lib/supabase';
+import { v4 as uuidv4 } from "uuid";
+
 
 interface GuestState {
   isGuest: boolean;
@@ -22,6 +24,9 @@ interface GuestState {
   getGuestId: () => string;
 }
 
+
+
+
 export const useGuestStore = create<GuestState>()(
   persist(
     (set, get) => ({
@@ -33,7 +38,7 @@ export const useGuestStore = create<GuestState>()(
       guestId: null,
 
       startGuestSession: () => {
-        const guestId = crypto.randomUUID();
+        const guestId = uuidv4();
         set({
           isGuest: true,
           guestStartTime: Date.now(),

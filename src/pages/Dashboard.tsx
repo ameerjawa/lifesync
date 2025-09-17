@@ -16,7 +16,8 @@ import {
   Shield,
   Map,
   Briefcase,
-  Target
+  Target,
+  Building
 } from 'lucide-react';
 import { Overview } from '../components/Overview';
 import { TaskManager } from '../components/task-manager/TaskManager';
@@ -28,6 +29,7 @@ import { SettingsPanel } from '../components/settings/SettingsPanel';
 import { RoadsDashboard } from '../components/roads/RoadsDashboard';
 import { CareerDashboard } from '../components/career/CareerDashboard';
 import { ProjectDashboard } from '../components/project/ProjectDashboard';
+import { BusinessDashboard } from '../components/business/BusinessDashboard';
 import { GuestBanner } from '../components/GuestBanner';
 import { AIAssistant } from '../components/AIAssistant';
 import { useAuthStore } from '../store/authStore';
@@ -80,6 +82,7 @@ function Dashboard() {
     { id: 'roads', name: 'Roads', href: '#', icon: Map, premium: true },
     { id: 'career', name: 'Career', href: '#', icon: Briefcase, premium: true },
     { id: 'projects', name: 'Projects', href: '#', icon: Target, premium: true },
+    { id: 'business', name: 'Business Suite', href: '#', icon: Building, premium: true },
     { id: 'analytics', name: 'Analytics', href: '#', icon: BarChart, premium: true }
   ];
 
@@ -101,6 +104,8 @@ function Dashboard() {
         return <CareerDashboard />;
       case 'projects':
         return <ProjectDashboard />;
+      case 'business':
+        return <BusinessDashboard />;
       case 'analytics':
         return <AnalyticsDashboard />;
       case 'settings':

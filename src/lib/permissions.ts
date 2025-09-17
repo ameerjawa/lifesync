@@ -17,6 +17,7 @@ export const FEATURES = {
   custom_dashboards: { plans: ['premium', 'enterprise'], description: 'Custom dashboards' },
   health_tracking: { plans: ['premium', 'enterprise'], description: 'Health tracking' },
   finance_tracking: { plans: ['premium', 'enterprise'], description: 'Finance tracking' },
+  business_suite: { plans: ['premium', 'enterprise'], description: 'Business Suite access' },
   
   // Enterprise features
   team_collaboration: { plans: ['enterprise'], description: 'Team collaboration' },

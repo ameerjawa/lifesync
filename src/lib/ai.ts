@@ -106,6 +106,45 @@ export async function processUserInput(
     }
   }
 
+  if (lowerInput.includes('business') || lowerInput.includes('client') || lowerInput.includes('invoice')) {
+    if (lowerInput.includes('add client') || lowerInput.includes('new client')) {
+      actions.push({
+        type: 'add_client',
+        data: {
+          name: input.replace(/add|new|client/gi, '').trim(),
+          status: 'lead'
+        },
+        message: 'Adding new client...'
+      });
+    }
+    
+    if (lowerInput.includes('create invoice') || lowerInput.includes('new invoice')) {
+      actions.push({
+        type: 'create_invoice',
+        data: {
+          status: 'draft',
+          issue_date: new Date().toISOString().split('T')[0],
+          due_date: new Date(Date.now() + 30 * 24 * 60 * 60 * 1000).toISOString().split('T')[0]
+        },
+        message: 'Creating new invoice...'
+      });
+    }
+    
+    if (lowerInput.includes('add expense') || lowerInput.includes('record expense')) {
+      const amount = parseFloat(input.match(/\$?\d+(\.\d+)?/)?.[0] || '0');
+      actions.push({
+        type: 'add_expense',
+        data: {
+          description: input,
+          amount,
+          date: new Date().toISOString().split('T')[0],
+          category: 'Other'
+        },
+        message: `Recording expense: $${amount}`
+      });
+    }
+  }
+
   // Finance commands
   if (lowerInput.includes('add transaction') || lowerInput.includes('record payment')) {
     const amount = parseFloat(input.match(/\$?\d+(\.\d+)?/)?.[0] || '0');
@@ -159,6 +198,24 @@ export async function executeActions(actions: AIAction[], navigate: (path: strin
         case 'add_transaction':
           await useFinanceStore.getState().addTransaction(action.data);
           useToastStore.getState().showSuccess('Transaction added successfully');
+          break;
+
+        case 'add_client':
+          const { useBusinessStore } = await import('../store/businessStore');
+          await useBusinessStore.getState().addClient(action.data);
+          useToastStore.getState().showSuccess('Client added successfully');
+          break;
+
+        case 'create_invoice':
+          const businessStore = await import('../store/businessStore');
+          await businessStore.useBusinessStore.getState().addInvoice(action.data);
+          useToastStore.getState().showSuccess('Invoice created successfully');
+          break;
+
+        case 'add_expense':
+          const expenseStore = await import('../store/businessStore');
+          await expenseStore.useBusinessStore.getState().addExpense(action.data);
+          useToastStore.getState().showSuccess('Expense recorded successfully');
           break;
 
         default:

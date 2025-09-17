@@ -6,3 +6,4 @@ export { useTrialStore } from './trialStore';
 export { useFinanceStore } from './finance';
 export { useHealthStore } from './healthStore';
 export { useTaskStore } from './task';
+export { useBusinessStore } from './businessStore';
