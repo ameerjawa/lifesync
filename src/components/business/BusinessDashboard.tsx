@@ -50,6 +50,8 @@ export function BusinessDashboard() {
 
   const { plan, checkFeatureAccess } = useSubscriptionStore();
 
+  const profile = getActiveBusiness();
+
   useEffect(() => {
     // Check if user has access to Business Suite
     if (!checkFeatureAccess('business_suite')) {

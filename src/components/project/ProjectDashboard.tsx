@@ -13,7 +13,10 @@ import {
   Search,
   TrendingUp,
   CheckCircle,
-  X
+  X,
+  Edit,
+  Trash2,
+  Eye
 } from 'lucide-react';
 import { useProjectStore } from '../../store';
 
@@ -22,9 +25,11 @@ export function ProjectDashboard() {
   const [showFilters, setShowFilters] = useState(false);
   const [activeView, setActiveView] = useState('overview');
   const [showProjectForm, setShowProjectForm] = useState(false);
+  const [editingProject, setEditingProject] = useState<string | null>(null);
+  const [selectedProject, setSelectedProject] = useState<string | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const { projects, isLoading, loadProjects, addProject } = useProjectStore();
+  const { projects, isLoading, loadProjects, addProject, updateProject, deleteProject } = useProjectStore();
 
   useEffect(() => {
     loadProjects();
@@ -46,34 +51,67 @@ export function ProjectDashboard() {
   const handleAddProject = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsSubmitting(true);
-    const formData = new FormData(e.currentTarget);
+    const form = e.currentTarget;
+    const formData = new FormData(form);
 
     try {
       const startDate = formData.get('start_date') as string;
       const targetDate = formData.get('target_date') as string;
 
-      await addProject({
-        title: formData.get('title') as string,
-        description: formData.get('description') as string || '',
-        status: formData.get('status') as any || 'planning',
-        priority: formData.get('priority') as any || 'medium',
-        start_date: startDate || new Date().toISOString().split('T')[0],
-        target_date: targetDate || new Date(Date.now() + 30 * 24 * 60 * 60 * 1000).toISOString().split('T')[0],
-        actual_cost: 0,
-        completion_percentage: 0,
-        health_status: 'on_track',
-        risk_level: 'low',
-        tags: []
-      });
+      if (editingProject) {
+        await updateProject(editingProject, {
+          title: formData.get('title') as string,
+          description: formData.get('description') as string || '',
+          status: formData.get('status') as any || 'planning',
+          priority: formData.get('priority') as any || 'medium',
+          start_date: startDate || new Date().toISOString().split('T')[0],
+          target_date: targetDate || new Date(Date.now() + 30 * 24 * 60 * 60 * 1000).toISOString().split('T')[0]
+        });
+        setEditingProject(null);
+      } else {
+        await addProject({
+          title: formData.get('title') as string,
+          description: formData.get('description') as string || '',
+          status: formData.get('status') as any || 'planning',
+          priority: formData.get('priority') as any || 'medium',
+          start_date: startDate || new Date().toISOString().split('T')[0],
+          target_date: targetDate || new Date(Date.now() + 30 * 24 * 60 * 60 * 1000).toISOString().split('T')[0],
+          actual_cost: 0,
+          completion_percentage: 0,
+          health_status: 'on_track',
+          risk_level: 'low',
+          tags: []
+        });
+      }
       setShowProjectForm(false);
-      e.currentTarget.reset();
+      form.reset();
     } catch (error) {
-      console.error('Failed to add project:', error);
-      alert('Failed to create project. Please try again.');
+      console.error('Failed to save project:', error);
     } finally {
       setIsSubmitting(false);
     }
   };
+
+  const handleEditProject = (project: any) => {
+    setEditingProject(project.id);
+    setShowProjectForm(true);
+  };
+
+  const handleDeleteProject = async (projectId: string) => {
+    if (!confirm('Are you sure you want to delete this project?')) return;
+    try {
+      await deleteProject(projectId);
+    } catch (error) {
+      console.error('Failed to delete project:', error);
+    }
+  };
+
+  const handleViewProject = (projectId: string) => {
+    setSelectedProject(projectId);
+  };
+
+  const currentProject = editingProject ? projects.find(p => p.id === editingProject) : null;
+  const viewingProject = selectedProject ? projects.find(p => p.id === selectedProject) : null;
 
   return (
     <div className="space-y-6">
@@ -297,8 +335,35 @@ export function ProjectDashboard() {
                     <div className={`absolute left-0 top-1.5 h-8 w-8 rounded-full ${statusStyles.bgClass} flex items-center justify-center`}>
                       <statusStyles.Icon className={`h-5 w-5 ${statusStyles.textClass}`} />
                     </div>
-                    <h4 className="text-lg font-medium text-gray-900">{project.title}</h4>
-                    <p className="text-sm text-gray-500">{project.description || 'No description'}</p>
+                    <div className="flex items-start justify-between">
+                      <div className="flex-1">
+                        <h4 className="text-lg font-medium text-gray-900">{project.title}</h4>
+                        <p className="text-sm text-gray-500">{project.description || 'No description'}</p>
+                      </div>
+                      <div className="flex space-x-2 ml-4">
+                        <button
+                          onClick={() => handleViewProject(project.id)}
+                          className="p-2 text-gray-400 hover:text-indigo-600 hover:bg-indigo-50 rounded-lg transition-colors"
+                          title="View details"
+                        >
+                          <Eye className="h-4 w-4" />
+                        </button>
+                        <button
+                          onClick={() => handleEditProject(project)}
+                          className="p-2 text-gray-400 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-colors"
+                          title="Edit project"
+                        >
+                          <Edit className="h-4 w-4" />
+                        </button>
+                        <button
+                          onClick={() => handleDeleteProject(project.id)}
+                          className="p-2 text-gray-400 hover:text-red-600 hover:bg-red-50 rounded-lg transition-colors"
+                          title="Delete project"
+                        >
+                          <Trash2 className="h-4 w-4" />
+                        </button>
+                      </div>
+                    </div>
                     <div className="mt-2 flex items-center">
                       <div className="h-2 w-full overflow-hidden rounded-full bg-gray-200">
                         <div
@@ -327,9 +392,14 @@ export function ProjectDashboard() {
             className="w-full max-w-2xl rounded-lg bg-white p-6 shadow-xl"
           >
             <div className="mb-4 flex items-center justify-between">
-              <h3 className="text-xl font-semibold text-gray-900">New Project</h3>
+              <h3 className="text-xl font-semibold text-gray-900">
+                {editingProject ? 'Edit Project' : 'New Project'}
+              </h3>
               <button
-                onClick={() => setShowProjectForm(false)}
+                onClick={() => {
+                  setShowProjectForm(false);
+                  setEditingProject(null);
+                }}
                 className="text-gray-400 hover:text-gray-600"
               >
                 <X className="h-6 w-6" />
@@ -346,6 +416,7 @@ export function ProjectDashboard() {
                   id="title"
                   name="title"
                   required
+                  defaultValue={currentProject?.title || ''}
                   className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500"
                 />
               </div>
@@ -358,6 +429,7 @@ export function ProjectDashboard() {
                   id="description"
                   name="description"
                   rows={3}
+                  defaultValue={currentProject?.description || ''}
                   className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500"
                 />
               </div>
@@ -370,6 +442,7 @@ export function ProjectDashboard() {
                   <select
                     id="status"
                     name="status"
+                    defaultValue={currentProject?.status || 'planning'}
                     className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500"
                   >
                     <option value="planning">Planning</option>
@@ -387,6 +460,7 @@ export function ProjectDashboard() {
                   <select
                     id="priority"
                     name="priority"
+                    defaultValue={currentProject?.priority || 'medium'}
                     className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500"
                   >
                     <option value="low">Low</option>
@@ -405,6 +479,7 @@ export function ProjectDashboard() {
                     type="date"
                     id="start_date"
                     name="start_date"
+                    defaultValue={currentProject?.start_date || ''}
                     className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500"
                   />
                 </div>
@@ -417,6 +492,7 @@ export function ProjectDashboard() {
                     type="date"
                     id="target_date"
                     name="target_date"
+                    defaultValue={currentProject?.target_date || ''}
                     className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500"
                   />
                 </div>
@@ -425,7 +501,10 @@ export function ProjectDashboard() {
               <div className="flex justify-end space-x-3 pt-4">
                 <button
                   type="button"
-                  onClick={() => setShowProjectForm(false)}
+                  onClick={() => {
+                    setShowProjectForm(false);
+                    setEditingProject(null);
+                  }}
                   className="rounded-md border border-gray-300 px-4 py-2 text-gray-700 hover:bg-gray-50"
                 >
                   Cancel
@@ -435,10 +514,146 @@ export function ProjectDashboard() {
                   disabled={isSubmitting}
                   className="rounded-md bg-indigo-600 px-4 py-2 text-white hover:bg-indigo-700 disabled:opacity-50"
                 >
-                  {isSubmitting ? 'Creating...' : 'Create Project'}
+                  {isSubmitting ? 'Saving...' : editingProject ? 'Update Project' : 'Create Project'}
                 </button>
               </div>
             </form>
+          </motion.div>
+        </div>
+      )}
+
+      {/* Project Details Modal */}
+      {viewingProject && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-4">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            className="w-full max-w-4xl rounded-lg bg-white p-6 shadow-xl max-h-[90vh] overflow-y-auto"
+          >
+            <div className="mb-6 flex items-center justify-between">
+              <h3 className="text-2xl font-bold text-gray-900">{viewingProject.title}</h3>
+              <button
+                onClick={() => setSelectedProject(null)}
+                className="text-gray-400 hover:text-gray-600"
+              >
+                <X className="h-6 w-6" />
+              </button>
+            </div>
+
+            <div className="space-y-6">
+              {viewingProject.description && (
+                <div>
+                  <h4 className="text-sm font-medium text-gray-500 mb-2">Description</h4>
+                  <p className="text-gray-700">{viewingProject.description}</p>
+                </div>
+              )}
+
+              <div className="grid grid-cols-2 gap-6">
+                <div>
+                  <h4 className="text-sm font-medium text-gray-500 mb-2">Status</h4>
+                  <span className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-blue-100 text-blue-800">
+                    {viewingProject.status.replace('_', ' ').toUpperCase()}
+                  </span>
+                </div>
+
+                <div>
+                  <h4 className="text-sm font-medium text-gray-500 mb-2">Priority</h4>
+                  <span className={`inline-flex items-center px-3 py-1 rounded-full text-sm font-medium ${
+                    viewingProject.priority === 'high' ? 'bg-red-100 text-red-800' :
+                    viewingProject.priority === 'medium' ? 'bg-yellow-100 text-yellow-800' :
+                    'bg-green-100 text-green-800'
+                  }`}>
+                    {viewingProject.priority.toUpperCase()}
+                  </span>
+                </div>
+
+                <div>
+                  <h4 className="text-sm font-medium text-gray-500 mb-2">Start Date</h4>
+                  <p className="text-gray-700">{viewingProject.start_date || 'Not set'}</p>
+                </div>
+
+                <div>
+                  <h4 className="text-sm font-medium text-gray-500 mb-2">Target Date</h4>
+                  <p className="text-gray-700">{viewingProject.target_date || 'Not set'}</p>
+                </div>
+
+                <div>
+                  <h4 className="text-sm font-medium text-gray-500 mb-2">Health Status</h4>
+                  <span className={`inline-flex items-center px-3 py-1 rounded-full text-sm font-medium ${
+                    viewingProject.health_status === 'on_track' ? 'bg-green-100 text-green-800' :
+                    viewingProject.health_status === 'at_risk' ? 'bg-orange-100 text-orange-800' :
+                    'bg-red-100 text-red-800'
+                  }`}>
+                    {viewingProject.health_status.replace('_', ' ').toUpperCase()}
+                  </span>
+                </div>
+
+                <div>
+                  <h4 className="text-sm font-medium text-gray-500 mb-2">Risk Level</h4>
+                  <span className={`inline-flex items-center px-3 py-1 rounded-full text-sm font-medium ${
+                    viewingProject.risk_level === 'critical' ? 'bg-red-100 text-red-800' :
+                    viewingProject.risk_level === 'high' ? 'bg-orange-100 text-orange-800' :
+                    viewingProject.risk_level === 'medium' ? 'bg-yellow-100 text-yellow-800' :
+                    'bg-green-100 text-green-800'
+                  }`}>
+                    {viewingProject.risk_level.toUpperCase()}
+                  </span>
+                </div>
+              </div>
+
+              <div>
+                <h4 className="text-sm font-medium text-gray-500 mb-2">Progress</h4>
+                <div className="flex items-center">
+                  <div className="h-4 w-full overflow-hidden rounded-full bg-gray-200">
+                    <div
+                      className="h-full bg-indigo-600 transition-all"
+                      style={{ width: `${viewingProject.completion_percentage}%` }}
+                    ></div>
+                  </div>
+                  <span className="ml-3 text-lg font-semibold text-gray-900">
+                    {viewingProject.completion_percentage}%
+                  </span>
+                </div>
+              </div>
+
+              {viewingProject.actual_cost > 0 && (
+                <div>
+                  <h4 className="text-sm font-medium text-gray-500 mb-2">Actual Cost</h4>
+                  <p className="text-2xl font-semibold text-gray-900">
+                    ${viewingProject.actual_cost.toLocaleString()}
+                  </p>
+                </div>
+              )}
+
+              {viewingProject.tags && viewingProject.tags.length > 0 && (
+                <div>
+                  <h4 className="text-sm font-medium text-gray-500 mb-2">Tags</h4>
+                  <div className="flex flex-wrap gap-2">
+                    {viewingProject.tags.map((tag, index) => (
+                      <span
+                        key={index}
+                        className="inline-flex items-center px-3 py-1 rounded-full text-sm bg-gray-100 text-gray-700"
+                      >
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              )}
+
+              <div className="pt-4 flex justify-end space-x-3">
+                <button
+                  onClick={() => {
+                    setSelectedProject(null);
+                    handleEditProject(viewingProject);
+                  }}
+                  className="flex items-center rounded-md bg-indigo-600 px-4 py-2 text-white hover:bg-indigo-700"
+                >
+                  <Edit className="mr-2 h-4 w-4" />
+                  Edit Project
+                </button>
+              </div>
+            </div>
           </motion.div>
         </div>
       )}
