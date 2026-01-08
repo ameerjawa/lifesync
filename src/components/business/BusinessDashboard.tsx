@@ -11,7 +11,8 @@ import {
   TrendingUp,
   Calendar,
   Target,
-  Briefcase
+  Briefcase,
+  Clock
 } from 'lucide-react';
 import { BusinessOverview } from './BusinessOverview';
 import { BusinessProjects } from './BusinessProjects';
@@ -24,6 +25,8 @@ import { BusinessTeam } from './BusinessTeam';
 import { BusinessAnalytics } from './BusinessAnalytics';
 import { BusinessSettings } from './BusinessSettings';
 import { BusinessSetup } from './BusinessSetup';
+import { BusinessCalendar } from './BusinessCalendar';
+import { BusinessTimeTracking } from './BusinessTimeTracking';
 import { useBusinessStore } from '../../store/businessStore';
 import { useSubscriptionStore } from '../../store/subscriptionStore';
 import { UpgradePrompt } from '../trial/UpgradePrompt';
@@ -135,31 +138,38 @@ export function BusinessDashboard() {
     { id: 'overview', name: 'Overview', icon: BarChart2 },
     { id: 'projects', name: 'Projects', icon: Target },
     { id: 'tasks', name: 'Tasks', icon: Briefcase },
+    { id: 'calendar', name: 'Calendar', icon: Calendar },
+    { id: 'time', name: 'Time Tracking', icon: Clock },
     { id: 'clients', name: 'Clients', icon: Users },
     { id: 'invoices', name: 'Invoices', icon: FileText },
     { id: 'expenses', name: 'Expenses', icon: DollarSign },
-    { id: 'automations', name: 'Automations', icon: Settings },
     { id: 'team', name: 'Team', icon: Users },
     { id: 'analytics', name: 'Analytics', icon: TrendingUp },
     { id: 'settings', name: 'Settings', icon: Settings }
   ];
 
+  const handleNavigate = (tab: string) => {
+    setActiveTab(tab);
+  };
+
   const renderContent = () => {
     switch (activeTab) {
       case 'overview':
-        return <BusinessOverview />;
+        return <BusinessOverview onNavigate={handleNavigate} />;
       case 'projects':
         return <BusinessProjects />;
       case 'tasks':
         return <BusinessTasks />;
+      case 'calendar':
+        return <BusinessCalendar />;
+      case 'time':
+        return <BusinessTimeTracking />;
       case 'clients':
         return <BusinessClients />;
       case 'invoices':
         return <BusinessInvoices />;
       case 'expenses':
         return <BusinessExpenses />;
-      case 'automations':
-        return <BusinessAutomations />;
       case 'team':
         return <BusinessTeam />;
       case 'analytics':
@@ -167,7 +177,7 @@ export function BusinessDashboard() {
       case 'settings':
         return <BusinessSettings />;
       default:
-        return <BusinessOverview />;
+        return <BusinessOverview onNavigate={handleNavigate} />;
     }
   };
 

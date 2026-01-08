@@ -30,7 +30,11 @@ import {
 
 const COLORS = ['#4F46E5', '#10B981', '#F59E0B', '#EF4444'];
 
-export function BusinessOverview() {
+interface BusinessOverviewProps {
+  onNavigate?: (tab: string) => void;
+}
+
+export function BusinessOverview({ onNavigate }: BusinessOverviewProps) {
   const {
     analytics,
     projects,
@@ -318,6 +322,56 @@ export function BusinessOverview() {
         </motion.div>
       </div>
 
+      {/* Alerts & Notifications */}
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        className="bg-white rounded-lg p-6 shadow-sm"
+      >
+        <h3 className="text-lg font-semibold text-gray-900 mb-6">Important Alerts</h3>
+        <div className="space-y-4">
+          {invoices.filter(inv => inv.status === 'pending').length > 0 && (
+            <div className="flex items-start p-4 bg-yellow-50 rounded-lg border border-yellow-200">
+              <AlertCircle className="h-5 w-5 text-yellow-600 mt-0.5 mr-3 flex-shrink-0" />
+              <div>
+                <p className="font-medium text-yellow-900">
+                  {invoices.filter(inv => inv.status === 'pending').length} Pending Invoice{invoices.filter(inv => inv.status === 'pending').length > 1 ? 's' : ''}
+                </p>
+                <p className="text-sm text-yellow-700 mt-1">
+                  Review and send invoices to clients
+                </p>
+              </div>
+            </div>
+          )}
+
+          {tasks.filter(task => task.due_date && new Date(task.due_date) < new Date() && task.status !== 'completed').length > 0 && (
+            <div className="flex items-start p-4 bg-red-50 rounded-lg border border-red-200">
+              <AlertCircle className="h-5 w-5 text-red-600 mt-0.5 mr-3 flex-shrink-0" />
+              <div>
+                <p className="font-medium text-red-900">
+                  {tasks.filter(task => task.due_date && new Date(task.due_date) < new Date() && task.status !== 'completed').length} Overdue Task{tasks.filter(task => task.due_date && new Date(task.due_date) < new Date() && task.status !== 'completed').length > 1 ? 's' : ''}
+                </p>
+                <p className="text-sm text-red-700 mt-1">
+                  Address overdue tasks immediately
+                </p>
+              </div>
+            </div>
+          )}
+
+          {projects.filter(p => p.status === 'active').length === 0 && (
+            <div className="flex items-start p-4 bg-blue-50 rounded-lg border border-blue-200">
+              <AlertCircle className="h-5 w-5 text-blue-600 mt-0.5 mr-3 flex-shrink-0" />
+              <div>
+                <p className="font-medium text-blue-900">No Active Projects</p>
+                <p className="text-sm text-blue-700 mt-1">
+                  Create your first project to get started
+                </p>
+              </div>
+            </div>
+          )}
+        </div>
+      </motion.div>
+
       {/* Quick Actions */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}
@@ -326,19 +380,31 @@ export function BusinessOverview() {
       >
         <h3 className="text-lg font-semibold text-gray-900 mb-6">Quick Actions</h3>
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
-          <button className="flex items-center justify-center p-4 bg-indigo-50 rounded-lg hover:bg-indigo-100 transition-colors">
+          <button
+            onClick={() => onNavigate?.('projects')}
+            className="flex items-center justify-center p-4 bg-indigo-50 rounded-lg hover:bg-indigo-100 transition-colors"
+          >
             <Target className="h-6 w-6 text-indigo-600 mr-3" />
             <span className="font-medium text-indigo-900">New Project</span>
           </button>
-          <button className="flex items-center justify-center p-4 bg-green-50 rounded-lg hover:bg-green-100 transition-colors">
+          <button
+            onClick={() => onNavigate?.('clients')}
+            className="flex items-center justify-center p-4 bg-green-50 rounded-lg hover:bg-green-100 transition-colors"
+          >
             <Users className="h-6 w-6 text-green-600 mr-3" />
             <span className="font-medium text-green-900">Add Client</span>
           </button>
-          <button className="flex items-center justify-center p-4 bg-purple-50 rounded-lg hover:bg-purple-100 transition-colors">
+          <button
+            onClick={() => onNavigate?.('invoices')}
+            className="flex items-center justify-center p-4 bg-purple-50 rounded-lg hover:bg-purple-100 transition-colors"
+          >
             <FileText className="h-6 w-6 text-purple-600 mr-3" />
             <span className="font-medium text-purple-900">Create Invoice</span>
           </button>
-          <button className="flex items-center justify-center p-4 bg-orange-50 rounded-lg hover:bg-orange-100 transition-colors">
+          <button
+            onClick={() => onNavigate?.('expenses')}
+            className="flex items-center justify-center p-4 bg-orange-50 rounded-lg hover:bg-orange-100 transition-colors"
+          >
             <DollarSign className="h-6 w-6 text-orange-600 mr-3" />
             <span className="font-medium text-orange-900">Add Expense</span>
           </button>
