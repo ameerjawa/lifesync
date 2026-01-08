@@ -1,10 +1,7 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Brain, Wallet, Heart, ArrowRight, CheckCircle2 } from 'lucide-react';
-import { useTrialStore } from '../../store/trialStore';
-import { useTaskStore } from '../../store/taskStore';
-import { useFinanceStore } from '../../store/financeStore';
-import { useHealthStore } from '../../store/healthStore';
+import { useTrialStore, useTaskStore, useFinanceStore, useHealthStore } from '../../store';
 
 export function SetupWizard() {
   const [currentStep, setCurrentStep] = useState(1);

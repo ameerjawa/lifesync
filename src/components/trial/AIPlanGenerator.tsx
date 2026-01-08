@@ -1,9 +1,7 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Sparkles, Brain, Calendar, Target, Loader2 } from 'lucide-react';
-import { useTaskStore } from '../../store/taskStore';
-import { useFinanceStore } from '../../store/financeStore';
-import { useHealthStore } from '../../store/healthStore';
+import { useTaskStore, useFinanceStore, useHealthStore } from '../../store';
 
 export function AIPlanGenerator() {
   const [isGenerating, setIsGenerating] = useState(false);

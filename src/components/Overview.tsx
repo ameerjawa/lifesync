@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import {
   CheckCircle2,
@@ -8,16 +8,20 @@ import {
   Wallet,
   Brain,
   Calendar,
-  Target
+  Target,
+  Plus
 } from 'lucide-react';
-import { useTaskStore } from '../store/taskStore';
-import { useHealthStore } from '../store/healthStore';
-import { useFinanceStore } from '../store/financeStore';
+import { useTaskStore, useHealthStore, useFinanceStore } from '../store';
 
 export function Overview() {
-  const { tasks } = useTaskStore();
-  const { metrics, goals: healthGoals } = useHealthStore();
-  const { accounts, transactions, savingsGoals } = useFinanceStore();
+  const { tasks, addTask } = useTaskStore();
+  const { metrics, goals: healthGoals, addMetric } = useHealthStore();
+  const { accounts, transactions, savingsGoals, addTransaction } = useFinanceStore();
+
+  const [showTaskForm, setShowTaskForm] = useState(false);
+  const [showHealthForm, setShowHealthForm] = useState(false);
+  const [showTransactionForm, setShowTransactionForm] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   // Calculate overview metrics
   const taskMetrics = {
@@ -40,6 +44,72 @@ export function Overview() {
       .filter(t => t.type === 'income')
       .reduce((sum, t) => sum + t.amount, 0),
     monthlySavings: savingsGoals.reduce((sum, goal) => sum + goal.current_amount, 0)
+  };
+
+  const handleQuickAddTask = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    const formData = new FormData(e.currentTarget);
+
+    try {
+      await addTask({
+        title: formData.get('title') as string,
+        description: formData.get('description') as string || '',
+        status: 'todo',
+        priority: 'medium',
+        due_date: formData.get('due_date') as string || new Date().toISOString(),
+      });
+      setShowTaskForm(false);
+      e.currentTarget.reset();
+    } catch (error) {
+      console.error('Failed to add task:', error);
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
+  const handleQuickAddHealthMetric = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    const formData = new FormData(e.currentTarget);
+
+    try {
+      await addMetric({
+        metric_type: formData.get('metric_type') as string,
+        value: parseFloat(formData.get('value') as string),
+        unit: formData.get('unit') as string || '',
+        recorded_at: new Date().toISOString(),
+      });
+      setShowHealthForm(false);
+      e.currentTarget.reset();
+    } catch (error) {
+      console.error('Failed to add health metric:', error);
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
+  const handleQuickAddTransaction = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    const formData = new FormData(e.currentTarget);
+
+    try {
+      await addTransaction({
+        account_id: formData.get('account_id') as string,
+        type: formData.get('type') as 'income' | 'expense',
+        amount: parseFloat(formData.get('amount') as string),
+        description: formData.get('description') as string,
+        category: formData.get('category') as string || 'other',
+        date: formData.get('date') as string || new Date().toISOString(),
+      });
+      setShowTransactionForm(false);
+      e.currentTarget.reset();
+    } catch (error) {
+      console.error('Failed to add transaction:', error);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -204,27 +274,179 @@ export function Overview() {
           <div className="rounded-lg bg-white p-6 shadow-sm">
             <h3 className="mb-4 text-lg font-semibold text-gray-900">Quick Actions</h3>
             <div className="space-y-3">
-              <button onClick={()=> console.log("test")} className="flex w-full items-center justify-between rounded-lg border p-4 hover:bg-gray-50">
-                <div className="flex items-center">
-                  <Brain className="mr-3 h-5 w-5 text-gray-400" />
-                  <span className="font-medium text-gray-700">Add Task</span>
-                </div>
-                <span className="text-gray-400">→</span>
-              </button>
-              <button className="flex w-full items-center justify-between rounded-lg border p-4 hover:bg-gray-50">
-                <div className="flex items-center">
-                  <Heart className="mr-3 h-5 w-5 text-gray-400" />
-                  <span className="font-medium text-gray-700">Log Health Metric</span>
-                </div>
-                <span className="text-gray-400">→</span>
-              </button>
-              <button className="flex w-full items-center justify-between rounded-lg border p-4 hover:bg-gray-50">
-                <div className="flex items-center">
-                  <Wallet className="mr-3 h-5 w-5 text-gray-400" />
-                  <span className="font-medium text-gray-700">Add Transaction</span>
-                </div>
-                <span className="text-gray-400">→</span>
-              </button>
+              {!showTaskForm ? (
+                <button
+                  onClick={() => setShowTaskForm(true)}
+                  className="flex w-full items-center justify-between rounded-lg border p-4 hover:bg-gray-50 transition-colors"
+                >
+                  <div className="flex items-center">
+                    <Brain className="mr-3 h-5 w-5 text-blue-500" />
+                    <span className="font-medium text-gray-700">Add Task</span>
+                  </div>
+                  <Plus className="h-5 w-5 text-gray-400" />
+                </button>
+              ) : (
+                <form onSubmit={handleQuickAddTask} className="rounded-lg border p-4 space-y-3">
+                  <input
+                    name="title"
+                    placeholder="Task title"
+                    required
+                    className="w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                  />
+                  <input
+                    name="due_date"
+                    type="date"
+                    defaultValue={new Date().toISOString().split('T')[0]}
+                    className="w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                  />
+                  <div className="flex gap-2">
+                    <button
+                      type="submit"
+                      disabled={isSubmitting}
+                      className="flex-1 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 disabled:opacity-50"
+                    >
+                      {isSubmitting ? 'Adding...' : 'Add'}
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => setShowTaskForm(false)}
+                      className="px-4 py-2 border rounded-lg hover:bg-gray-50"
+                    >
+                      Cancel
+                    </button>
+                  </div>
+                </form>
+              )}
+
+              {!showHealthForm ? (
+                <button
+                  onClick={() => setShowHealthForm(true)}
+                  className="flex w-full items-center justify-between rounded-lg border p-4 hover:bg-gray-50 transition-colors"
+                >
+                  <div className="flex items-center">
+                    <Heart className="mr-3 h-5 w-5 text-green-500" />
+                    <span className="font-medium text-gray-700">Log Health Metric</span>
+                  </div>
+                  <Plus className="h-5 w-5 text-gray-400" />
+                </button>
+              ) : (
+                <form onSubmit={handleQuickAddHealthMetric} className="rounded-lg border p-4 space-y-3">
+                  <select
+                    name="metric_type"
+                    required
+                    className="w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500"
+                  >
+                    <option value="">Select metric type</option>
+                    <option value="weight">Weight</option>
+                    <option value="steps">Steps</option>
+                    <option value="sleep">Sleep (hours)</option>
+                    <option value="water">Water (glasses)</option>
+                    <option value="exercise">Exercise (minutes)</option>
+                  </select>
+                  <div className="flex gap-2">
+                    <input
+                      name="value"
+                      type="number"
+                      step="0.1"
+                      placeholder="Value"
+                      required
+                      className="flex-1 px-3 py-2 border rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500"
+                    />
+                    <input
+                      name="unit"
+                      placeholder="Unit"
+                      className="w-24 px-3 py-2 border rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500"
+                    />
+                  </div>
+                  <div className="flex gap-2">
+                    <button
+                      type="submit"
+                      disabled={isSubmitting}
+                      className="flex-1 px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 disabled:opacity-50"
+                    >
+                      {isSubmitting ? 'Logging...' : 'Log'}
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => setShowHealthForm(false)}
+                      className="px-4 py-2 border rounded-lg hover:bg-gray-50"
+                    >
+                      Cancel
+                    </button>
+                  </div>
+                </form>
+              )}
+
+              {!showTransactionForm ? (
+                <button
+                  onClick={() => setShowTransactionForm(true)}
+                  className="flex w-full items-center justify-between rounded-lg border p-4 hover:bg-gray-50 transition-colors"
+                >
+                  <div className="flex items-center">
+                    <Wallet className="mr-3 h-5 w-5 text-indigo-500" />
+                    <span className="font-medium text-gray-700">Add Transaction</span>
+                  </div>
+                  <Plus className="h-5 w-5 text-gray-400" />
+                </button>
+              ) : (
+                <form onSubmit={handleQuickAddTransaction} className="rounded-lg border p-4 space-y-3">
+                  <select
+                    name="type"
+                    required
+                    className="w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+                  >
+                    <option value="expense">Expense</option>
+                    <option value="income">Income</option>
+                  </select>
+                  <input
+                    name="description"
+                    placeholder="Description"
+                    required
+                    className="w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+                  />
+                  <input
+                    name="amount"
+                    type="number"
+                    step="0.01"
+                    placeholder="Amount"
+                    required
+                    className="w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+                  />
+                  {accounts.length > 0 && (
+                    <select
+                      name="account_id"
+                      required
+                      className="w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+                    >
+                      <option value="">Select account</option>
+                      {accounts.map(account => (
+                        <option key={account.id} value={account.id}>
+                          {account.name}
+                        </option>
+                      ))}
+                    </select>
+                  )}
+                  <div className="flex gap-2">
+                    <button
+                      type="submit"
+                      disabled={isSubmitting || accounts.length === 0}
+                      className="flex-1 px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 disabled:opacity-50"
+                    >
+                      {isSubmitting ? 'Adding...' : 'Add'}
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => setShowTransactionForm(false)}
+                      className="px-4 py-2 border rounded-lg hover:bg-gray-50"
+                    >
+                      Cancel
+                    </button>
+                  </div>
+                  {accounts.length === 0 && (
+                    <p className="text-sm text-red-600">Create an account first</p>
+                  )}
+                </form>
+              )}
             </div>
           </div>
 

@@ -5,7 +5,7 @@ import { TaskList } from './TaskList';
 import { TaskFilters } from './TaskFilters';
 import { TaskTimeline } from './TaskTimeline';
 import { BulkActions } from './BulkActions';
-import { useTaskStore } from '../../store/taskStore';
+import { useTaskStore } from '../../store';
 import { useTaskContext } from './TaskProvider';
 
 export function TaskContent() {

@@ -33,9 +33,11 @@ export function BusinessDashboard() {
   const [showUpgradePrompt, setShowUpgradePrompt] = useState(false);
   
   const {
-    profile,
+    businesses,
+    activeBusinessId,
+    getActiveBusiness,
     isLoading,
-    loadBusinessProfile,
+    loadBusinesses,
     loadProjects,
     loadTasks,
     loadClients,
@@ -60,10 +62,10 @@ export function BusinessDashboard() {
 
   const loadInitialData = async () => {
     try {
-      await loadBusinessProfile();
-      
-      // If business profile exists, load all business data
-      if (profile) {
+      await loadBusinesses();
+
+      // If business exists, load all business data
+      if (activeBusinessId) {
         await Promise.all([
           loadProjects(),
           loadTasks(),
@@ -114,8 +116,8 @@ export function BusinessDashboard() {
     );
   }
 
-  // If no business profile exists, show setup
-  if (!profile && !isLoading) {
+  // If no business exists, show setup
+  if (businesses.length === 0 && !isLoading) {
     return <BusinessSetup />;
   }
 

@@ -15,8 +15,7 @@ import {
   Calendar,
   BarChart2
 } from 'lucide-react';
-import { useTaskStore } from '../../store/taskStore';
-import { useSubscriptionStore } from '../../store/subscriptionStore';
+import { useTaskStore, useSubscriptionStore } from '../../store';
 import { analyzeTaskPerformance, generateTaskSchedule } from '../../lib/ai';
 import type { Task } from '../../lib/types';
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import { useTaskStore } from '../../../store/taskStore';
+import { useTaskStore } from '../../../store';
 
 export function ScheduleView() {
   const { tasks } = useTaskStore();

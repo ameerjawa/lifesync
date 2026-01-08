@@ -15,7 +15,8 @@ import type {
 
 interface BusinessState {
   // Data
-  profile: BusinessProfile | null;
+  businesses: BusinessProfile[];
+  activeBusinessId: string | null;
   projects: BusinessProject[];
   tasks: BusinessTask[];
   clients: BusinessClient[];
@@ -24,7 +25,7 @@ interface BusinessState {
   automations: BusinessAutomation[];
   teamMembers: BusinessTeamMember[];
   analytics: BusinessAnalytics | null;
-  
+
   // UI State
   selectedProject: string | null;
   selectedClient: string | null;
@@ -32,7 +33,9 @@ interface BusinessState {
   error: string | null;
 
   // Actions
-  loadBusinessProfile: () => Promise<void>;
+  loadBusinesses: () => Promise<void>;
+  setActiveBusiness: (businessId: string) => void;
+  getActiveBusiness: () => BusinessProfile | null;
   createBusinessProfile: (profile: Omit<BusinessProfile, 'id' | 'user_id' | 'created_at' | 'updated_at'>) => Promise<void>;
   updateBusinessProfile: (updates: Partial<BusinessProfile>) => Promise<void>;
   
@@ -79,7 +82,8 @@ interface BusinessState {
 
 export const useBusinessStore = create<BusinessState>((set, get) => ({
   // Initial state
-  profile: null,
+  businesses: [],
+  activeBusinessId: null,
   projects: [],
   tasks: [],
   clients: [],
@@ -94,7 +98,7 @@ export const useBusinessStore = create<BusinessState>((set, get) => ({
   error: null,
 
   // Business Profile Actions
-  loadBusinessProfile: async () => {
+  loadBusinesses: async () => {
     set({ isLoading: true, error: null });
     try {
       const { data: { user }, error: authError } = await supabase.auth.getUser();
@@ -105,16 +109,39 @@ export const useBusinessStore = create<BusinessState>((set, get) => ({
         .from('business_profiles')
         .select('*')
         .eq('user_id', user.id)
-        .single();
+        .order('created_at', { ascending: false });
 
-      if (error && error.code !== 'PGRST116') throw error;
-      set({ profile: data || null });
+      if (error) throw error;
+
+      set({ businesses: data || [] });
+
+      // Set first business as active if none is set
+      if (data && data.length > 0 && !get().activeBusinessId) {
+        set({ activeBusinessId: data[0].id });
+      }
     } catch (error) {
-      console.error('Error loading business profile:', error);
-      set({ error: error instanceof Error ? error.message : 'Failed to load business profile' });
+      console.error('Error loading businesses:', error);
+      set({ error: error instanceof Error ? error.message : 'Failed to load businesses' });
     } finally {
       set({ isLoading: false });
     }
+  },
+
+  setActiveBusiness: (businessId: string) => {
+    set({ activeBusinessId: businessId });
+    // Reload data for the new active business
+    get().loadProjects();
+    get().loadTasks();
+    get().loadClients();
+    get().loadInvoices();
+    get().loadExpenses();
+    get().loadAutomations();
+    get().loadTeamMembers();
+  },
+
+  getActiveBusiness: () => {
+    const { businesses, activeBusinessId } = get();
+    return businesses.find(b => b.id === activeBusinessId) || null;
   },
 
   createBusinessProfile: async (profileData) => {
@@ -142,7 +169,12 @@ export const useBusinessStore = create<BusinessState>((set, get) => ({
           permissions: ['all']
         }]);
 
-      set({ profile: data });
+      // Add to businesses list and set as active
+      set(state => ({
+        businesses: [...state.businesses, data],
+        activeBusinessId: data.id
+      }));
+
       useToastStore.getState().showSuccess('Business profile created successfully');
     } catch (error) {
       console.error('Error creating business profile:', error);
@@ -157,18 +189,23 @@ export const useBusinessStore = create<BusinessState>((set, get) => ({
   updateBusinessProfile: async (updates) => {
     set({ isLoading: true, error: null });
     try {
-      const { profile } = get();
-      if (!profile) throw new Error('No business profile found');
+      const { activeBusinessId, businesses } = get();
+      if (!activeBusinessId) throw new Error('No active business selected');
 
       const { data, error } = await supabase
         .from('business_profiles')
         .update(updates)
-        .eq('id', profile.id)
+        .eq('id', activeBusinessId)
         .select()
         .single();
 
       if (error) throw error;
-      set({ profile: data });
+
+      // Update the business in the array
+      set({
+        businesses: businesses.map(b => b.id === activeBusinessId ? data : b)
+      });
+
       useToastStore.getState().showSuccess('Business profile updated successfully');
     } catch (error) {
       console.error('Error updating business profile:', error);
@@ -181,49 +218,40 @@ export const useBusinessStore = create<BusinessState>((set, get) => ({
   },
 
   // Project Actions
-loadProjects: async () => {
-  set({ isLoading: false, error: null });
-  try {
-    const { profile } = get();
-    if (!profile) throw new Error('No business profile found');
-    console.log('Profile:', profile);
+  loadProjects: async () => {
+    set({ isLoading: true, error: null });
+    try {
+      const { activeBusinessId } = get();
+      if (!activeBusinessId) {
+        set({ projects: [] });
+        return;
+      }
 
-    const { data, error } = await supabase
-      .from('business_projects')
-      .select(`*, client:business_clients(name, email)`)
-      .eq('business_id', profile.id)
-      .order('created_at', { ascending: false });
+      const { data, error } = await supabase
+        .from('business_projects')
+        .select(`*, client:business_clients(name, email)`)
+        .eq('business_id', activeBusinessId)
+        .order('created_at', { ascending: false });
 
-    console.log('Supabase response:', { data, error });
-
-    if (error) throw error;
-
-    // ✅ Only update projects if they actually changed
-    const currentProjects = get().projects;
-    const isDifferent = JSON.stringify(currentProjects) !== JSON.stringify(data || []);
-    if (isDifferent) {
+      if (error) throw error;
       set({ projects: data || [] });
+    } catch (err) {
+      console.error('Error loading projects:', err);
+      set({ error: err instanceof Error ? err.message : 'Failed to load projects' });
+    } finally {
+      set({ isLoading: false });
     }
-  } catch (err) {
-    console.error('Error loading projects:', err);
-    set({ error: err instanceof Error ? err.message : 'Failed to load projects' });
-  } finally {
-    console.log('Setting isLoading false');
-    set({ isLoading: false });
-  }
-}
-
-,
+  },
 
   addProject: async (projectData) => {
     set({ isLoading: true, error: null });
     try {
-      const { profile } = get();
-      if (!profile) throw new Error('No business profile found');
+      const { activeBusinessId } = get();
+      if (!activeBusinessId) throw new Error('No active business selected');
 
       const { data, error } = await supabase
         .from('business_projects')
-        .insert([{ ...projectData, business_id: profile.id }])
+        .insert([{ ...projectData, business_id: activeBusinessId }])
         .select()
         .single();
 
@@ -293,8 +321,8 @@ loadProjects: async () => {
   loadTasks: async () => {
     set({ isLoading: false, error: null });
     try {
-      const { profile } = get();
-      if (!profile) throw new Error('No business profile found');
+      const { activeBusinessId } = get();
+      if (!activeBusinessId) throw new Error('No active business selected');
 
       const { data, error } = await supabase
         .from('business_tasks')
@@ -303,7 +331,7 @@ loadProjects: async () => {
           project:business_projects(name),
           assignee:business_profiles(company_name, email)
         `)
-        .eq('business_id', profile.id)
+        .eq('business_id', activeBusinessId)
         .order('created_at', { ascending: false });
 
       if (error) throw error;
@@ -319,12 +347,12 @@ loadProjects: async () => {
   addTask: async (taskData) => {
     set({ isLoading: true, error: null });
     try {
-      const { profile } = get();
-      if (!profile) throw new Error('No business profile found');
+      const { activeBusinessId } = get();
+      if (!activeBusinessId) throw new Error('No active business selected');
 
       const { data, error } = await supabase
         .from('business_tasks')
-        .insert([{ ...taskData, business_id: profile.id }])
+        .insert([{ ...taskData, business_id: activeBusinessId }])
         .select()
         .single();
 
@@ -391,13 +419,13 @@ loadProjects: async () => {
   loadClients: async () => {
     set({ isLoading: false, error: null });
     try {
-      const { profile } = get();
-      if (!profile) throw new Error('No business profile found');
+      const { activeBusinessId } = get();
+      if (!activeBusinessId) throw new Error('No active business selected');
 
       const { data, error } = await supabase
         .from('business_clients')
         .select('*')
-        .eq('business_id', profile.id)
+        .eq('business_id', activeBusinessId)
         .order('created_at', { ascending: false });
 
       if (error) throw error;
@@ -413,12 +441,12 @@ loadProjects: async () => {
   addClient: async (clientData) => {
     set({ isLoading: true, error: null });
     try {
-      const { profile } = get();
-      if (!profile) throw new Error('No business profile found');
+      const { activeBusinessId } = get();
+      if (!activeBusinessId) throw new Error('No active business selected');
 
       const { data, error } = await supabase
         .from('business_clients')
-        .insert([{ ...clientData, business_id: profile.id }])
+        .insert([{ ...clientData, business_id: activeBusinessId }])
         .select()
         .single();
 
@@ -488,8 +516,8 @@ loadProjects: async () => {
   loadInvoices: async () => {
     set({ isLoading: false, error: null });
     try {
-      const { profile } = get();
-      if (!profile) throw new Error('No business profile found');
+      const { activeBusinessId } = get();
+      if (!activeBusinessId) throw new Error('No active business selected');
 
       const { data: invoices, error: invoicesError } = await supabase
         .from('business_invoices')
@@ -498,7 +526,7 @@ loadProjects: async () => {
           client:business_clients(name, email),
           project:business_projects(name)
         `)
-        .eq('business_id', profile.id)
+        .eq('business_id', activeBusinessId)
         .order('created_at', { ascending: false });
 
       if (invoicesError) throw invoicesError;
@@ -542,7 +570,7 @@ addInvoice: async (invoiceData) => {
     // 1. Insert invoice (no line_items here)
     const { data: invoice, error: invoiceError } = await supabase
       .from("business_invoices")
-      .insert([{ ...invoiceFields, business_id: profile.id }])
+      .insert([{ ...invoiceFields, business_id: activeBusinessId }])
       .select()
       .single();
 
@@ -634,8 +662,8 @@ addInvoice: async (invoiceData) => {
   loadExpenses: async () => {
     set({ isLoading: false, error: null });
     try {
-      const { profile } = get();
-      if (!profile) throw new Error('No business profile found');
+      const { activeBusinessId } = get();
+      if (!activeBusinessId) throw new Error('No active business selected');
 
       const { data, error } = await supabase
         .from('business_expenses')
@@ -643,7 +671,7 @@ addInvoice: async (invoiceData) => {
           *,
           project:business_projects(name)
         `)
-        .eq('business_id', profile.id)
+        .eq('business_id', activeBusinessId)
         .order('date', { ascending: false });
 
       if (error) throw error;
@@ -659,12 +687,12 @@ addInvoice: async (invoiceData) => {
   addExpense: async (expenseData) => {
     set({ isLoading: true, error: null });
     try {
-      const { profile } = get();
-      if (!profile) throw new Error('No business profile found');
+      const { activeBusinessId } = get();
+      if (!activeBusinessId) throw new Error('No active business selected');
 
       const { data, error } = await supabase
         .from('business_expenses')
-        .insert([{ ...expenseData, business_id: profile.id }])
+        .insert([{ ...expenseData, business_id: activeBusinessId }])
         .select()
         .single();
 
@@ -731,13 +759,13 @@ addInvoice: async (invoiceData) => {
   loadAutomations: async () => {
     set({ isLoading: false, error: null });
     try {
-      const { profile } = get();
-      if (!profile) throw new Error('No business profile found');
+      const { activeBusinessId } = get();
+      if (!activeBusinessId) throw new Error('No active business selected');
 
       const { data, error } = await supabase
         .from('business_automations')
         .select('*')
-        .eq('business_id', profile.id)
+        .eq('business_id', activeBusinessId)
         .order('created_at', { ascending: false });
 
       if (error) throw error;
@@ -753,12 +781,12 @@ addInvoice: async (invoiceData) => {
   addAutomation: async (automationData) => {
     set({ isLoading: true, error: null });
     try {
-      const { profile } = get();
-      if (!profile) throw new Error('No business profile found');
+      const { activeBusinessId } = get();
+      if (!activeBusinessId) throw new Error('No active business selected');
 
       const { data, error } = await supabase
         .from('business_automations')
-        .insert([{ ...automationData, business_id: profile.id }])
+        .insert([{ ...automationData, business_id: activeBusinessId }])
         .select()
         .single();
 
@@ -825,8 +853,8 @@ addInvoice: async (invoiceData) => {
   loadTeamMembers: async () => {
     set({ isLoading: false, error: null });
     try {
-      const { profile } = get();
-      if (!profile) throw new Error('No business profile found');
+      const { activeBusinessId } = get();
+      if (!activeBusinessId) throw new Error('No active business selected');
 
       const { data, error } = await supabase
         .from('business_team_members')
@@ -834,7 +862,7 @@ addInvoice: async (invoiceData) => {
           *,
           profile:business_profiles(company_name, email, logo_url)
         `)
-        .eq('business_id', profile.id)
+        .eq('business_id', activeBusinessId)
         .order('joined_at', { ascending: true });
 
       if (error) throw error;
@@ -850,12 +878,12 @@ addInvoice: async (invoiceData) => {
   addTeamMember: async (memberData) => {
     set({ isLoading: true, error: null });
     try {
-      const { profile } = get();
-      if (!profile) throw new Error('No business profile found');
+      const { activeBusinessId } = get();
+      if (!activeBusinessId) throw new Error('No active business selected');
 
       const { data, error } = await supabase
         .from('business_team_members')
-        .insert([{ ...memberData, business_id: profile.id }])
+        .insert([{ ...memberData, business_id: activeBusinessId }])
         .select(`
           *,
           profile:business_profiles(company_name, email, logo_url)

@@ -1,9 +1,6 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useAuthStore } from '../../store/authStore';
-import { useGuestStore } from '../../store/guestStore';
-import { useSubscriptionStore } from '../../store/subscriptionStore';
-import { useTaskStore } from '../../store/taskStore';
+import { useAuthStore, useGuestStore, useSubscriptionStore, useTaskStore } from '../../store';
 import type { Task, TaskFilter } from '../../lib/types';
 
 interface TaskContextType {

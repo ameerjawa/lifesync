@@ -4,8 +4,7 @@ import { TaskTemplateForm } from './TaskTemplateForm';
 import { RecurringTaskForm } from './RecurringTaskForm';
 import { GuestPrompt } from '../GuestPrompt';
 import { UpgradePrompt } from '../trial/UpgradePrompt';
-import { useAuthStore } from '../../store/authStore';
-import { useTaskStore } from '../../store/taskStore';
+import { useAuthStore, useTaskStore } from '../../store';
 import { useTaskContext } from './TaskProvider';
 
 export function TaskModals() {

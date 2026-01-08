@@ -1,7 +1,5 @@
 import { HfInference } from '@huggingface/inference';
-import { useTaskStore } from '../store/taskStore';
-import { useHealthStore } from '../store/healthStore';
-import { useFinanceStore } from '../store/financeStore';
+import { useTaskStore, useHealthStore, useFinanceStore } from '../store';
 import { useToastStore } from '../store/toastStore';
 import type { Road, Milestone } from './types';
 

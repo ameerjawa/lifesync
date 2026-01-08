@@ -15,9 +15,7 @@ import {
   Settings
 } from 'lucide-react';
 import { supabase } from '../lib/supabase';
-import { useHealthStore } from '../store/healthStore';
-import { useFinanceStore } from '../store/financeStore';
-import { useTaskStore } from '../store/taskStore';
+import { useHealthStore, useFinanceStore, useTaskStore } from '../store';
 import { AdminAnalytics } from '../components/admin/AdminAnalytics';
 import { AdminOverview } from '../components/admin/AdminOverview';
 import { FeatureManagement } from '../components/admin/FeatureManagement';

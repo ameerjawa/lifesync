@@ -1,11 +1,10 @@
 import React from 'react';
-import { useGuestStore } from '../../store/guestStore';
+import { useGuestStore, useTaskStore } from '../../store';
 import { TaskProvider, useTaskContext } from './TaskProvider';
 import { TaskHeader } from './TaskHeader';
 import { TaskContent } from './TaskContent';
 import { TaskModals } from './TaskModals';
 import { TaskAI } from './TaskAI';
-import { useTaskStore } from '../../store/taskStore';
 
 function TaskManagerContent() {
   const {

@@ -2,9 +2,7 @@ import React from 'react';
 import { useLocation } from 'react-router-dom';
 import { Brain, CheckCircle, TrendingUp, TrendingDown } from 'lucide-react';
 import { useAIAssistant } from '../AIAssistantProvider';
-import { useTaskStore } from '../../../store/taskStore';
-import { useHealthStore } from '../../../store/healthStore';
-import { useFinanceStore } from '../../../store/financeStore';
+import { useTaskStore, useHealthStore, useFinanceStore } from '../../../store';
 
 export function InsightsView() {
   const location = useLocation();
