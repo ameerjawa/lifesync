@@ -20,7 +20,7 @@ import { HealthInsights } from './HealthInsights';
 import type { HealthMetric } from '../../lib/types';
 
 const metricTypes: Array<{
-  type: HealthMetric['metric_type'];
+  type: string;
   label: string;
   icon: React.ElementType;
   unit: string;
@@ -33,7 +33,8 @@ const metricTypes: Array<{
   { type: 'water', label: 'Water', icon: Droplets, unit: 'ml', color: 'text-cyan-600', gradient: 'from-cyan-500 to-blue-500' },
   { type: 'mood', label: 'Mood', icon: Smile, unit: 'rating', color: 'text-yellow-600', gradient: 'from-yellow-500 to-orange-500' },
   { type: 'exercise', label: 'Exercise', icon: Activity, unit: 'minutes', color: 'text-red-600', gradient: 'from-red-500 to-rose-500' },
-  { type: 'heart_rate', label: 'Heart Rate', icon: Heart, unit: 'bpm', color: 'text-pink-600', gradient: 'from-pink-500 to-rose-500' }
+  { type: 'heart_rate', label: 'Heart Rate', icon: Heart, unit: 'bpm', color: 'text-pink-600', gradient: 'from-pink-500 to-rose-500' },
+  { type: 'blood_pressure', label: 'Blood Pressure', icon: Heart, unit: 'mmHg', color: 'text-rose-600', gradient: 'from-rose-500 to-red-500' }
 ];
 
 export function HealthDashboard() {

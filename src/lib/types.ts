@@ -233,3 +233,112 @@ export interface BusinessAnalytics {
     satisfaction: number;
   };
 }
+
+// Task Management Types
+export interface Task {
+  id: string;
+  user_id: string;
+  title: string;
+  description?: string;
+  due_date?: string;
+  priority: 'low' | 'medium' | 'high';
+  status: 'todo' | 'in_progress' | 'completed';
+  created_at: string;
+  updated_at: string;
+  parent_id?: string;
+  estimated_hours?: number;
+  actual_hours?: number;
+  assignees: string[];
+  labels: string[];
+  guest_id?: string;
+}
+
+export interface TaskTemplate {
+  id: string;
+  user_id: string;
+  title: string;
+  description?: string;
+  priority: 'low' | 'medium' | 'high';
+  estimated_hours?: number;
+  labels: string[];
+  dependencies: string[];
+  assignees: string[];
+  created_at: string;
+  updated_at: string;
+}
+
+export interface RecurringTask {
+  id: string;
+  task_id: string;
+  frequency: 'daily' | 'weekly' | 'monthly' | 'yearly';
+  interval_count: number;
+  days_of_week: string[];
+  start_date: string;
+  end_date?: string;
+  last_generated?: string;
+  created_at: string;
+  updated_at: string;
+}
+
+export interface TaskComment {
+  id: string;
+  task_id: string;
+  user_id: string;
+  content: string;
+  parent_id?: string;
+  mentions: string[];
+  created_at: string;
+  updated_at: string;
+}
+
+export interface TaskAttachment {
+  id: string;
+  task_id: string;
+  user_id: string;
+  name: string;
+  file_type: string;
+  file_size: number;
+  storage_path: string;
+  created_at: string;
+}
+
+export interface Label {
+  id: string;
+  user_id: string;
+  name: string;
+  color: string;
+  created_at: string;
+  updated_at: string;
+}
+
+export interface TaskHistory {
+  id: string;
+  task_id: string;
+  user_id: string;
+  field: string;
+  old_value?: string;
+  new_value?: string;
+  created_at: string;
+}
+
+export interface TaskFilter {
+  status?: string[];
+  priority?: string[];
+  assignee?: string[];
+  labels?: string[];
+  search?: string;
+  dateRange?: {
+    start?: string;
+    end?: string;
+  };
+}
+
+export interface Profile {
+  id: string;
+  email: string;
+  full_name?: string;
+  avatar_url?: string;
+  created_at: string;
+  updated_at: string;
+  role?: 'user' | 'admin';
+}

@@ -7,3 +7,5 @@ export { useFinanceStore } from './finance';
 export { useHealthStore } from './healthStore';
 export { useTaskStore } from './task';
 export { useBusinessStore } from './businessStore';
+export { useProjectStore } from './projectStore';
+export { usePreferencesStore } from './preferencesStore';

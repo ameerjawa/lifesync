@@ -6,3 +6,4 @@ export * from './BulkActions';
 export * from './TaskTimeline';
 export * from './RecurringTaskForm';
 export * from './TaskAI';
+export * from './TaskTemplateManager';
