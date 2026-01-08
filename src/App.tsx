@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-d
 import { useAuthStore } from './store/authStore';
 import { useGuestStore } from './store/guestStore';
 import { ToastProvider } from './components/ToastProvider';
+import { ErrorBoundary } from './components/ErrorBoundary';
 import LandingPage from './pages/LandingPage';
 import Dashboard from './pages/Dashboard';
 import SetupPage from './pages/SetupPage';
@@ -26,24 +27,26 @@ function App() {
   }
 
   return (
-    <ToastProvider>
-      <Router>
-        <Routes>
-          <Route path="/" element={user || isGuest ? <Navigate to="/dashboard" /> : <LandingPage />} />
-          <Route path="/dashboard/*" element={user || isGuest ? <Dashboard /> : <Navigate to="/" />} />
-          <Route path="/setup" element={<SetupPage />} />
-          <Route path="/upgrade" element={<UpgradePage />} />
-          <Route 
-            path="/admin" 
-            element={
-              profile?.role === 'admin' ? 
-                <AdminDashboard /> : 
-                <Navigate to="/dashboard" />
-            } 
-          />
-        </Routes>
-      </Router>
-    </ToastProvider>
+    <ErrorBoundary>
+      <ToastProvider>
+        <Router>
+          <Routes>
+            <Route path="/" element={user || isGuest ? <Navigate to="/dashboard" /> : <LandingPage />} />
+            <Route path="/dashboard/*" element={user || isGuest ? <Dashboard /> : <Navigate to="/" />} />
+            <Route path="/setup" element={<SetupPage />} />
+            <Route path="/upgrade" element={<UpgradePage />} />
+            <Route
+              path="/admin"
+              element={
+                profile?.role === 'admin' ?
+                  <AdminDashboard /> :
+                  <Navigate to="/dashboard" />
+              }
+            />
+          </Routes>
+        </Router>
+      </ToastProvider>
+    </ErrorBoundary>
   );
 }
 

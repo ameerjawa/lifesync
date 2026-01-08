@@ -491,7 +491,7 @@ loadProjects: async () => {
       const { profile } = get();
       if (!profile) throw new Error('No business profile found');
 
-      const { data, error } = await supabase
+      const { data: invoices, error: invoicesError } = await supabase
         .from('business_invoices')
         .select(`
           *,
@@ -501,8 +501,28 @@ loadProjects: async () => {
         .eq('business_id', profile.id)
         .order('created_at', { ascending: false });
 
-      if (error) throw error;
-      set({ invoices: data || [] });
+      if (invoicesError) throw invoicesError;
+
+      if (invoices && invoices.length > 0) {
+        const invoiceIds = invoices.map(inv => inv.id);
+        const { data: lineItems, error: lineItemsError } = await supabase
+          .from('invoice_line_items')
+          .select('*')
+          .in('invoice_id', invoiceIds);
+
+        if (lineItemsError) {
+          console.error('Error loading line items:', lineItemsError);
+        } else if (lineItems) {
+          const invoicesWithLineItems = invoices.map(invoice => ({
+            ...invoice,
+            line_items: lineItems.filter(item => item.invoice_id === invoice.id)
+          }));
+          set({ invoices: invoicesWithLineItems });
+          return;
+        }
+      }
+
+      set({ invoices: invoices || [] });
     } catch (error) {
       console.error('Error loading invoices:', error);
       set({ error: error instanceof Error ? error.message : 'Failed to load invoices' });

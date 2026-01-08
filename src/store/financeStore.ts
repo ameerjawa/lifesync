@@ -254,6 +254,135 @@ export const useFinanceStore = create<FinanceState>((set, get) => ({
 
   setDateRange: (range) => {
     set({ selectedDateRange: range });
+  },
+
+  loadCategories: async () => {
+    set({ isLoading: true, error: null });
+    try {
+      const { data: { user }, error: authError } = await supabase.auth.getUser();
+
+      if (authError?.name === 'AuthSessionMissingError') {
+        set({ categories: [] });
+        return;
+      }
+
+      if (authError) throw authError;
+      if (!user) return;
+
+      const { data, error } = await supabase
+        .from('categories')
+        .select('*')
+        .eq('user_id', user.id)
+        .order('name');
+
+      if (error) throw error;
+      set({ categories: data || [] });
+    } catch (error) {
+      if (error?.name !== 'AuthSessionMissingError') {
+        console.error('Error loading categories:', error);
+      }
+      set({ error: 'Failed to load categories' });
+    } finally {
+      set({ isLoading: false });
+    }
+  },
+
+  addAccount: async (accountData: Omit<Account, 'id' | 'created_at' | 'updated_at'>) => {
+    set({ isLoading: true, error: null });
+    try {
+      const { data: { user }, error: authError } = await supabase.auth.getUser();
+      if (authError) throw authError;
+      if (!user) throw new Error('User not authenticated');
+
+      const { data, error } = await supabase
+        .from('accounts')
+        .insert([{ ...accountData, user_id: user.id }])
+        .select()
+        .single();
+
+      if (error) throw error;
+      set(state => ({ accounts: [...state.accounts, data] }));
+    } catch (error) {
+      console.error('Error adding account:', error);
+      set({ error: 'Failed to add account' });
+      throw error;
+    } finally {
+      set({ isLoading: false });
+    }
+  },
+
+  addTransaction: async (transactionData: Omit<Transaction, 'id' | 'created_at' | 'updated_at'>) => {
+    set({ isLoading: true, error: null });
+    try {
+      const { data: { user }, error: authError } = await supabase.auth.getUser();
+      if (authError) throw authError;
+      if (!user) throw new Error('User not authenticated');
+
+      const { data, error } = await supabase
+        .from('transactions')
+        .insert([{ ...transactionData, user_id: user.id }])
+        .select()
+        .single();
+
+      if (error) throw error;
+      set(state => ({ transactions: [data, ...state.transactions] }));
+
+      await get().loadAccounts();
+    } catch (error) {
+      console.error('Error adding transaction:', error);
+      set({ error: 'Failed to add transaction' });
+      throw error;
+    } finally {
+      set({ isLoading: false });
+    }
+  },
+
+  addBudget: async (budgetData: Omit<Budget, 'id' | 'created_at' | 'updated_at'>) => {
+    set({ isLoading: true, error: null });
+    try {
+      const { data: { user }, error: authError } = await supabase.auth.getUser();
+      if (authError) throw authError;
+      if (!user) throw new Error('User not authenticated');
+
+      const { data, error } = await supabase
+        .from('budgets')
+        .insert([{ ...budgetData, user_id: user.id }])
+        .select()
+        .single();
+
+      if (error) throw error;
+      set(state => ({ budgets: [data, ...state.budgets] }));
+    } catch (error) {
+      console.error('Error adding budget:', error);
+      set({ error: 'Failed to add budget' });
+      throw error;
+    } finally {
+      set({ isLoading: false });
+    }
+  },
+
+  addInvestment: async (investmentData: Omit<Investment, 'id' | 'created_at' | 'updated_at'>) => {
+    set({ isLoading: true, error: null });
+    try {
+      const { data: { user }, error: authError } = await supabase.auth.getUser();
+      if (authError) throw authError;
+      if (!user) throw new Error('User not authenticated');
+
+      const { data, error } = await supabase
+        .from('investments')
+        .insert([{ ...investmentData, user_id: user.id }])
+        .select()
+        .single();
+
+      if (error) throw error;
+      set(state => ({ investments: [...state.investments, data] }));
+    } catch (error) {
+      console.error('Error adding investment:', error);
+      set({ error: 'Failed to add investment' });
+      throw error;
+    } finally {
+      set({ isLoading: false });
+    }
   }
 }));
 

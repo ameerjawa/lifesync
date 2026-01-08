@@ -7,8 +7,32 @@ import type { Road, Milestone } from './types';
 
 const HUGGINGFACE_API_KEY = import.meta.env.VITE_HUGGINGFACE_API_KEY;
 const MODEL_ID = 'mistralai/Mistral-7B-Instruct-v0.2';
+const AI_TIMEOUT = 30000;
+const MAX_RETRIES = 2;
 
 const hf = HUGGINGFACE_API_KEY ? new HfInference(HUGGINGFACE_API_KEY) : null;
+
+function withTimeout<T>(promise: Promise<T>, timeoutMs: number): Promise<T> {
+  return Promise.race([
+    promise,
+    new Promise<T>((_, reject) =>
+      setTimeout(() => reject(new Error('AI request timeout')), timeoutMs)
+    )
+  ]);
+}
+
+async function retryWithBackoff<T>(
+  fn: () => Promise<T>,
+  retries: number = MAX_RETRIES
+): Promise<T> {
+  try {
+    return await fn();
+  } catch (error) {
+    if (retries <= 0) throw error;
+    await new Promise(resolve => setTimeout(resolve, 1000 * (MAX_RETRIES - retries + 1)));
+    return retryWithBackoff(fn, retries - 1);
+  }
+}
 
 interface AIAction {
   type: string;
@@ -19,25 +43,40 @@ interface AIAction {
 
 async function generateAIResponse(prompt: string): Promise<string> {
   if (!hf) {
-    throw new Error('Hugging Face API key not configured');
+    return 'AI assistant is not configured. Please add your Hugging Face API key to enable AI features.';
   }
 
   try {
-    const response = await hf.textGeneration({
-      model: MODEL_ID,
-      inputs: prompt,
-      parameters: {
-        max_new_tokens: 500,
-        temperature: 0.7,
-        top_p: 0.95,
-        return_full_text: false
-      }
-    });
+    const response = await retryWithBackoff(() =>
+      withTimeout(
+        hf.textGeneration({
+          model: MODEL_ID,
+          inputs: prompt,
+          parameters: {
+            max_new_tokens: 500,
+            temperature: 0.7,
+            top_p: 0.95,
+            return_full_text: false
+          }
+        }),
+        AI_TIMEOUT
+      )
+    );
 
     return response.generated_text.trim();
   } catch (error) {
     console.error('Error generating AI response:', error);
-    throw error;
+
+    if (error instanceof Error) {
+      if (error.message.includes('timeout')) {
+        return 'AI response took too long. Please try again.';
+      }
+      if (error.message.includes('rate limit')) {
+        return 'AI service is temporarily unavailable. Please try again in a few moments.';
+      }
+    }
+
+    return 'Unable to generate AI response at this time. Please try again later.';
   }
 }
 
@@ -231,20 +270,28 @@ export async function executeActions(actions: AIAction[], navigate: (path: strin
 }
 
 export async function generateTaskSuggestions(tasks: any[], preferences: any = {}): Promise<any[]> {
+  if (!hf) {
+    console.warn('AI features not available: Hugging Face API key not configured');
+    return [];
+  }
+
   try {
     const prompt = `Based on the following tasks and preferences, suggest 3 new tasks:
-      Current Tasks: ${JSON.stringify(tasks)}
+      Current Tasks: ${JSON.stringify(tasks.slice(0, 10))}
       Preferences: ${JSON.stringify(preferences)}
     `;
 
     const response = await generateAIResponse(prompt);
-    
-    // Parse the response into task suggestions
+
+    if (response.includes('not configured') || response.includes('unavailable')) {
+      return [];
+    }
+
     const suggestions = response.split('\n')
       .filter(line => line.trim())
       .slice(0, 3)
       .map(suggestion => ({
-        title: suggestion,
+        title: suggestion.replace(/^[\d\.\-\*]\s*/, ''),
         priority: 'medium',
         status: 'todo',
         due_date: new Date(Date.now() + 24 * 60 * 60 * 1000).toISOString()
@@ -301,57 +348,62 @@ export async function generateTaskSchedule(tasks: any[]): Promise<any[]> {
 }
 
 export async function generateRoadImage(road: Road, theme: string): Promise<string> {
-  try {
-    if (!hf) {
-      throw new Error('Hugging Face API key not configured');
-    }
+  if (!hf) {
+    console.warn('AI image generation not available: Hugging Face API key not configured');
+    return 'https://images.unsplash.com/photo-1519681393784-d120267933ba?ixlib=rb-4.0.3';
+  }
 
-    // Generate a prompt based on the road theme and progress
-    const prompt = `A beautiful ${theme} road journey visualization, showing progress at ${road.progress}%, 
-      with milestones and achievements along the way. Style: ${road.theme}, 
+  try {
+    const prompt = `A beautiful ${theme} road journey visualization, showing progress at ${road.progress}%,
+      with milestones and achievements along the way. Style: ${road.theme},
       high quality, detailed, modern design, digital art`;
 
-    const result = await hf.textToImage({
-      model: 'stabilityai/stable-diffusion-2-1',
-      inputs: prompt,
-      parameters: {
-        negative_prompt: 'blurry, low quality, distorted',
-        guidance_scale: 7.5,
-        num_inference_steps: 50
-      }
-    });
+    const result = await withTimeout(
+      hf.textToImage({
+        model: 'stabilityai/stable-diffusion-2-1',
+        inputs: prompt,
+        parameters: {
+          negative_prompt: 'blurry, low quality, distorted',
+          guidance_scale: 7.5,
+          num_inference_steps: 50
+        }
+      }),
+      60000
+    );
 
     return URL.createObjectURL(result);
   } catch (error) {
     console.error('Error generating road image:', error);
-    // Return a default placeholder image
-    return 'https://images.unsplash.com/photo-1519681393784-d120267933ba?ixlib=rb-4.0.3';
+    return 'https://images.unsplash.com/photo-5519681393784-d120267933ba?ixlib=rb-4.0.3';
   }
 }
 
 export async function generateMilestoneImage(milestone: Milestone): Promise<string> {
-  try {
-    if (!hf) {
-      throw new Error('Hugging Face API key not configured');
-    }
+  if (!hf) {
+    console.warn('AI image generation not available: Hugging Face API key not configured');
+    return 'https://images.unsplash.com/photo-1533227268428-f9ed0900fb3b?ixlib=rb-4.0.3';
+  }
 
-    const prompt = `A symbolic representation of the milestone "${milestone.title}", 
+  try {
+    const prompt = `A symbolic representation of the milestone "${milestone.title}",
       modern icon style, minimalistic, professional design`;
 
-    const result = await hf.textToImage({
-      model: 'stabilityai/stable-diffusion-2-1',
-      inputs: prompt,
-      parameters: {
-        negative_prompt: 'blurry, text, words, low quality',
-        guidance_scale: 7.5,
-        num_inference_steps: 50
-      }
-    });
+    const result = await withTimeout(
+      hf.textToImage({
+        model: 'stabilityai/stable-diffusion-2-1',
+        inputs: prompt,
+        parameters: {
+          negative_prompt: 'blurry, text, words, low quality',
+          guidance_scale: 7.5,
+          num_inference_steps: 50
+        }
+      }),
+      60000
+    );
 
     return URL.createObjectURL(result);
   } catch (error) {
     console.error('Error generating milestone image:', error);
-    // Return a default placeholder image
     return 'https://images.unsplash.com/photo-1533227268428-f9ed0900fb3b?ixlib=rb-4.0.3';
   }
 }
