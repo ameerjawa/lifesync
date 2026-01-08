@@ -54,13 +54,8 @@ export const useProjectStore = create<ProjectState>((set, get) => ({
 
       const { data, error } = await supabase
         .from('projects')
-        .select(`
-          *,
-          members:project_members(
-            *,
-            profile:profiles(*)
-          )
-        `)
+        .select('*')
+        .eq('user_id', user.id)
         .order('created_at', { ascending: false });
 
       if (error) throw error;
@@ -86,10 +81,13 @@ export const useProjectStore = create<ProjectState>((set, get) => ({
         .select()
         .single();
 
-      if (error) throw error;
+      if (error) {
+        console.error('Project insert error:', error);
+        throw error;
+      }
 
-      // Add creator as project owner
-      await supabase
+      // Add creator as project owner (don't fail if this fails)
+      const { error: memberError } = await supabase
         .from('project_members')
         .insert([{
           project_id: data.id,
@@ -98,6 +96,10 @@ export const useProjectStore = create<ProjectState>((set, get) => ({
           allocation_percentage: 100
         }]);
 
+      if (memberError) {
+        console.warn('Could not add project member:', memberError);
+      }
+
       set(state => ({
         projects: [data, ...state.projects]
       }));
@@ -105,8 +107,9 @@ export const useProjectStore = create<ProjectState>((set, get) => ({
       useToastStore.getState().showSuccess('Project created successfully');
     } catch (error) {
       console.error('Error adding project:', error);
-      set({ error: error instanceof Error ? error.message : 'Failed to add project' });
-      useToastStore.getState().showError('Failed to create project');
+      const errorMessage = error instanceof Error ? error.message : 'Failed to add project';
+      set({ error: errorMessage });
+      useToastStore.getState().showError(errorMessage);
       throw error;
     } finally {
       set({ isLoading: false });

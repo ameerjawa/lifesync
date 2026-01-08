@@ -49,13 +49,16 @@ export function ProjectDashboard() {
     const formData = new FormData(e.currentTarget);
 
     try {
+      const startDate = formData.get('start_date') as string;
+      const targetDate = formData.get('target_date') as string;
+
       await addProject({
         title: formData.get('title') as string,
         description: formData.get('description') as string || '',
         status: formData.get('status') as any || 'planning',
         priority: formData.get('priority') as any || 'medium',
-        start_date: formData.get('start_date') as string || new Date().toISOString(),
-        target_date: formData.get('target_date') as string || new Date().toISOString(),
+        start_date: startDate || new Date().toISOString().split('T')[0],
+        target_date: targetDate || new Date(Date.now() + 30 * 24 * 60 * 60 * 1000).toISOString().split('T')[0],
         actual_cost: 0,
         completion_percentage: 0,
         health_status: 'on_track',
@@ -66,6 +69,7 @@ export function ProjectDashboard() {
       e.currentTarget.reset();
     } catch (error) {
       console.error('Failed to add project:', error);
+      alert('Failed to create project. Please try again.');
     } finally {
       setIsSubmitting(false);
     }
