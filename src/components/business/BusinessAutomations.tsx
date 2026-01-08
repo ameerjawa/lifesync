@@ -27,11 +27,11 @@ export function BusinessAutomations() {
       case 'reminder':
         return 'bg-yellow-100 text-yellow-800';
       case 'followup':
-        return 'bg-purple-100 text-purple-800';
+        return 'bg-primary-100 text-primary-800';
       case 'task':
         return 'bg-green-100 text-green-800';
       case 'email':
-        return 'bg-indigo-100 text-indigo-800';
+        return 'bg-primary-100 text-primary-800';
       default:
         return 'bg-gray-100 text-gray-800';
     }
@@ -48,7 +48,7 @@ export function BusinessAutomations() {
   if (isLoading) {
     return (
       <div className="flex h-64 items-center justify-center">
-        <div className="h-8 w-8 animate-spin rounded-full border-2 border-indigo-600 border-t-transparent" />
+        <div className="h-8 w-8 animate-spin rounded-full border-2 border-primary-600 border-t-transparent" />
       </div>
     );
   }
@@ -63,7 +63,7 @@ export function BusinessAutomations() {
         </div>
         <button
           onClick={() => setIsAddingAutomation(true)}
-          className="flex items-center px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-500"
+          className="flex items-center px-4 py-2 bg-primary-600 text-white rounded-lg hover:bg-primary-500"
         >
           <Plus className="mr-2 h-5 w-5" />
           New Automation
@@ -75,7 +75,7 @@ export function BusinessAutomations() {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          className="bg-white rounded-lg p-6 shadow-sm border-2 border-dashed border-gray-300 hover:border-indigo-300 cursor-pointer"
+          className="bg-white rounded-lg p-6 shadow-sm border-2 border-dashed border-gray-300 hover:border-primary-300 cursor-pointer"
           onClick={() => setIsAddingAutomation(true)}
         >
           <div className="text-center">
@@ -89,7 +89,7 @@ export function BusinessAutomations() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.1 }}
-          className="bg-white rounded-lg p-6 shadow-sm border-2 border-dashed border-gray-300 hover:border-indigo-300 cursor-pointer"
+          className="bg-white rounded-lg p-6 shadow-sm border-2 border-dashed border-gray-300 hover:border-primary-300 cursor-pointer"
           onClick={() => setIsAddingAutomation(true)}
         >
           <div className="text-center">
@@ -103,7 +103,7 @@ export function BusinessAutomations() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2 }}
-          className="bg-white rounded-lg p-6 shadow-sm border-2 border-dashed border-gray-300 hover:border-indigo-300 cursor-pointer"
+          className="bg-white rounded-lg p-6 shadow-sm border-2 border-dashed border-gray-300 hover:border-primary-300 cursor-pointer"
           onClick={() => setIsAddingAutomation(true)}
         >
           <div className="text-center">
@@ -176,7 +176,7 @@ export function BusinessAutomations() {
             </p>
             <button
               onClick={() => setIsAddingAutomation(true)}
-              className="inline-flex items-center px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-500"
+              className="inline-flex items-center px-4 py-2 bg-primary-600 text-white rounded-lg hover:bg-primary-500"
             >
               <Plus className="mr-2 h-5 w-5" />
               Create Automation

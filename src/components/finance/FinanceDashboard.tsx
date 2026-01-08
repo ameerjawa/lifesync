@@ -151,7 +151,7 @@ export function FinanceDashboard() {
   if (isLoading) {
     return (
       <div className="flex h-64 items-center justify-center">
-        <div className="h-8 w-8 animate-spin rounded-full border-2 border-indigo-600 border-t-transparent" />
+        <div className="h-8 w-8 animate-spin rounded-full border-2 border-primary-600 border-t-transparent" />
       </div>
     );
   }
@@ -211,7 +211,7 @@ export function FinanceDashboard() {
             <select
               value={selectedDateRange}
               onChange={(e) => handleDateRangeChange(e.target.value as any)}
-              className="rounded-lg border-gray-300 text-sm focus:border-indigo-500 focus:ring-indigo-500"
+              className="rounded-lg border-gray-300 text-sm focus:border-primary-500 focus:ring-primary-500"
             >
               <option value="week">This Week</option>
               <option value="month">This Month</option>
@@ -223,7 +223,7 @@ export function FinanceDashboard() {
               <select
                 value={sortBy}
                 onChange={(e) => handleSortChange(e.target.value as typeof sortBy)}
-                className="rounded-lg border-gray-300 text-sm focus:border-indigo-500 focus:ring-indigo-500"
+                className="rounded-lg border-gray-300 text-sm focus:border-primary-500 focus:ring-primary-500"
               >
                 <option value="date">Sort by Date</option>
                 <option value="amount">Sort by Amount</option>
@@ -244,7 +244,7 @@ export function FinanceDashboard() {
             <button
               onClick={() => setShowFilters(!showFilters)}
               className={`flex items-center rounded-lg px-4 py-2 ${
-                showFilters ? 'bg-indigo-100 text-indigo-600' : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                showFilters ? 'bg-primary-100 text-primary-600' : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
               }`}
             >
               <Filter className="mr-2 h-5 w-5" />
@@ -252,7 +252,7 @@ export function FinanceDashboard() {
               {Object.values(filters).some(v => 
                 Array.isArray(v) ? v.length > 0 : Boolean(v)
               ) && (
-                <span className="ml-2 rounded-full bg-indigo-600 px-2 py-0.5 text-xs text-white">
+                <span className="ml-2 rounded-full bg-primary-600 px-2 py-0.5 text-xs text-white">
                   Active
                 </span>
               )}
@@ -260,7 +260,7 @@ export function FinanceDashboard() {
 
             <button
               onClick={() => setIsAddingTransaction(true)}
-              className="flex items-center rounded-lg bg-indigo-600 px-4 py-2 text-white hover:bg-indigo-500"
+              className="flex items-center rounded-lg bg-primary-600 px-4 py-2 text-white hover:bg-primary-500"
             >
               <Plus className="mr-2 h-5 w-5" />
               Add Transaction
@@ -293,7 +293,7 @@ export function FinanceDashboard() {
                           : filters.type.filter(t => t !== type);
                         handleFilterChange({ type: newTypes });
                       }}
-                      className="rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+                      className="rounded border-gray-300 text-primary-600 focus:ring-primary-500"
                     />
                     <span className="ml-2 capitalize">{type}</span>
                   </label>
@@ -316,7 +316,7 @@ export function FinanceDashboard() {
                           : filters.categories.filter(c => c !== category.id);
                         handleFilterChange({ categories: newCategories });
                       }}
-                      className="rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+                      className="rounded border-gray-300 text-primary-600 focus:ring-primary-500"
                     />
                     <span className="ml-2">{category.name}</span>
                   </label>
@@ -332,7 +332,7 @@ export function FinanceDashboard() {
                 value={filters.search}
                 onChange={(e) => handleFilterChange({ search: e.target.value })}
                 placeholder="Search transactions..."
-                className="w-full rounded-lg border-gray-300 focus:border-indigo-500 focus:ring-indigo-500"
+                className="w-full rounded-lg border-gray-300 focus:border-primary-500 focus:ring-primary-500"
               />
             </div>
           </div>
@@ -346,7 +346,7 @@ export function FinanceDashboard() {
             </button>
             <button
               onClick={() => setShowFilters(false)}
-              className="px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-500"
+              className="px-4 py-2 bg-primary-600 text-white rounded-lg hover:bg-primary-500"
             >
               Apply Filters
             </button>
@@ -366,7 +366,7 @@ export function FinanceDashboard() {
             <div className="rounded-lg bg-white p-6 shadow-sm">
               <div className="mb-4 flex items-center justify-between">
                 <h3 className="text-lg font-semibold text-gray-900">Recent Transactions</h3>
-                <button className="text-sm text-indigo-600 hover:text-indigo-500">
+                <button className="text-sm text-primary-600 hover:text-primary-500">
                   View All
                 </button>
               </div>
@@ -395,7 +395,7 @@ export function FinanceDashboard() {
                 <h3 className="text-lg font-semibold text-gray-900">Savings Goals</h3>
                 <button 
                   onClick={() => setIsAddingSavingsGoal(true)}
-                  className="text-sm text-indigo-600 hover:text-indigo-500"
+                  className="text-sm text-primary-600 hover:text-primary-500"
                 >
                   Add Goal
                 </button>

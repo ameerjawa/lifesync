@@ -57,8 +57,8 @@ export function RoadMilestoneForm({ roadId, onSubmit, onClose }: RoadMilestoneFo
       </button>
 
       <div className="mb-6 flex items-center">
-        <div className="mr-4 rounded-full bg-indigo-100 p-3">
-          <Trophy className="h-6 w-6 text-indigo-600" />
+        <div className="mr-4 rounded-full bg-primary-100 p-3">
+          <Trophy className="h-6 w-6 text-primary-600" />
         </div>
         <div>
           <h3 className="text-lg font-semibold text-gray-900">Add Milestone</h3>
@@ -82,7 +82,7 @@ export function RoadMilestoneForm({ roadId, onSubmit, onClose }: RoadMilestoneFo
             id="title"
             value={milestone.title}
             onChange={(e) => setMilestone({ ...milestone, title: e.target.value })}
-            className="mt-1 block w-full rounded-lg border border-gray-300 px-4 py-2 focus:border-indigo-500 focus:ring-indigo-500"
+            className="mt-1 block w-full rounded-lg border border-gray-300 px-4 py-2 focus:border-primary-500 focus:ring-primary-500"
             required
           />
         </div>
@@ -95,7 +95,7 @@ export function RoadMilestoneForm({ roadId, onSubmit, onClose }: RoadMilestoneFo
             id="description"
             value={milestone.description}
             onChange={(e) => setMilestone({ ...milestone, description: e.target.value })}
-            className="mt-1 block w-full rounded-lg border border-gray-300 px-4 py-2 focus:border-indigo-500 focus:ring-indigo-500"
+            className="mt-1 block w-full rounded-lg border border-gray-300 px-4 py-2 focus:border-primary-500 focus:ring-primary-500"
             rows={3}
             required
           />
@@ -110,7 +110,7 @@ export function RoadMilestoneForm({ roadId, onSubmit, onClose }: RoadMilestoneFo
             id="position"
             value={milestone.position}
             onChange={(e) => setMilestone({ ...milestone, position: parseInt(e.target.value) })}
-            className="mt-1 block w-full rounded-lg border border-gray-300 px-4 py-2 focus:border-indigo-500 focus:ring-indigo-500"
+            className="mt-1 block w-full rounded-lg border border-gray-300 px-4 py-2 focus:border-primary-500 focus:ring-primary-500"
             min="0"
             required
           />
@@ -125,7 +125,7 @@ export function RoadMilestoneForm({ roadId, onSubmit, onClose }: RoadMilestoneFo
             id="xp_reward"
             value={milestone.xp_reward}
             onChange={(e) => setMilestone({ ...milestone, xp_reward: parseInt(e.target.value) })}
-            className="mt-1 block w-full rounded-lg border border-gray-300 px-4 py-2 focus:border-indigo-500 focus:ring-indigo-500"
+            className="mt-1 block w-full rounded-lg border border-gray-300 px-4 py-2 focus:border-primary-500 focus:ring-primary-500"
             min="0"
             required
           />
@@ -142,7 +142,7 @@ export function RoadMilestoneForm({ roadId, onSubmit, onClose }: RoadMilestoneFo
           <button
             type="submit"
             disabled={isSubmitting}
-            className="flex items-center rounded-lg bg-indigo-600 px-4 py-2 text-white hover:bg-indigo-500 disabled:opacity-50"
+            className="flex items-center rounded-lg bg-primary-600 px-4 py-2 text-white hover:bg-primary-500 disabled:opacity-50"
           >
             {isSubmitting ? (
               <div className="flex items-center">

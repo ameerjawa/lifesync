@@ -28,7 +28,7 @@ export function NotificationSettings({ formData, setFormData }: NotificationSett
               onChange={(e) => setFormData({ ...formData, notifications_enabled: e.target.checked })}
               className="peer sr-only"
             />
-            <div className="peer h-6 w-11 rounded-full bg-gray-200 after:absolute after:left-[2px] after:top-[2px] after:h-5 after:w-5 after:rounded-full after:border after:border-gray-300 after:bg-white after:transition-all after:content-[''] peer-checked:bg-indigo-600 peer-checked:after:translate-x-full peer-checked:after:border-white peer-focus:ring-4 peer-focus:ring-indigo-300"></div>
+            <div className="peer h-6 w-11 rounded-full bg-gray-200 after:absolute after:left-[2px] after:top-[2px] after:h-5 after:w-5 after:rounded-full after:border after:border-gray-300 after:bg-white after:transition-all after:content-[''] peer-checked:bg-primary-600 peer-checked:after:translate-x-full peer-checked:after:border-white peer-focus:ring-4 peer-focus:ring-primary-300"></div>
           </label>
         </div>
 
@@ -44,7 +44,7 @@ export function NotificationSettings({ formData, setFormData }: NotificationSett
                   tasks: e.target.checked
                 }
               })}
-              className="rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+              className="rounded border-gray-300 text-primary-600 focus:ring-primary-500"
             />
             <span className="text-sm text-gray-700">Task updates and reminders</span>
           </label>
@@ -60,7 +60,7 @@ export function NotificationSettings({ formData, setFormData }: NotificationSett
                   goals: e.target.checked
                 }
               })}
-              className="rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+              className="rounded border-gray-300 text-primary-600 focus:ring-primary-500"
             />
             <span className="text-sm text-gray-700">Goal progress and achievements</span>
           </label>
@@ -76,7 +76,7 @@ export function NotificationSettings({ formData, setFormData }: NotificationSett
                   health: e.target.checked
                 }
               })}
-              className="rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+              className="rounded border-gray-300 text-primary-600 focus:ring-primary-500"
             />
             <span className="text-sm text-gray-700">Health insights and reminders</span>
           </label>
@@ -92,7 +92,7 @@ export function NotificationSettings({ formData, setFormData }: NotificationSett
                   finance: e.target.checked
                 }
               })}
-              className="rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+              className="rounded border-gray-300 text-primary-600 focus:ring-primary-500"
             />
             <span className="text-sm text-gray-700">Financial alerts and reports</span>
           </label>

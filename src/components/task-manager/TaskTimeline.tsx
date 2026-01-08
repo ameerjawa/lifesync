@@ -91,7 +91,7 @@ export function TaskTimeline({ tasks, onTaskClick }: TaskTimelineProps) {
                         {task.labels.map((label) => (
                           <span
                             key={label}
-                            className="rounded-full bg-indigo-100 px-2 py-1 text-xs font-medium text-indigo-800"
+                            className="rounded-full bg-primary-100 px-2 py-1 text-xs font-medium text-primary-800"
                           >
                             {label}
                           </span>

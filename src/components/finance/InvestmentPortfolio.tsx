@@ -71,7 +71,7 @@ export function InvestmentPortfolio({ investments, onAddInvestment }: Investment
             <h3 className="text-lg font-medium text-gray-900">Investments</h3>
             <button
               onClick={() => setIsAddingInvestment(true)}
-              className="rounded-lg bg-indigo-600 px-4 py-2 text-white hover:bg-indigo-500"
+              className="rounded-lg bg-primary-600 px-4 py-2 text-white hover:bg-primary-500"
             >
               Add Investment
             </button>
@@ -140,7 +140,7 @@ export function InvestmentPortfolio({ investments, onAddInvestment }: Investment
               </p>
               <button
                 onClick={() => setIsAddingInvestment(true)}
-                className="mt-4 text-sm font-medium text-indigo-600 hover:text-indigo-500"
+                className="mt-4 text-sm font-medium text-primary-600 hover:text-primary-500"
               >
                 Add Investment
               </button>

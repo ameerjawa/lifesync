@@ -97,7 +97,7 @@ export function UpgradePrompt({ onClose, feature }: UpgradePromptProps) {
 
           <div className="grid grid-cols-1 md:grid-cols-2">
             {/* Left Panel - Feature Showcase */}
-            <div className="bg-gradient-to-br from-indigo-600 to-purple-600 p-8 text-white">
+            <div className="bg-gradient-to-br from-primary-600 to-primary-600 p-8 text-white">
               <div className="mb-6">
                 <div className="mb-4 inline-flex rounded-full bg-white/20 p-3">
                   <Sparkles className="h-6 w-6" />
@@ -147,14 +147,14 @@ export function UpgradePrompt({ onClose, feature }: UpgradePromptProps) {
                     onClick={() => setSelectedPlan(plan.name.toLowerCase() as 'premium' | 'enterprise')}
                     className={`cursor-pointer rounded-lg border-2 p-4 transition-all ${
                       selectedPlan === plan.name.toLowerCase()
-                        ? 'border-indigo-600 bg-indigo-50'
-                        : 'border-gray-200 hover:border-indigo-200'
+                        ? 'border-primary-600 bg-primary-50'
+                        : 'border-gray-200 hover:border-primary-200'
                     }`}
                   >
                     <div className="flex items-center justify-between">
                       <div className="flex items-center space-x-3">
                         <plan.icon className={`h-6 w-6 ${
-                          selectedPlan === plan.name.toLowerCase() ? 'text-indigo-600' : 'text-gray-400'
+                          selectedPlan === plan.name.toLowerCase() ? 'text-primary-600' : 'text-gray-400'
                         }`} />
                         <div>
                           <h4 className="font-medium text-gray-900">{plan.name}</h4>
@@ -164,7 +164,7 @@ export function UpgradePrompt({ onClose, feature }: UpgradePromptProps) {
                         </div>
                       </div>
                       {plan.recommended && (
-                        <span className="rounded-full bg-indigo-100 px-3 py-1 text-xs font-medium text-indigo-600">
+                        <span className="rounded-full bg-primary-100 px-3 py-1 text-xs font-medium text-primary-600">
                           Recommended
                         </span>
                       )}
@@ -176,7 +176,7 @@ export function UpgradePrompt({ onClose, feature }: UpgradePromptProps) {
               <div className="mt-6 space-y-3">
                 <button
                   onClick={handleUpgradeClick}
-                  className="flex w-full items-center justify-center rounded-lg bg-indigo-600 px-6 py-3 text-white transition-colors hover:bg-indigo-500"
+                  className="flex w-full items-center justify-center rounded-lg bg-primary-600 px-6 py-3 text-white transition-colors hover:bg-primary-500"
                 >
                   {isGuest ? (
                     <>

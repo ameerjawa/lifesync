@@ -80,7 +80,7 @@ export function InterviewSimulator() {
               <div className="flex h-full items-center justify-center">
                 <button
                   onClick={() => setIsStarted(true)}
-                  className="flex items-center rounded-lg bg-indigo-600 px-6 py-3 text-white hover:bg-indigo-500"
+                  className="flex items-center rounded-lg bg-primary-600 px-6 py-3 text-white hover:bg-primary-500"
                 >
                   <Video className="mr-2 h-5 w-5" />
                   Start Interview
@@ -147,7 +147,7 @@ export function InterviewSimulator() {
           className="rounded-lg bg-white p-6 shadow-lg"
         >
           <div className="flex items-center">
-            <MessageSquare className="h-6 w-6 text-indigo-600" />
+            <MessageSquare className="h-6 w-6 text-primary-600" />
             <h3 className="ml-2 text-lg font-semibold text-gray-900">Response Tips</h3>
           </div>
           <ul className="mt-4 space-y-2 text-sm text-gray-600">

@@ -59,8 +59,8 @@ export function ResumeOptimizer() {
             {isAnalyzing && (
               <div className="absolute inset-0 flex items-center justify-center bg-white bg-opacity-90">
                 <div className="flex items-center space-x-3">
-                  <RefreshCw className="h-5 w-5 animate-spin text-indigo-600" />
-                  <span className="text-sm font-medium text-indigo-600">Analyzing...</span>
+                  <RefreshCw className="h-5 w-5 animate-spin text-primary-600" />
+                  <span className="text-sm font-medium text-primary-600">Analyzing...</span>
                 </div>
               </div>
             )}
@@ -148,15 +148,15 @@ export function ResumeOptimizer() {
             <div className="rounded-lg bg-white p-6 shadow-lg">
               <h4 className="mb-4 text-lg font-semibold text-gray-900">Recommended Actions</h4>
               <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-                <button className="flex items-center justify-center rounded-lg border border-indigo-600 bg-indigo-600 px-4 py-2 text-white hover:bg-indigo-700">
+                <button className="flex items-center justify-center rounded-lg border border-primary-600 bg-primary-600 px-4 py-2 text-white hover:bg-primary-700">
                   <RefreshCw className="mr-2 h-5 w-5" />
                   Optimize for ATS
                 </button>
-                <button className="flex items-center justify-center rounded-lg border border-indigo-600 px-4 py-2 text-indigo-600 hover:bg-indigo-50">
+                <button className="flex items-center justify-center rounded-lg border border-primary-600 px-4 py-2 text-primary-600 hover:bg-primary-50">
                   <FileText className="mr-2 h-5 w-5" />
                   Generate Summary
                 </button>
-                <button className="flex items-center justify-center rounded-lg border border-indigo-600 px-4 py-2 text-indigo-600 hover:bg-indigo-50">
+                <button className="flex items-center justify-center rounded-lg border border-primary-600 px-4 py-2 text-primary-600 hover:bg-primary-50">
                   <Download className="mr-2 h-5 w-5" />
                   Download Report
                 </button>

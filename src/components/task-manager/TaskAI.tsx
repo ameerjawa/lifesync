@@ -243,7 +243,7 @@ What would you like to do?`
     if (!analysisData) {
       return (
         <div className="flex items-center justify-center h-full">
-          <Loader2 className="h-8 w-8 animate-spin text-indigo-600" />
+          <Loader2 className="h-8 w-8 animate-spin text-primary-600" />
         </div>
       );
     }
@@ -251,9 +251,9 @@ What would you like to do?`
     return (
       <div className="space-y-6">
         <div className="grid grid-cols-2 gap-4">
-          <div className="bg-indigo-50 p-4 rounded-lg">
-            <p className="text-sm font-medium text-indigo-900">Completion Rate</p>
-            <p className="text-2xl font-bold text-indigo-600">
+          <div className="bg-primary-50 p-4 rounded-lg">
+            <p className="text-sm font-medium text-primary-900">Completion Rate</p>
+            <p className="text-2xl font-bold text-primary-600">
               {Math.round(analysisData.completion_rate)}%
             </p>
           </div>
@@ -292,7 +292,7 @@ What would you like to do?`
           <ul className="space-y-2">
             {analysisData.insights.map((insight: string, index: number) => (
               <li key={index} className="flex items-start">
-                <Brain className="h-5 w-5 text-indigo-600 mr-2 flex-shrink-0 mt-0.5" />
+                <Brain className="h-5 w-5 text-primary-600 mr-2 flex-shrink-0 mt-0.5" />
                 <span className="text-sm text-gray-600">{insight}</span>
               </li>
             ))}
@@ -318,7 +318,7 @@ What would you like to do?`
     if (!scheduleData) {
       return (
         <div className="flex items-center justify-center h-full">
-          <Loader2 className="h-8 w-8 animate-spin text-indigo-600" />
+          <Loader2 className="h-8 w-8 animate-spin text-primary-600" />
         </div>
       );
     }
@@ -359,25 +359,25 @@ What would you like to do?`
             {/* Header */}
             <div className="flex items-center justify-between border-b p-4">
               <div className="flex items-center">
-                <Bot className="h-6 w-6 text-indigo-600 mr-2" />
+                <Bot className="h-6 w-6 text-primary-600 mr-2" />
                 <h3 className="text-lg font-semibold text-gray-900">Task Assistant</h3>
               </div>
               <div className="flex items-center space-x-2">
                 <button
                   onClick={() => setActiveView('chat')}
-                  className={`p-2 rounded-lg ${activeView === 'chat' ? 'bg-indigo-100 text-indigo-600' : 'text-gray-400 hover:bg-gray-100'}`}
+                  className={`p-2 rounded-lg ${activeView === 'chat' ? 'bg-primary-100 text-primary-600' : 'text-gray-400 hover:bg-gray-100'}`}
                 >
                   <MessageSquare className="h-5 w-5" />
                 </button>
                 <button
                   onClick={() => setActiveView('analysis')}
-                  className={`p-2 rounded-lg ${activeView === 'analysis' ? 'bg-indigo-100 text-indigo-600' : 'text-gray-400 hover:bg-gray-100'}`}
+                  className={`p-2 rounded-lg ${activeView === 'analysis' ? 'bg-primary-100 text-primary-600' : 'text-gray-400 hover:bg-gray-100'}`}
                 >
                   <BarChart2 className="h-5 w-5" />
                 </button>
                 <button
                   onClick={() => setActiveView('schedule')}
-                  className={`p-2 rounded-lg ${activeView === 'schedule' ? 'bg-indigo-100 text-indigo-600' : 'text-gray-400 hover:bg-gray-100'}`}
+                  className={`p-2 rounded-lg ${activeView === 'schedule' ? 'bg-primary-100 text-primary-600' : 'text-gray-400 hover:bg-gray-100'}`}
                 >
                   <Calendar className="h-5 w-5" />
                 </button>
@@ -404,7 +404,7 @@ What would you like to do?`
                       <div
                         className={`rounded-lg px-4 py-2 max-w-[80%] ${
                           message.role === 'user'
-                            ? 'bg-indigo-600 text-white'
+                            ? 'bg-primary-600 text-white'
                             : 'bg-gray-100 text-gray-900'
                         }`}
                       >
@@ -448,14 +448,14 @@ What would you like to do?`
                     onChange={(e) => setInput(e.target.value)}
                     onKeyDown={handleKeyDown}
                     placeholder="Type your message..."
-                    className="flex-1 resize-none rounded-lg border border-gray-300 px-4 py-2 focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500"
+                    className="flex-1 resize-none rounded-lg border border-gray-300 px-4 py-2 focus:border-primary-500 focus:outline-none focus:ring-1 focus:ring-primary-500"
                     rows={1}
                     disabled={isProcessing}
                   />
                   <button
                     type="submit"
                     disabled={isProcessing || !input.trim()}
-                    className="rounded-lg bg-indigo-600 p-2 text-white hover:bg-indigo-500 disabled:opacity-50"
+                    className="rounded-lg bg-primary-600 p-2 text-white hover:bg-primary-500 disabled:opacity-50"
                   >
                     <Send className="h-5 w-5" />
                   </button>
@@ -468,7 +468,7 @@ What would you like to do?`
 
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="flex h-12 w-12 items-center justify-center rounded-full bg-indigo-600 text-white shadow-lg hover:bg-indigo-500"
+        className="flex h-12 w-12 items-center justify-center rounded-full bg-primary-600 text-white shadow-lg hover:bg-primary-500"
       >
         <MessageSquare className="h-6 w-6" />
       </button>

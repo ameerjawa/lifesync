@@ -48,7 +48,7 @@ export function AccountsOverview() {
       case 'savings':
         return 'text-green-600 bg-green-100';
       case 'investment':
-        return 'text-purple-600 bg-purple-100';
+        return 'text-primary-600 bg-primary-100';
       case 'loan':
         return 'text-orange-600 bg-orange-100';
       default:
@@ -139,7 +139,7 @@ export function AccountsOverview() {
             <h3 className="text-lg font-medium leading-6 text-gray-900">Accounts</h3>
             <button
               onClick={() => setIsAddingAccount(true)}
-              className="flex items-center rounded-lg bg-indigo-600 px-4 py-2 text-white hover:bg-indigo-500"
+              className="flex items-center rounded-lg bg-primary-600 px-4 py-2 text-white hover:bg-primary-500"
             >
               <Plus className="mr-2 h-5 w-5" />
               Add Account
@@ -242,7 +242,7 @@ export function AccountsOverview() {
               <p className="text-gray-500">No accounts added yet.</p>
               <button
                 onClick={() => setIsAddingAccount(true)}
-                className="mt-2 text-indigo-600 hover:text-indigo-500"
+                className="mt-2 text-primary-600 hover:text-primary-500"
               >
                 Add your first account
               </button>

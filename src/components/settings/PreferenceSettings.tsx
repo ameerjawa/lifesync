@@ -23,7 +23,7 @@ export function PreferenceSettings({ formData, setFormData }: PreferenceSettings
           <select
             value={formData.currency}
             onChange={(e) => setFormData({ ...formData, currency: e.target.value })}
-            className="mt-1 block w-full rounded-lg border border-gray-300 px-4 py-2 focus:border-indigo-500 focus:ring-indigo-500"
+            className="mt-1 block w-full rounded-lg border border-gray-300 px-4 py-2 focus:border-primary-500 focus:ring-primary-500"
           >
             <option value="USD">USD ($)</option>
             <option value="EUR">EUR (€)</option>

@@ -55,7 +55,7 @@ export function AdminNotifications() {
       {/* Header */}
       <div className="flex items-center justify-between">
         <h2 className="text-2xl font-bold text-gray-900">Notifications</h2>
-        <button className="inline-flex items-center rounded-lg bg-indigo-600 px-4 py-2 text-white hover:bg-indigo-500">
+        <button className="inline-flex items-center rounded-lg bg-primary-600 px-4 py-2 text-white hover:bg-primary-500">
           <Bell className="mr-2 h-5 w-5" />
           Send Notification
         </button>
@@ -75,7 +75,7 @@ export function AdminNotifications() {
               onClick={() => setSelectedTab(tab.id as any)}
               className={`flex items-center border-b-2 px-1 pb-4 pt-2 text-sm font-medium ${
                 selectedTab === tab.id
-                  ? 'border-indigo-500 text-indigo-600'
+                  ? 'border-primary-500 text-primary-600'
                   : 'border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700'
               }`}
             >
@@ -143,7 +143,7 @@ export function AdminNotifications() {
               multiple
               value={selectedUsers}
               onChange={(e) => setSelectedUsers(Array.from(e.target.selectedOptions, option => option.value))}
-              className="mt-1 block w-full rounded-lg border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
+              className="mt-1 block w-full rounded-lg border-gray-300 shadow-sm focus:border-primary-500 focus:ring-primary-500"
             >
               <option value="all">All Users</option>
               <option value="premium">Premium Users</option>
@@ -160,7 +160,7 @@ export function AdminNotifications() {
               value={message}
               onChange={(e) => setMessage(e.target.value)}
               rows={4}
-              className="mt-1 block w-full rounded-lg border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
+              className="mt-1 block w-full rounded-lg border-gray-300 shadow-sm focus:border-primary-500 focus:ring-primary-500"
               placeholder="Enter your notification message..."
             />
           </div>
@@ -168,7 +168,7 @@ export function AdminNotifications() {
           <div className="flex justify-end">
             <button
               onClick={handleSendNotification}
-              className="inline-flex items-center rounded-lg bg-indigo-600 px-4 py-2 text-white hover:bg-indigo-500"
+              className="inline-flex items-center rounded-lg bg-primary-600 px-4 py-2 text-white hover:bg-primary-500"
             >
               <Send className="mr-2 h-5 w-5" />
               Send Notification

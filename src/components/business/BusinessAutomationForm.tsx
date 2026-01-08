@@ -72,8 +72,8 @@ export function BusinessAutomationForm({ onSubmit, onClose }: BusinessAutomation
       </button>
 
       <div className="mb-6 flex items-center">
-        <div className="mr-4 rounded-full bg-indigo-100 p-3">
-          <Zap className="h-6 w-6 text-indigo-600" />
+        <div className="mr-4 rounded-full bg-primary-100 p-3">
+          <Zap className="h-6 w-6 text-primary-600" />
         </div>
         <div>
           <h3 className="text-lg font-semibold text-gray-900">Create Automation</h3>
@@ -97,7 +97,7 @@ export function BusinessAutomationForm({ onSubmit, onClose }: BusinessAutomation
             id="name"
             value={automation.name}
             onChange={(e) => setAutomation({ ...automation, name: e.target.value })}
-            className="mt-1 block w-full rounded-lg border border-gray-300 px-4 py-2 focus:border-indigo-500 focus:ring-indigo-500"
+            className="mt-1 block w-full rounded-lg border border-gray-300 px-4 py-2 focus:border-primary-500 focus:ring-primary-500"
             required
           />
         </div>
@@ -115,7 +115,7 @@ export function BusinessAutomationForm({ onSubmit, onClose }: BusinessAutomation
                   value={type.value}
                   checked={automation.type === type.value}
                   onChange={(e) => setAutomation({ ...automation, type: e.target.value as any })}
-                  className="mt-1 h-4 w-4 border-gray-300 text-indigo-600 focus:ring-indigo-500"
+                  className="mt-1 h-4 w-4 border-gray-300 text-primary-600 focus:ring-primary-500"
                 />
                 <div className="ml-3">
                   <div className="text-sm font-medium text-gray-900">{type.label}</div>
@@ -134,7 +134,7 @@ export function BusinessAutomationForm({ onSubmit, onClose }: BusinessAutomation
             id="trigger_condition"
             value={automation.trigger_condition}
             onChange={(e) => setAutomation({ ...automation, trigger_condition: e.target.value })}
-            className="mt-1 block w-full rounded-lg border border-gray-300 px-4 py-2 focus:border-indigo-500 focus:ring-indigo-500"
+            className="mt-1 block w-full rounded-lg border border-gray-300 px-4 py-2 focus:border-primary-500 focus:ring-primary-500"
             required
           >
             <option value="">Select Trigger</option>
@@ -158,7 +158,7 @@ export function BusinessAutomationForm({ onSubmit, onClose }: BusinessAutomation
                 </label>
                 <input
                   type="text"
-                  className="mt-1 block w-full rounded-lg border border-gray-300 px-4 py-2 focus:border-indigo-500 focus:ring-indigo-500"
+                  className="mt-1 block w-full rounded-lg border border-gray-300 px-4 py-2 focus:border-primary-500 focus:ring-primary-500"
                   placeholder="Payment Reminder"
                 />
               </div>
@@ -167,7 +167,7 @@ export function BusinessAutomationForm({ onSubmit, onClose }: BusinessAutomation
                   Email Template
                 </label>
                 <textarea
-                  className="mt-1 block w-full rounded-lg border border-gray-300 px-4 py-2 focus:border-indigo-500 focus:ring-indigo-500"
+                  className="mt-1 block w-full rounded-lg border border-gray-300 px-4 py-2 focus:border-primary-500 focus:ring-primary-500"
                   rows={4}
                   placeholder="Dear {{client_name}}, this is a reminder that your payment is due..."
                 />
@@ -183,7 +183,7 @@ export function BusinessAutomationForm({ onSubmit, onClose }: BusinessAutomation
                 </label>
                 <input
                   type="text"
-                  className="mt-1 block w-full rounded-lg border border-gray-300 px-4 py-2 focus:border-indigo-500 focus:ring-indigo-500"
+                  className="mt-1 block w-full rounded-lg border border-gray-300 px-4 py-2 focus:border-primary-500 focus:ring-primary-500"
                   placeholder="Follow up with {{client_name}}"
                 />
               </div>
@@ -191,7 +191,7 @@ export function BusinessAutomationForm({ onSubmit, onClose }: BusinessAutomation
                 <label className="block text-sm font-medium text-gray-700">
                   Default Assignee
                 </label>
-                <select className="mt-1 block w-full rounded-lg border border-gray-300 px-4 py-2 focus:border-indigo-500 focus:ring-indigo-500">
+                <select className="mt-1 block w-full rounded-lg border border-gray-300 px-4 py-2 focus:border-primary-500 focus:ring-primary-500">
                   <option value="">Auto-assign</option>
                   <option value="owner">Business Owner</option>
                   <option value="manager">Project Manager</option>
@@ -206,7 +206,7 @@ export function BusinessAutomationForm({ onSubmit, onClose }: BusinessAutomation
                 <label className="block text-sm font-medium text-gray-700">
                   Invoice Template
                 </label>
-                <select className="mt-1 block w-full rounded-lg border border-gray-300 px-4 py-2 focus:border-indigo-500 focus:ring-indigo-500">
+                <select className="mt-1 block w-full rounded-lg border border-gray-300 px-4 py-2 focus:border-primary-500 focus:ring-primary-500">
                   <option value="standard">Standard Invoice</option>
                   <option value="recurring">Recurring Service</option>
                   <option value="project">Project-based</option>
@@ -218,7 +218,7 @@ export function BusinessAutomationForm({ onSubmit, onClose }: BusinessAutomation
                 </label>
                 <input
                   type="number"
-                  className="mt-1 block w-full rounded-lg border border-gray-300 px-4 py-2 focus:border-indigo-500 focus:ring-indigo-500"
+                  className="mt-1 block w-full rounded-lg border border-gray-300 px-4 py-2 focus:border-primary-500 focus:ring-primary-500"
                   placeholder="30"
                   min="1"
                 />
@@ -233,7 +233,7 @@ export function BusinessAutomationForm({ onSubmit, onClose }: BusinessAutomation
             id="is_active"
             checked={automation.is_active}
             onChange={(e) => setAutomation({ ...automation, is_active: e.target.checked })}
-            className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+            className="h-4 w-4 rounded border-gray-300 text-primary-600 focus:ring-primary-500"
           />
           <label htmlFor="is_active" className="ml-2 block text-sm text-gray-700">
             Activate this automation immediately
@@ -251,7 +251,7 @@ export function BusinessAutomationForm({ onSubmit, onClose }: BusinessAutomation
           <button
             type="submit"
             disabled={isSubmitting}
-            className="flex items-center rounded-lg bg-indigo-600 px-4 py-2 text-white hover:bg-indigo-500 disabled:opacity-50"
+            className="flex items-center rounded-lg bg-primary-600 px-4 py-2 text-white hover:bg-primary-500 disabled:opacity-50"
           >
             {isSubmitting ? (
               <div className="flex items-center">

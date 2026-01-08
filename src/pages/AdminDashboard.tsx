@@ -235,7 +235,7 @@ export default function AdminDashboard() {
   if (isLoading) {
     return (
       <div className="flex h-64 items-center justify-center">
-        <div className="h-8 w-8 animate-spin rounded-full border-2 border-indigo-600 border-t-transparent"></div>
+        <div className="h-8 w-8 animate-spin rounded-full border-2 border-primary-600 border-t-transparent"></div>
       </div>
     );
   }
@@ -268,7 +268,7 @@ export default function AdminDashboard() {
                   onClick={() => setActiveTab(tab.id)}
                   className={`flex items-center rounded-lg px-4 py-2 text-sm font-medium ${
                     activeTab === tab.id
-                      ? 'bg-white text-indigo-600 shadow'
+                      ? 'bg-white text-primary-600 shadow'
                       : 'text-gray-500 hover:bg-white hover:text-gray-900'
                   }`}
                 >

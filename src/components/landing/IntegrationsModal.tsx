@@ -128,7 +128,7 @@ export function IntegrationsModal({ onClose }: IntegrationsModalProps) {
                         </div>
                         <p className="mt-1 text-sm text-gray-500">{integration.description}</p>
                         {integration.status === 'Available' && (
-                          <button className="mt-2 inline-flex items-center text-sm font-medium text-indigo-600 hover:text-indigo-500">
+                          <button className="mt-2 inline-flex items-center text-sm font-medium text-primary-600 hover:text-primary-500">
                             Connect
                             <ArrowRight className="ml-1 h-4 w-4" />
                           </button>

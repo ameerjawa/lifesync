@@ -36,12 +36,12 @@ export function CareerDashboard() {
   return (
     <div className="space-y-6">
       {/* Header */}
-      <div className="relative overflow-hidden rounded-2xl bg-gradient-to-r from-indigo-600 to-purple-600 p-8 text-white shadow-xl">
+      <div className="relative overflow-hidden rounded-2xl bg-gradient-to-r from-primary-600 to-primary-600 p-8 text-white shadow-xl">
         <div className="relative z-10">
           <div className="flex items-center justify-between">
             <div>
               <h2 className="text-3xl font-bold">Career Navigator</h2>
-              <p className="mt-2 text-indigo-100">AI-powered career development and optimization</p>
+              <p className="mt-2 text-primary-100">AI-powered career development and optimization</p>
             </div>
             <div className="flex space-x-4">
               <button
@@ -52,7 +52,7 @@ export function CareerDashboard() {
                 Filters
               </button>
               <button
-                className="flex items-center rounded-lg bg-white px-4 py-2 text-indigo-600 shadow-md transition-all hover:bg-indigo-50"
+                className="flex items-center rounded-lg bg-white px-4 py-2 text-primary-600 shadow-md transition-all hover:bg-primary-50"
               >
                 <Plus className="mr-2 h-5 w-5" />
                 Add Goal
@@ -72,7 +72,7 @@ export function CareerDashboard() {
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             placeholder="Search skills, jobs, or companies..."
-            className="w-full rounded-lg border border-gray-300 pl-10 pr-4 py-2 focus:border-indigo-500 focus:ring-indigo-500"
+            className="w-full rounded-lg border border-gray-300 pl-10 pr-4 py-2 focus:border-primary-500 focus:ring-primary-500"
           />
         </div>
       </div>
@@ -88,7 +88,7 @@ export function CareerDashboard() {
                 onClick={() => setActiveTab(tab.id)}
                 className={`flex items-center px-3 py-4 text-sm font-medium ${
                   activeTab === tab.id
-                    ? 'border-b-2 border-indigo-500 text-indigo-600'
+                    ? 'border-b-2 border-primary-500 text-primary-600'
                     : 'text-gray-500 hover:border-gray-300 hover:text-gray-700'
                 }`}
               >

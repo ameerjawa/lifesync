@@ -83,20 +83,20 @@ export function NetworkingHub() {
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             placeholder="Search connections, companies, or events..."
-            className="w-full rounded-lg border border-gray-300 pl-10 pr-4 py-2 focus:border-indigo-500 focus:ring-indigo-500"
+            className="w-full rounded-lg border border-gray-300 pl-10 pr-4 py-2 focus:border-primary-500 focus:ring-primary-500"
           />
         </div>
         <div className="flex space-x-4">
           <select
             value={selectedFilter}
             onChange={(e) => setSelectedFilter(e.target.value)}
-            className="rounded-lg border border-gray-300 px-4 py-2 focus:border-indigo-500 focus:ring-indigo-500"
+            className="rounded-lg border border-gray-300 px-4 py-2 focus:border-primary-500 focus:ring-primary-500"
           >
             <option value="all">All Connections</option>
             <option value="pending">Pending</option>
             <option value="connected">Connected</option>
           </select>
-          <button className="flex items-center rounded-lg bg-indigo-600 px-4 py-2 text-white hover:bg-indigo-500">
+          <button className="flex items-center rounded-lg bg-primary-600 px-4 py-2 text-white hover:bg-primary-500">
             <UserPlus className="mr-2 h-5 w-5" />
             Add Connection
           </button>
@@ -111,7 +111,7 @@ export function NetworkingHub() {
           className="rounded-lg bg-white p-6 shadow-lg"
         >
           <div className="flex items-center">
-            <Users className="h-6 w-6 text-indigo-600" />
+            <Users className="h-6 w-6 text-primary-600" />
             <h3 className="ml-2 text-lg font-semibold text-gray-900">Connections</h3>
           </div>
           <p className="mt-2 text-3xl font-bold text-gray-900">247</p>
@@ -139,7 +139,7 @@ export function NetworkingHub() {
           className="rounded-lg bg-white p-6 shadow-lg"
         >
           <div className="flex items-center">
-            <MessageSquare className="h-6 w-6 text-purple-600" />
+            <MessageSquare className="h-6 w-6 text-primary-600" />
             <h3 className="ml-2 text-lg font-semibold text-gray-900">Messages</h3>
           </div>
           <p className="mt-2 text-3xl font-bold text-gray-900">32</p>
@@ -189,7 +189,7 @@ export function NetworkingHub() {
                     </div>
                   </div>
                 </div>
-                <button className="rounded-lg border border-indigo-600 px-4 py-2 text-indigo-600 hover:bg-indigo-50">
+                <button className="rounded-lg border border-primary-600 px-4 py-2 text-primary-600 hover:bg-primary-50">
                   Connect
                 </button>
               </div>
@@ -230,7 +230,7 @@ export function NetworkingHub() {
                   <span className="text-sm text-gray-500">
                     {event.attendees} attendees
                   </span>
-                  <button className="rounded-lg bg-indigo-600 px-4 py-2 text-white hover:bg-indigo-500">
+                  <button className="rounded-lg bg-primary-600 px-4 py-2 text-white hover:bg-primary-500">
                     RSVP
                   </button>
                 </div>

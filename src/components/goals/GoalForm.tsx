@@ -81,7 +81,7 @@ export function GoalForm({ onClose }: GoalFormProps) {
             id="title"
             value={goal.title}
             onChange={(e) => setGoal({ ...goal, title: e.target.value })}
-            className="mt-1 block w-full rounded-lg border border-gray-300 px-4 py-2 focus:border-indigo-500 focus:ring-indigo-500"
+            className="mt-1 block w-full rounded-lg border border-gray-300 px-4 py-2 focus:border-primary-500 focus:ring-primary-500"
             required
           />
         </div>
@@ -94,7 +94,7 @@ export function GoalForm({ onClose }: GoalFormProps) {
             id="description"
             value={goal.description}
             onChange={(e) => setGoal({ ...goal, description: e.target.value })}
-            className="mt-1 block w-full rounded-lg border border-gray-300 px-4 py-2 focus:border-indigo-500 focus:ring-indigo-500"
+            className="mt-1 block w-full rounded-lg border border-gray-300 px-4 py-2 focus:border-primary-500 focus:ring-primary-500"
             rows={3}
           />
         </div>
@@ -107,7 +107,7 @@ export function GoalForm({ onClose }: GoalFormProps) {
             id="category"
             value={goal.category}
             onChange={(e) => setGoal({ ...goal, category: e.target.value as Goal['category'] })}
-            className="mt-1 block w-full rounded-lg border border-gray-300 px-4 py-2 focus:border-indigo-500 focus:ring-indigo-500"
+            className="mt-1 block w-full rounded-lg border border-gray-300 px-4 py-2 focus:border-primary-500 focus:ring-primary-500"
           >
             <option value="tasks">Tasks</option>
             <option value="health">Health</option>
@@ -128,7 +128,7 @@ export function GoalForm({ onClose }: GoalFormProps) {
               id="target_date"
               value={goal.target_date}
               onChange={(e) => setGoal({ ...goal, target_date: e.target.value })}
-              className="block w-full rounded-lg border border-gray-300 pl-10 pr-4 py-2 focus:border-indigo-500 focus:ring-indigo-500"
+              className="block w-full rounded-lg border border-gray-300 pl-10 pr-4 py-2 focus:border-primary-500 focus:ring-primary-500"
               required
             />
           </div>
@@ -142,7 +142,7 @@ export function GoalForm({ onClose }: GoalFormProps) {
             id="reminder_frequency"
             value={goal.reminder_frequency}
             onChange={(e) => setGoal({ ...goal, reminder_frequency: e.target.value as Goal['reminder_frequency'] })}
-            className="mt-1 block w-full rounded-lg border border-gray-300 px-4 py-2 focus:border-indigo-500 focus:ring-indigo-500"
+            className="mt-1 block w-full rounded-lg border border-gray-300 px-4 py-2 focus:border-primary-500 focus:ring-primary-500"
           >
             <option value="daily">Daily</option>
             <option value="weekly">Weekly</option>
@@ -162,7 +162,7 @@ export function GoalForm({ onClose }: GoalFormProps) {
           <button
             type="submit"
             disabled={isSubmitting}
-            className="rounded-lg bg-indigo-600 px-4 py-2 text-white hover:bg-indigo-500 disabled:opacity-50"
+            className="rounded-lg bg-primary-600 px-4 py-2 text-white hover:bg-primary-500 disabled:opacity-50"
           >
             {isSubmitting ? (
               <div className="flex items-center">

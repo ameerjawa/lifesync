@@ -56,7 +56,7 @@ export function TaskTemplateForm({ onSubmit, onClose }: TaskTemplateFormProps) {
             id="title"
             value={template.title}
             onChange={(e) => setTemplate({ ...template, title: e.target.value })}
-            className="mt-1 block w-full rounded-lg border border-gray-300 px-4 py-2 focus:border-indigo-500 focus:ring-indigo-500"
+            className="mt-1 block w-full rounded-lg border border-gray-300 px-4 py-2 focus:border-primary-500 focus:ring-primary-500"
             required
           />
         </div>
@@ -69,7 +69,7 @@ export function TaskTemplateForm({ onSubmit, onClose }: TaskTemplateFormProps) {
             id="description"
             value={template.description}
             onChange={(e) => setTemplate({ ...template, description: e.target.value })}
-            className="mt-1 block w-full rounded-lg border border-gray-300 px-4 py-2 focus:border-indigo-500 focus:ring-indigo-500"
+            className="mt-1 block w-full rounded-lg border border-gray-300 px-4 py-2 focus:border-primary-500 focus:ring-primary-500"
             rows={3}
           />
         </div>
@@ -82,7 +82,7 @@ export function TaskTemplateForm({ onSubmit, onClose }: TaskTemplateFormProps) {
             id="priority"
             value={template.priority}
             onChange={(e) => setTemplate({ ...template, priority: e.target.value as TaskTemplate['priority'] })}
-            className="mt-1 block w-full rounded-lg border border-gray-300 px-4 py-2 focus:border-indigo-500 focus:ring-indigo-500"
+            className="mt-1 block w-full rounded-lg border border-gray-300 px-4 py-2 focus:border-primary-500 focus:ring-primary-500"
           >
             <option value="low">Low</option>
             <option value="medium">Medium</option>
@@ -99,7 +99,7 @@ export function TaskTemplateForm({ onSubmit, onClose }: TaskTemplateFormProps) {
             id="estimated_hours"
             value={template.estimated_hours}
             onChange={(e) => setTemplate({ ...template, estimated_hours: e.target.value })}
-            className="mt-1 block w-full rounded-lg border border-gray-300 px-4 py-2 focus:border-indigo-500 focus:ring-indigo-500"
+            className="mt-1 block w-full rounded-lg border border-gray-300 px-4 py-2 focus:border-primary-500 focus:ring-primary-500"
             min="0"
             step="0.5"
             placeholder="Enter estimated hours"
@@ -118,7 +118,7 @@ export function TaskTemplateForm({ onSubmit, onClose }: TaskTemplateFormProps) {
               ...template,
               labels: e.target.value.split(',').map(label => label.trim()).filter(Boolean)
             })}
-            className="mt-1 block w-full rounded-lg border border-gray-300 px-4 py-2 focus:border-indigo-500 focus:ring-indigo-500"
+            className="mt-1 block w-full rounded-lg border border-gray-300 px-4 py-2 focus:border-primary-500 focus:ring-primary-500"
             placeholder="Enter labels"
           />
         </div>
@@ -133,7 +133,7 @@ export function TaskTemplateForm({ onSubmit, onClose }: TaskTemplateFormProps) {
           </button>
           <button
             type="submit"
-            className="rounded-lg bg-indigo-600 px-4 py-2 text-white hover:bg-indigo-500"
+            className="rounded-lg bg-primary-600 px-4 py-2 text-white hover:bg-primary-500"
           >
             Create Template
           </button>

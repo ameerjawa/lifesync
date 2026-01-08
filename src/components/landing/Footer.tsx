@@ -16,7 +16,7 @@ export function Footer() {
           {/* Company Info */}
           <div className="col-span-1">
             <div className="flex items-center mb-4">
-              <Sparkles className="h-8 w-8 text-indigo-400" />
+              <Sparkles className="h-8 w-8 text-primary-400" />
               <span className="ml-2 text-xl font-bold">LifeSync</span>
             </div>
             <p className="text-gray-400 mb-4">

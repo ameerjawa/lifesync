@@ -114,7 +114,7 @@ export function InvestmentForm({ onSubmit, onClose }: InvestmentFormProps) {
             id="name"
             value={investment.name}
             onChange={(e) => setInvestment({ ...investment, name: e.target.value })}
-            className="mt-1 block w-full rounded-lg border border-gray-300 px-4 py-2 focus:border-indigo-500 focus:ring-indigo-500"
+            className="mt-1 block w-full rounded-lg border border-gray-300 px-4 py-2 focus:border-primary-500 focus:ring-primary-500"
             required
           />
         </div>
@@ -127,7 +127,7 @@ export function InvestmentForm({ onSubmit, onClose }: InvestmentFormProps) {
             id="type"
             value={investment.type}
             onChange={(e) => setInvestment({ ...investment, type: e.target.value as Investment['type'] })}
-            className="mt-1 block w-full rounded-lg border border-gray-300 px-4 py-2 focus:border-indigo-500 focus:ring-indigo-500"
+            className="mt-1 block w-full rounded-lg border border-gray-300 px-4 py-2 focus:border-primary-500 focus:ring-primary-500"
             required
           >
             <option value="stock">Stock</option>
@@ -148,7 +148,7 @@ export function InvestmentForm({ onSubmit, onClose }: InvestmentFormProps) {
             id="symbol"
             value={investment.symbol}
             onChange={(e) => setInvestment({ ...investment, symbol: e.target.value })}
-            className="mt-1 block w-full rounded-lg border border-gray-300 px-4 py-2 focus:border-indigo-500 focus:ring-indigo-500"
+            className="mt-1 block w-full rounded-lg border border-gray-300 px-4 py-2 focus:border-primary-500 focus:ring-primary-500"
             placeholder="e.g., AAPL"
           />
         </div>
@@ -162,7 +162,7 @@ export function InvestmentForm({ onSubmit, onClose }: InvestmentFormProps) {
             id="quantity"
             value={investment.quantity}
             onChange={(e) => setInvestment({ ...investment, quantity: e.target.value })}
-            className="mt-1 block w-full rounded-lg border border-gray-300 px-4 py-2 focus:border-indigo-500 focus:ring-indigo-500"
+            className="mt-1 block w-full rounded-lg border border-gray-300 px-4 py-2 focus:border-primary-500 focus:ring-primary-500"
             required
             min="0.000001"
             step="0.000001"
@@ -182,7 +182,7 @@ export function InvestmentForm({ onSubmit, onClose }: InvestmentFormProps) {
               id="purchase_price"
               value={investment.purchase_price}
               onChange={(e) => setInvestment({ ...investment, purchase_price: e.target.value })}
-              className="block w-full rounded-lg border border-gray-300 pl-10 pr-4 py-2 focus:border-indigo-500 focus:ring-indigo-500"
+              className="block w-full rounded-lg border border-gray-300 pl-10 pr-4 py-2 focus:border-primary-500 focus:ring-primary-500"
               required
               min="0.01"
               step="0.01"
@@ -203,7 +203,7 @@ export function InvestmentForm({ onSubmit, onClose }: InvestmentFormProps) {
               id="current_price"
               value={investment.current_price}
               onChange={(e) => setInvestment({ ...investment, current_price: e.target.value })}
-              className="block w-full rounded-lg border border-gray-300 pl-10 pr-4 py-2 focus:border-indigo-500 focus:ring-indigo-500"
+              className="block w-full rounded-lg border border-gray-300 pl-10 pr-4 py-2 focus:border-primary-500 focus:ring-primary-500"
               required
               min="0.01"
               step="0.01"
@@ -224,7 +224,7 @@ export function InvestmentForm({ onSubmit, onClose }: InvestmentFormProps) {
               id="purchase_date"
               value={investment.purchase_date}
               onChange={(e) => setInvestment({ ...investment, purchase_date: e.target.value })}
-              className="block w-full rounded-lg border border-gray-300 pl-10 pr-4 py-2 focus:border-indigo-500 focus:ring-indigo-500"
+              className="block w-full rounded-lg border border-gray-300 pl-10 pr-4 py-2 focus:border-primary-500 focus:ring-primary-500"
               required
               max={new Date().toISOString().split('T')[0]}
             />
@@ -239,7 +239,7 @@ export function InvestmentForm({ onSubmit, onClose }: InvestmentFormProps) {
             id="notes"
             value={investment.notes}
             onChange={(e) => setInvestment({ ...investment, notes: e.target.value })}
-            className="mt-1 block w-full rounded-lg border border-gray-300 px-4 py-2 focus:border-indigo-500 focus:ring-indigo-500"
+            className="mt-1 block w-full rounded-lg border border-gray-300 px-4 py-2 focus:border-primary-500 focus:ring-primary-500"
             rows={3}
           />
         </div>
@@ -255,7 +255,7 @@ export function InvestmentForm({ onSubmit, onClose }: InvestmentFormProps) {
           <button
             type="submit"
             disabled={isSubmitting}
-            className="rounded-lg bg-indigo-600 px-4 py-2 text-white hover:bg-indigo-500 disabled:opacity-50"
+            className="rounded-lg bg-primary-600 px-4 py-2 text-white hover:bg-primary-500 disabled:opacity-50"
           >
             {isSubmitting ? (
               <div className="flex items-center">

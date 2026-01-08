@@ -57,7 +57,7 @@ export function SubscriptionSettings({ plan, onUpgrade, onCancel }: Subscription
       <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
         {/* Free Plan */}
         <div className={`relative rounded-lg border p-6 ${
-          plan === 'free' ? 'border-2 border-indigo-600 bg-indigo-50' : 'border-gray-200'
+          plan === 'free' ? 'border-2 border-primary-600 bg-primary-50' : 'border-gray-200'
         }`}>
           <h4 className="text-lg font-medium text-gray-900">Free</h4>
           <p className="mt-2 text-sm text-gray-500">Basic features for personal use</p>
@@ -78,7 +78,7 @@ export function SubscriptionSettings({ plan, onUpgrade, onCancel }: Subscription
           <div className="mt-6">
             <p className="mb-2 text-2xl font-bold text-gray-900">$0</p>
             {plan === 'free' ? (
-              <span className="inline-flex items-center rounded-full bg-indigo-100 px-3 py-1 text-xs font-medium text-indigo-800">
+              <span className="inline-flex items-center rounded-full bg-primary-100 px-3 py-1 text-xs font-medium text-primary-800">
                 Current Plan
               </span>
             ) : (
@@ -94,11 +94,11 @@ export function SubscriptionSettings({ plan, onUpgrade, onCancel }: Subscription
 
         {/* Premium Plan */}
         <div className={`relative rounded-lg border p-6 ${
-          plan === 'premium' ? 'border-2 border-indigo-600 bg-indigo-50' : 'border-gray-200'
+          plan === 'premium' ? 'border-2 border-primary-600 bg-primary-50' : 'border-gray-200'
         }`}>
           {plan !== 'premium' && (
             <div className="absolute -top-3 left-1/2 -translate-x-1/2">
-              <span className="inline-flex items-center rounded-full bg-indigo-600 px-3 py-1 text-xs font-medium text-white shadow-sm">
+              <span className="inline-flex items-center rounded-full bg-primary-600 px-3 py-1 text-xs font-medium text-white shadow-sm">
                 Most Popular
               </span>
             </div>
@@ -129,13 +129,13 @@ export function SubscriptionSettings({ plan, onUpgrade, onCancel }: Subscription
               <span className="text-sm text-gray-500">/month</span>
             </p>
             {plan === 'premium' ? (
-              <span className="inline-flex items-center rounded-full bg-indigo-100 px-3 py-1 text-xs font-medium text-indigo-800">
+              <span className="inline-flex items-center rounded-full bg-primary-100 px-3 py-1 text-xs font-medium text-primary-800">
                 Current Plan
               </span>
             ) : (
               <button
                 onClick={() => handleUpgrade('premium')}
-                className="w-full rounded-lg bg-indigo-600 px-4 py-2 text-sm font-medium text-white hover:bg-indigo-500"
+                className="w-full rounded-lg bg-primary-600 px-4 py-2 text-sm font-medium text-white hover:bg-primary-500"
               >
                 Upgrade to Premium
               </button>
@@ -145,7 +145,7 @@ export function SubscriptionSettings({ plan, onUpgrade, onCancel }: Subscription
 
         {/* Enterprise Plan */}
         <div className={`relative rounded-lg border p-6 ${
-          plan === 'enterprise' ? 'border-2 border-indigo-600 bg-indigo-50' : 'border-gray-200'
+          plan === 'enterprise' ? 'border-2 border-primary-600 bg-primary-50' : 'border-gray-200'
         }`}>
           <h4 className="text-lg font-medium text-gray-900">Enterprise</h4>
           <p className="mt-2 text-sm text-gray-500">Advanced features for teams</p>
@@ -177,13 +177,13 @@ export function SubscriptionSettings({ plan, onUpgrade, onCancel }: Subscription
               <span className="text-sm text-gray-500">/month</span>
             </p>
             {plan === 'enterprise' ? (
-              <span className="inline-flex items-center rounded-full bg-indigo-100 px-3 py-1 text-xs font-medium text-indigo-800">
+              <span className="inline-flex items-center rounded-full bg-primary-100 px-3 py-1 text-xs font-medium text-primary-800">
                 Current Plan
               </span>
             ) : (
               <button
                 onClick={() => handleUpgrade('enterprise')}
-                className="w-full rounded-lg bg-indigo-600 px-4 py-2 text-sm font-medium text-white hover:bg-indigo-500"
+                className="w-full rounded-lg bg-primary-600 px-4 py-2 text-sm font-medium text-white hover:bg-primary-500"
               >
                 Upgrade to Enterprise
               </button>

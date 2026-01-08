@@ -121,7 +121,7 @@ if (!user) throw new Error("User must be signed in to upload");
                 <Building className="h-full w-full p-4 text-gray-400" />
               )}
             </div>
-            <label className="absolute bottom-0 right-0 cursor-pointer rounded-full bg-indigo-600 p-2 text-white hover:bg-indigo-500">
+            <label className="absolute bottom-0 right-0 cursor-pointer rounded-full bg-primary-600 p-2 text-white hover:bg-primary-500">
               <Camera className="h-4 w-4" />
               <input
                 type="file"
@@ -148,7 +148,7 @@ if (!user) throw new Error("User must be signed in to upload");
               id="company_name"
               value={formData.company_name}
               onChange={(e) => setFormData({ ...formData, company_name: e.target.value })}
-              className="mt-1 block w-full rounded-lg border border-gray-300 px-4 py-2 focus:border-indigo-500 focus:ring-indigo-500"
+              className="mt-1 block w-full rounded-lg border border-gray-300 px-4 py-2 focus:border-primary-500 focus:ring-primary-500"
             />
           </div>
 
@@ -160,7 +160,7 @@ if (!user) throw new Error("User must be signed in to upload");
               id="industry"
               value={formData.industry}
               onChange={(e) => setFormData({ ...formData, industry: e.target.value })}
-              className="mt-1 block w-full rounded-lg border border-gray-300 px-4 py-2 focus:border-indigo-500 focus:ring-indigo-500"
+              className="mt-1 block w-full rounded-lg border border-gray-300 px-4 py-2 focus:border-primary-500 focus:ring-primary-500"
             >
               <option value="technology">Technology</option>
               <option value="healthcare">Healthcare</option>
@@ -183,7 +183,7 @@ if (!user) throw new Error("User must be signed in to upload");
               id="business_type"
               value={formData.business_type}
               onChange={(e) => setFormData({ ...formData, business_type: e.target.value })}
-              className="mt-1 block w-full rounded-lg border border-gray-300 px-4 py-2 focus:border-indigo-500 focus:ring-indigo-500"
+              className="mt-1 block w-full rounded-lg border border-gray-300 px-4 py-2 focus:border-primary-500 focus:ring-primary-500"
             >
               <option value="sole_proprietorship">Sole Proprietorship</option>
               <option value="partnership">Partnership</option>
@@ -202,7 +202,7 @@ if (!user) throw new Error("User must be signed in to upload");
               id="staff_count"
               value={formData.staff_count}
               onChange={(e) => setFormData({ ...formData, staff_count: parseInt(e.target.value) || 1 })}
-              className="mt-1 block w-full rounded-lg border border-gray-300 px-4 py-2 focus:border-indigo-500 focus:ring-indigo-500"
+              className="mt-1 block w-full rounded-lg border border-gray-300 px-4 py-2 focus:border-primary-500 focus:ring-primary-500"
               min="1"
             />
           </div>
@@ -216,7 +216,7 @@ if (!user) throw new Error("User must be signed in to upload");
               id="email"
               value={formData.email}
               onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-              className="mt-1 block w-full rounded-lg border border-gray-300 px-4 py-2 focus:border-indigo-500 focus:ring-indigo-500"
+              className="mt-1 block w-full rounded-lg border border-gray-300 px-4 py-2 focus:border-primary-500 focus:ring-primary-500"
             />
           </div>
 
@@ -229,7 +229,7 @@ if (!user) throw new Error("User must be signed in to upload");
               id="phone"
               value={formData.phone}
               onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-              className="mt-1 block w-full rounded-lg border border-gray-300 px-4 py-2 focus:border-indigo-500 focus:ring-indigo-500"
+              className="mt-1 block w-full rounded-lg border border-gray-300 px-4 py-2 focus:border-primary-500 focus:ring-primary-500"
             />
           </div>
 
@@ -242,7 +242,7 @@ if (!user) throw new Error("User must be signed in to upload");
               id="website"
               value={formData.website}
               onChange={(e) => setFormData({ ...formData, website: e.target.value })}
-              className="mt-1 block w-full rounded-lg border border-gray-300 px-4 py-2 focus:border-indigo-500 focus:ring-indigo-500"
+              className="mt-1 block w-full rounded-lg border border-gray-300 px-4 py-2 focus:border-primary-500 focus:ring-primary-500"
             />
           </div>
 
@@ -255,7 +255,7 @@ if (!user) throw new Error("User must be signed in to upload");
               id="tax_id"
               value={formData.tax_id}
               onChange={(e) => setFormData({ ...formData, tax_id: e.target.value })}
-              className="mt-1 block w-full rounded-lg border border-gray-300 px-4 py-2 focus:border-indigo-500 focus:ring-indigo-500"
+              className="mt-1 block w-full rounded-lg border border-gray-300 px-4 py-2 focus:border-primary-500 focus:ring-primary-500"
             />
           </div>
         </div>
@@ -268,7 +268,7 @@ if (!user) throw new Error("User must be signed in to upload");
             id="description"
             value={formData.description}
             onChange={(e) => setFormData({ ...formData, description: e.target.value })}
-            className="mt-1 block w-full rounded-lg border border-gray-300 px-4 py-2 focus:border-indigo-500 focus:ring-indigo-500"
+            className="mt-1 block w-full rounded-lg border border-gray-300 px-4 py-2 focus:border-primary-500 focus:ring-primary-500"
             rows={4}
           />
         </div>
@@ -281,7 +281,7 @@ if (!user) throw new Error("User must be signed in to upload");
             id="address"
             value={formData.address}
             onChange={(e) => setFormData({ ...formData, address: e.target.value })}
-            className="mt-1 block w-full rounded-lg border border-gray-300 px-4 py-2 focus:border-indigo-500 focus:ring-indigo-500"
+            className="mt-1 block w-full rounded-lg border border-gray-300 px-4 py-2 focus:border-primary-500 focus:ring-primary-500"
             rows={3}
           />
         </div>
@@ -295,7 +295,7 @@ if (!user) throw new Error("User must be signed in to upload");
             id="annual_revenue"
             value={formData.annual_revenue}
             onChange={(e) => setFormData({ ...formData, annual_revenue: e.target.value })}
-            className="mt-1 block w-full rounded-lg border border-gray-300 px-4 py-2 focus:border-indigo-500 focus:ring-indigo-500"
+            className="mt-1 block w-full rounded-lg border border-gray-300 px-4 py-2 focus:border-primary-500 focus:ring-primary-500"
             min="0"
             step="1000"
           />
@@ -305,7 +305,7 @@ if (!user) throw new Error("User must be signed in to upload");
           <button
             onClick={handleSave}
             disabled={isSaving}
-            className="inline-flex items-center rounded-lg bg-indigo-600 px-4 py-2 text-white hover:bg-indigo-500 disabled:opacity-50"
+            className="inline-flex items-center rounded-lg bg-primary-600 px-4 py-2 text-white hover:bg-primary-500 disabled:opacity-50"
           >
             {isSaving ? (
               <>

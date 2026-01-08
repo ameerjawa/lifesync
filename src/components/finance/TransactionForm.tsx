@@ -86,7 +86,7 @@ export function TransactionForm({ accounts, categories, onSubmit, onClose }: Tra
               id="type"
               value={transaction.type}
               onChange={(e) => setTransaction({ ...transaction, type: e.target.value as Transaction['type'] })}
-              className="mt-1 block w-full rounded-lg border border-gray-300 px-4 py-2 focus:border-indigo-500 focus:ring-indigo-500"
+              className="mt-1 block w-full rounded-lg border border-gray-300 px-4 py-2 focus:border-primary-500 focus:ring-primary-500"
               required
             >
               <option value="expense">Expense</option>
@@ -103,7 +103,7 @@ export function TransactionForm({ accounts, categories, onSubmit, onClose }: Tra
               id="account"
               value={transaction.account_id}
               onChange={(e) => setTransaction({ ...transaction, account_id: e.target.value })}
-              className="mt-1 block w-full rounded-lg border border-gray-300 px-4 py-2 focus:border-indigo-500 focus:ring-indigo-500"
+              className="mt-1 block w-full rounded-lg border border-gray-300 px-4 py-2 focus:border-primary-500 focus:ring-primary-500"
               required
             >
               <option value="">Select an account</option>
@@ -123,7 +123,7 @@ export function TransactionForm({ accounts, categories, onSubmit, onClose }: Tra
               id="category"
               value={transaction.category_id}
               onChange={(e) => setTransaction({ ...transaction, category_id: e.target.value })}
-              className="mt-1 block w-full rounded-lg border border-gray-300 px-4 py-2 focus:border-indigo-500 focus:ring-indigo-500"
+              className="mt-1 block w-full rounded-lg border border-gray-300 px-4 py-2 focus:border-primary-500 focus:ring-primary-500"
             >
               <option value="">Select a category</option>
               {categories
@@ -149,7 +149,7 @@ export function TransactionForm({ accounts, categories, onSubmit, onClose }: Tra
                 id="amount"
                 value={transaction.amount}
                 onChange={(e) => setTransaction({ ...transaction, amount: e.target.value })}
-                className="block w-full rounded-lg border border-gray-300 pl-10 pr-4 py-2 focus:border-indigo-500 focus:ring-indigo-500"
+                className="block w-full rounded-lg border border-gray-300 pl-10 pr-4 py-2 focus:border-primary-500 focus:ring-primary-500"
                 placeholder="0.00"
                 step="0.01"
                 min="0"
@@ -167,7 +167,7 @@ export function TransactionForm({ accounts, categories, onSubmit, onClose }: Tra
               id="description"
               value={transaction.description}
               onChange={(e) => setTransaction({ ...transaction, description: e.target.value })}
-              className="mt-1 block w-full rounded-lg border border-gray-300 px-4 py-2 focus:border-indigo-500 focus:ring-indigo-500"
+              className="mt-1 block w-full rounded-lg border border-gray-300 px-4 py-2 focus:border-primary-500 focus:ring-primary-500"
               required
             />
           </div>
@@ -185,7 +185,7 @@ export function TransactionForm({ accounts, categories, onSubmit, onClose }: Tra
                 id="date"
                 value={transaction.date}
                 onChange={(e) => setTransaction({ ...transaction, date: e.target.value })}
-                className="block w-full rounded-lg border border-gray-300 pl-10 pr-4 py-2 focus:border-indigo-500 focus:ring-indigo-500"
+                className="block w-full rounded-lg border border-gray-300 pl-10 pr-4 py-2 focus:border-primary-500 focus:ring-primary-500"
                 required
               />
             </div>
@@ -199,7 +199,7 @@ export function TransactionForm({ accounts, categories, onSubmit, onClose }: Tra
               id="notes"
               value={transaction.notes}
               onChange={(e) => setTransaction({ ...transaction, notes: e.target.value })}
-              className="mt-1 block w-full rounded-lg border border-gray-300 px-4 py-2 focus:border-indigo-500 focus:ring-indigo-500"
+              className="mt-1 block w-full rounded-lg border border-gray-300 px-4 py-2 focus:border-primary-500 focus:ring-primary-500"
               rows={3}
             />
           </div>
@@ -210,7 +210,7 @@ export function TransactionForm({ accounts, categories, onSubmit, onClose }: Tra
               id="is_recurring"
               checked={transaction.is_recurring}
               onChange={(e) => setTransaction({ ...transaction, is_recurring: e.target.checked })}
-              className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+              className="h-4 w-4 rounded border-gray-300 text-primary-600 focus:ring-primary-500"
             />
             <label htmlFor="is_recurring" className="ml-2 block text-sm text-gray-700">
               This is a recurring transaction
@@ -228,7 +228,7 @@ export function TransactionForm({ accounts, categories, onSubmit, onClose }: Tra
             <button
               type="submit"
               disabled={isSubmitting}
-              className="rounded-lg bg-indigo-600 px-4 py-2 text-white hover:bg-indigo-500 disabled:opacity-50"
+              className="rounded-lg bg-primary-600 px-4 py-2 text-white hover:bg-primary-500 disabled:opacity-50"
             >
               {isSubmitting ? (
                 <div className="flex items-center">

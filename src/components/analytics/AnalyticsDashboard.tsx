@@ -57,12 +57,12 @@ export function AnalyticsDashboard() {
   return (
     <div className="space-y-6">
       {/* Header */}
-      <div className="relative overflow-hidden rounded-2xl bg-gradient-to-r from-indigo-600 to-purple-600 p-8 text-white shadow-xl">
+      <div className="relative overflow-hidden rounded-2xl bg-gradient-to-r from-primary-600 to-primary-600 p-8 text-white shadow-xl">
         <div className="relative z-10">
           <div className="flex items-center justify-between">
             <div>
               <h2 className="text-3xl font-bold">Analytics Dashboard</h2>
-              <p className="mt-2 text-indigo-100">Track your progress across all areas</p>
+              <p className="mt-2 text-primary-100">Track your progress across all areas</p>
             </div>
             <select
               value={selectedTimeframe}
@@ -82,7 +82,7 @@ export function AnalyticsDashboard() {
       {/* Category Tabs */}
       <div className="flex flex-wrap gap-4">
         {[
-          { id: 'overview', name: 'Overview', icon: BarChart2, gradient: 'from-indigo-500 to-purple-500' },
+          { id: 'overview', name: 'Overview', icon: BarChart2, gradient: 'from-primary-500 to-primary-500' },
           { id: 'tasks', name: 'Tasks', icon: Brain, gradient: 'from-blue-500 to-cyan-500' },
           { id: 'health', name: 'Health', icon: Heart, gradient: 'from-rose-500 to-pink-500' },
           { id: 'spending', name: 'Finance', icon: Wallet, gradient: 'from-emerald-500 to-teal-500' }
@@ -94,7 +94,7 @@ export function AnalyticsDashboard() {
             whileTap={{ scale: 0.98 }}
             className={`flex items-center rounded-xl p-4 text-white transition-all ${
               activeView === category.id 
-                ? `bg-gradient-to-r ${category.gradient} ring-4 ring-indigo-200` 
+                ? `bg-gradient-to-r ${category.gradient} ring-4 ring-primary-200` 
                 : `bg-gradient-to-r ${category.gradient} opacity-80 hover:opacity-100`
             }`}
           >
@@ -112,11 +112,11 @@ export function AnalyticsDashboard() {
           className="group relative overflow-hidden rounded-2xl bg-white p-6 shadow-lg transition-all hover:shadow-xl"
         >
           <div className="relative z-10">
-            <Target className="mb-4 h-8 w-8 text-indigo-600" />
+            <Target className="mb-4 h-8 w-8 text-primary-600" />
             <p className="text-3xl font-bold text-gray-900">12</p>
             <p className="mt-1 text-sm font-medium text-gray-600">Active Goals</p>
           </div>
-          <div className="absolute inset-0 bg-gradient-to-r from-indigo-50 to-indigo-100 opacity-0 transition-opacity group-hover:opacity-100"></div>
+          <div className="absolute inset-0 bg-gradient-to-r from-primary-50 to-primary-100 opacity-0 transition-opacity group-hover:opacity-100"></div>
         </motion.div>
 
         <motion.div
@@ -154,11 +154,11 @@ export function AnalyticsDashboard() {
           className="group relative overflow-hidden rounded-2xl bg-white p-6 shadow-lg transition-all hover:shadow-xl"
         >
           <div className="relative z-10">
-            <Sparkles className="mb-4 h-8 w-8 text-purple-600" />
+            <Sparkles className="mb-4 h-8 w-8 text-primary-600" />
             <p className="text-3xl font-bold text-gray-900">8</p>
             <p className="mt-1 text-sm font-medium text-gray-600">Achievements</p>
           </div>
-          <div className="absolute inset-0 bg-gradient-to-r from-purple-50 to-purple-100 opacity-0 transition-opacity group-hover:opacity-100"></div>
+          <div className="absolute inset-0 bg-gradient-to-r from-primary-50 to-primary-100 opacity-0 transition-opacity group-hover:opacity-100"></div>
         </motion.div>
       </div>
 

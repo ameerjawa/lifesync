@@ -58,7 +58,7 @@ export function TaskForm({ onSubmit, onClose }: TaskFormProps) {
             id="title"
             value={newTask.title}
             onChange={(e) => setNewTask({ ...newTask, title: e.target.value })}
-            className="mt-1 block w-full rounded-lg border border-gray-300 px-4 py-2 focus:border-indigo-500 focus:ring-indigo-500"
+            className="mt-1 block w-full rounded-lg border border-gray-300 px-4 py-2 focus:border-primary-500 focus:ring-primary-500"
             required
           />
         </div>
@@ -71,7 +71,7 @@ export function TaskForm({ onSubmit, onClose }: TaskFormProps) {
             id="description"
             value={newTask.description}
             onChange={(e) => setNewTask({ ...newTask, description: e.target.value })}
-            className="mt-1 block w-full rounded-lg border border-gray-300 px-4 py-2 focus:border-indigo-500 focus:ring-indigo-500"
+            className="mt-1 block w-full rounded-lg border border-gray-300 px-4 py-2 focus:border-primary-500 focus:ring-primary-500"
             rows={3}
           />
         </div>
@@ -85,7 +85,7 @@ export function TaskForm({ onSubmit, onClose }: TaskFormProps) {
             id="due_date"
             value={newTask.due_date}
             onChange={(e) => setNewTask({ ...newTask, due_date: e.target.value })}
-            className="mt-1 block w-full rounded-lg border border-gray-300 px-4 py-2 focus:border-indigo-500 focus:ring-indigo-500"
+            className="mt-1 block w-full rounded-lg border border-gray-300 px-4 py-2 focus:border-primary-500 focus:ring-primary-500"
             required
           />
         </div>
@@ -98,7 +98,7 @@ export function TaskForm({ onSubmit, onClose }: TaskFormProps) {
             id="priority"
             value={newTask.priority}
             onChange={(e) => setNewTask({ ...newTask, priority: e.target.value as Task['priority'] })}
-            className="mt-1 block w-full rounded-lg border border-gray-300 px-4 py-2 focus:border-indigo-500 focus:ring-indigo-500"
+            className="mt-1 block w-full rounded-lg border border-gray-300 px-4 py-2 focus:border-primary-500 focus:ring-primary-500"
           >
             <option value="low">Low</option>
             <option value="medium">Medium</option>
@@ -115,7 +115,7 @@ export function TaskForm({ onSubmit, onClose }: TaskFormProps) {
             id="estimated_hours"
             value={newTask.estimated_hours}
             onChange={(e) => setNewTask({ ...newTask, estimated_hours: e.target.value })}
-            className="mt-1 block w-full rounded-lg border border-gray-300 px-4 py-2 focus:border-indigo-500 focus:ring-indigo-500"
+            className="mt-1 block w-full rounded-lg border border-gray-300 px-4 py-2 focus:border-primary-500 focus:ring-primary-500"
             min="0"
             step="0.5"
             placeholder="Enter estimated hours"
@@ -134,7 +134,7 @@ export function TaskForm({ onSubmit, onClose }: TaskFormProps) {
               ...newTask,
               labels: e.target.value.split(',').map(label => label.trim()).filter(Boolean)
             })}
-            className="mt-1 block w-full rounded-lg border border-gray-300 px-4 py-2 focus:border-indigo-500 focus:ring-indigo-500"
+            className="mt-1 block w-full rounded-lg border border-gray-300 px-4 py-2 focus:border-primary-500 focus:ring-primary-500"
             placeholder="Enter labels"
           />
         </div>
@@ -149,7 +149,7 @@ export function TaskForm({ onSubmit, onClose }: TaskFormProps) {
           </button>
           <button
             type="submit"
-            className="rounded-lg bg-indigo-600 px-4 py-2 text-white hover:bg-indigo-500"
+            className="rounded-lg bg-primary-600 px-4 py-2 text-white hover:bg-primary-500"
           >
             Add Task
           </button>

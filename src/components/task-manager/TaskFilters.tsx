@@ -33,7 +33,7 @@ export function TaskFilters({
                   type="checkbox"
                   checked={filterState.status?.includes(status)}
                   onChange={() => onFilterChange('status', status)}
-                  className="rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+                  className="rounded border-gray-300 text-primary-600 focus:ring-primary-500"
                 />
                 <span className="ml-2 capitalize">{status.replace('_', ' ')}</span>
               </label>
@@ -51,7 +51,7 @@ export function TaskFilters({
                   type="checkbox"
                   checked={filterState.priority?.includes(priority)}
                   onChange={() => onFilterChange('priority', priority)}
-                  className="rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+                  className="rounded border-gray-300 text-primary-600 focus:ring-primary-500"
                 />
                 <span className="ml-2 capitalize">{priority}</span>
               </label>
@@ -72,7 +72,7 @@ export function TaskFilters({
                   ...filterState.dueDate,
                   start: e.target.value ? new Date(e.target.value) : undefined
                 })}
-                className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
+                className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-primary-500 focus:ring-primary-500"
               />
             </div>
             <div>
@@ -84,7 +84,7 @@ export function TaskFilters({
                   ...filterState.dueDate,
                   end: e.target.value ? new Date(e.target.value) : undefined
                 })}
-                className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
+                className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-primary-500 focus:ring-primary-500"
               />
             </div>
           </div>
@@ -98,7 +98,7 @@ export function TaskFilters({
               placeholder="Search tasks..."
               value={filterState.search || ''}
               onChange={(e) => onFilterChange('search', e.target.value)}
-              className="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
+              className="block w-full rounded-md border-gray-300 shadow-sm focus:border-primary-500 focus:ring-primary-500"
             />
           </div>
         </div>
@@ -113,7 +113,7 @@ export function TaskFilters({
         </button>
         <button
           onClick={onApplyFilters}
-          className="rounded-lg bg-indigo-600 px-4 py-2 text-white hover:bg-indigo-500"
+          className="rounded-lg bg-primary-600 px-4 py-2 text-white hover:bg-primary-500"
         >
           Apply Filters
         </button>

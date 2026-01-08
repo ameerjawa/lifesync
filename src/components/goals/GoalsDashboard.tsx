@@ -69,16 +69,16 @@ export function GoalsDashboard() {
   return (
     <div className="space-y-8">
       {/* Header */}
-      <div className="relative overflow-hidden rounded-2xl bg-gradient-to-r from-indigo-600 to-purple-600 p-8 text-white shadow-xl">
+      <div className="relative overflow-hidden rounded-2xl bg-gradient-to-r from-primary-600 to-primary-600 p-8 text-white shadow-xl">
         <div className="relative z-10">
           <div className="flex items-center justify-between">
             <div>
               <h2 className="text-3xl font-bold">Goals Dashboard</h2>
-              <p className="mt-2 text-indigo-100">Track, achieve, and celebrate your progress</p>
+              <p className="mt-2 text-primary-100">Track, achieve, and celebrate your progress</p>
             </div>
             <button
               onClick={handleAddGoal}
-              className="flex items-center rounded-lg bg-white px-4 py-2 text-indigo-600 shadow-md transition-all hover:bg-indigo-50"
+              className="flex items-center rounded-lg bg-white px-4 py-2 text-primary-600 shadow-md transition-all hover:bg-primary-50"
             >
               <Plus className="mr-2 h-5 w-5" />
               New Goal
@@ -91,7 +91,7 @@ export function GoalsDashboard() {
       {/* Category Tabs */}
       <div className="flex flex-wrap gap-4">
         {[
-          { id: 'all', name: 'All Goals', icon: Target, gradient: 'from-indigo-500 to-purple-500' },
+          { id: 'all', name: 'All Goals', icon: Target, gradient: 'from-primary-500 to-primary-500' },
           { id: 'tasks', name: 'Tasks', icon: Brain, gradient: 'from-blue-500 to-cyan-500' },
           { id: 'health', name: 'Health', icon: Heart, gradient: 'from-rose-500 to-pink-500' },
           { id: 'finance', name: 'Finance', icon: Wallet, gradient: 'from-emerald-500 to-teal-500' }
@@ -102,7 +102,7 @@ export function GoalsDashboard() {
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
             className={`flex items-center rounded-xl p-4 text-white transition-all bg-gradient-to-r ${category.gradient} ${
-              selectedCategory === category.id ? 'ring-4 ring-indigo-200' : 'opacity-80 hover:opacity-100'
+              selectedCategory === category.id ? 'ring-4 ring-primary-200' : 'opacity-80 hover:opacity-100'
             }`}
           >
             <category.icon className="mr-3 h-6 w-6" />
@@ -119,11 +119,11 @@ export function GoalsDashboard() {
           className="group relative overflow-hidden rounded-2xl bg-white p-6 shadow-lg transition-all hover:shadow-xl"
         >
           <div className="relative z-10">
-            <Target className="mb-4 h-8 w-8 text-indigo-600" />
+            <Target className="mb-4 h-8 w-8 text-primary-600" />
             <p className="text-3xl font-bold text-gray-900">{stats.active}</p>
             <p className="mt-1 text-sm font-medium text-gray-600">Active Goals</p>
           </div>
-          <div className="absolute inset-0 bg-gradient-to-r from-indigo-50 to-indigo-100 opacity-0 transition-opacity group-hover:opacity-100"></div>
+          <div className="absolute inset-0 bg-gradient-to-r from-primary-50 to-primary-100 opacity-0 transition-opacity group-hover:opacity-100"></div>
         </motion.div>
 
         <motion.div
@@ -161,11 +161,11 @@ export function GoalsDashboard() {
           className="group relative overflow-hidden rounded-2xl bg-white p-6 shadow-lg transition-all hover:shadow-xl"
         >
           <div className="relative z-10">
-            <TrendingUp className="mb-4 h-8 w-8 text-purple-600" />
+            <TrendingUp className="mb-4 h-8 w-8 text-primary-600" />
             <p className="text-3xl font-bold text-gray-900">{stats.averageProgress}%</p>
             <p className="mt-1 text-sm font-medium text-gray-600">Average Progress</p>
           </div>
-          <div className="absolute inset-0 bg-gradient-to-r from-purple-50 to-purple-100 opacity-0 transition-opacity group-hover:opacity-100"></div>
+          <div className="absolute inset-0 bg-gradient-to-r from-primary-50 to-primary-100 opacity-0 transition-opacity group-hover:opacity-100"></div>
         </motion.div>
       </div>
 

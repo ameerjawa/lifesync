@@ -178,7 +178,7 @@ export function AuthModal({ isOpen, onClose, initialMode = 'signin' }: AuthModal
               }}
               className={`mt-1 block w-full rounded-lg border ${
                 validationErrors.email ? 'border-red-300' : 'border-gray-300'
-              } px-4 py-2 focus:border-indigo-500 focus:ring-indigo-500`}
+              } px-4 py-2 focus:border-primary-500 focus:ring-primary-500`}
             />
             {renderFieldError('email')}
           </div>
@@ -186,7 +186,7 @@ export function AuthModal({ isOpen, onClose, initialMode = 'signin' }: AuthModal
           <button
             type="submit"
             disabled={isLoading}
-            className="relative w-full rounded-lg bg-indigo-600 px-4 py-2 text-white hover:bg-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 disabled:opacity-50"
+            className="relative w-full rounded-lg bg-primary-600 px-4 py-2 text-white hover:bg-primary-500 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 disabled:opacity-50"
           >
             {isLoading ? (
               <div className="flex items-center justify-center">
@@ -200,7 +200,7 @@ export function AuthModal({ isOpen, onClose, initialMode = 'signin' }: AuthModal
           <div className="mt-4 text-center">
             <button
               onClick={() => setMode('signin')}
-              className="text-sm text-indigo-600 hover:text-indigo-500"
+              className="text-sm text-primary-600 hover:text-primary-500"
             >
               Back to Sign In
             </button>
@@ -226,7 +226,7 @@ export function AuthModal({ isOpen, onClose, initialMode = 'signin' }: AuthModal
               }}
               className={`mt-1 block w-full rounded-lg border ${
                 validationErrors.fullName ? 'border-red-300' : 'border-gray-300'
-              } px-4 py-2 focus:border-indigo-500 focus:ring-indigo-500`}
+              } px-4 py-2 focus:border-primary-500 focus:ring-primary-500`}
             />
             {renderFieldError('fullName')}
           </div>
@@ -246,7 +246,7 @@ export function AuthModal({ isOpen, onClose, initialMode = 'signin' }: AuthModal
             }}
             className={`mt-1 block w-full rounded-lg border ${
               validationErrors.email ? 'border-red-300' : 'border-gray-300'
-            } px-4 py-2 focus:border-indigo-500 focus:ring-indigo-500`}
+            } px-4 py-2 focus:border-primary-500 focus:ring-primary-500`}
           />
           {renderFieldError('email')}
         </div>
@@ -265,7 +265,7 @@ export function AuthModal({ isOpen, onClose, initialMode = 'signin' }: AuthModal
             }}
             className={`mt-1 block w-full rounded-lg border ${
               validationErrors.password ? 'border-red-300' : 'border-gray-300'
-            } px-4 py-2 focus:border-indigo-500 focus:ring-indigo-500`}
+            } px-4 py-2 focus:border-primary-500 focus:ring-primary-500`}
           />
           {renderFieldError('password')}
           {mode === 'signup' && (
@@ -277,7 +277,7 @@ export function AuthModal({ isOpen, onClose, initialMode = 'signin' }: AuthModal
             <button
               type="button"
               onClick={() => setMode('forgot-password')}
-              className="mt-2 text-sm text-indigo-600 hover:text-indigo-500"
+              className="mt-2 text-sm text-primary-600 hover:text-primary-500"
             >
               Forgot your password?
             </button>
@@ -287,7 +287,7 @@ export function AuthModal({ isOpen, onClose, initialMode = 'signin' }: AuthModal
         <button
           type="submit"
           disabled={isLoading || failedAttempts >= 5}
-          className="relative w-full rounded-lg bg-indigo-600 px-4 py-2 text-white hover:bg-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 disabled:opacity-50"
+          className="relative w-full rounded-lg bg-primary-600 px-4 py-2 text-white hover:bg-primary-500 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 disabled:opacity-50"
         >
           {isLoading ? (
             <div className="flex items-center justify-center">
@@ -363,7 +363,7 @@ export function AuthModal({ isOpen, onClose, initialMode = 'signin' }: AuthModal
                           setError(null);
                           setValidationErrors({});
                         }}
-                        className="font-medium text-indigo-600 hover:text-indigo-500"
+                        className="font-medium text-primary-600 hover:text-primary-500"
                       >
                         Sign up
                       </button>
@@ -377,7 +377,7 @@ export function AuthModal({ isOpen, onClose, initialMode = 'signin' }: AuthModal
                           setError(null);
                           setValidationErrors({});
                         }}
-                        className="font-medium text-indigo-600 hover:text-indigo-500"
+                        className="font-medium text-primary-600 hover:text-primary-500"
                       >
                         Sign in
                       </button>

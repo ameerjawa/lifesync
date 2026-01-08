@@ -45,7 +45,7 @@ export function BusinessProjects() {
   if (isLoading) {
     return (
       <div className="flex h-64 items-center justify-center">
-        <div className="h-8 w-8 animate-spin rounded-full border-2 border-indigo-600 border-t-transparent" />
+        <div className="h-8 w-8 animate-spin rounded-full border-2 border-primary-600 border-t-transparent" />
       </div>
     );
   }
@@ -60,7 +60,7 @@ export function BusinessProjects() {
         </div>
         <button
           onClick={() => setIsAddingProject(true)}
-          className="flex items-center px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-500"
+          className="flex items-center px-4 py-2 bg-primary-600 text-white rounded-lg hover:bg-primary-500"
         >
           <Plus className="mr-2 h-5 w-5" />
           New Project
@@ -75,7 +75,7 @@ export function BusinessProjects() {
             onClick={() => setSelectedStatus(status as any)}
             className={`px-4 py-2 rounded-lg text-sm font-medium ${
               selectedStatus === status
-                ? 'bg-indigo-100 text-indigo-700'
+                ? 'bg-primary-100 text-primary-700'
                 : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
             }`}
           >
@@ -117,7 +117,7 @@ export function BusinessProjects() {
               </div>
               <div className="w-full bg-gray-200 rounded-full h-2">
                 <div
-                  className="bg-indigo-600 h-2 rounded-full transition-all duration-300"
+                  className="bg-primary-600 h-2 rounded-full transition-all duration-300"
                   style={{ width: `${project.progress}%` }}
                 />
               </div>
@@ -175,7 +175,7 @@ export function BusinessProjects() {
             {selectedStatus === 'all' && (
               <button
                 onClick={() => setIsAddingProject(true)}
-                className="inline-flex items-center px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-500"
+                className="inline-flex items-center px-4 py-2 bg-primary-600 text-white rounded-lg hover:bg-primary-500"
               >
                 <Plus className="mr-2 h-5 w-5" />
                 Create Project

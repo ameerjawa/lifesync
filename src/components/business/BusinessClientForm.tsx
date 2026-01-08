@@ -60,8 +60,8 @@ export function BusinessClientForm({ onSubmit, onClose }: BusinessClientFormProp
       </button>
 
       <div className="mb-6 flex items-center">
-        <div className="mr-4 rounded-full bg-indigo-100 p-3">
-          <Users className="h-6 w-6 text-indigo-600" />
+        <div className="mr-4 rounded-full bg-primary-100 p-3">
+          <Users className="h-6 w-6 text-primary-600" />
         </div>
         <div>
           <h3 className="text-lg font-semibold text-gray-900">Add New Client</h3>
@@ -86,7 +86,7 @@ export function BusinessClientForm({ onSubmit, onClose }: BusinessClientFormProp
               id="name"
               value={client.name}
               onChange={(e) => setClient({ ...client, name: e.target.value })}
-              className="mt-1 block w-full rounded-lg border border-gray-300 px-4 py-2 focus:border-indigo-500 focus:ring-indigo-500"
+              className="mt-1 block w-full rounded-lg border border-gray-300 px-4 py-2 focus:border-primary-500 focus:ring-primary-500"
               required
             />
           </div>
@@ -104,7 +104,7 @@ export function BusinessClientForm({ onSubmit, onClose }: BusinessClientFormProp
                 id="company"
                 value={client.company}
                 onChange={(e) => setClient({ ...client, company: e.target.value })}
-                className="block w-full rounded-lg border border-gray-300 pl-10 pr-4 py-2 focus:border-indigo-500 focus:ring-indigo-500"
+                className="block w-full rounded-lg border border-gray-300 pl-10 pr-4 py-2 focus:border-primary-500 focus:ring-primary-500"
               />
             </div>
           </div>
@@ -122,7 +122,7 @@ export function BusinessClientForm({ onSubmit, onClose }: BusinessClientFormProp
                 id="email"
                 value={client.email}
                 onChange={(e) => setClient({ ...client, email: e.target.value })}
-                className="block w-full rounded-lg border border-gray-300 pl-10 pr-4 py-2 focus:border-indigo-500 focus:ring-indigo-500"
+                className="block w-full rounded-lg border border-gray-300 pl-10 pr-4 py-2 focus:border-primary-500 focus:ring-primary-500"
               />
             </div>
           </div>
@@ -140,7 +140,7 @@ export function BusinessClientForm({ onSubmit, onClose }: BusinessClientFormProp
                 id="phone"
                 value={client.phone}
                 onChange={(e) => setClient({ ...client, phone: e.target.value })}
-                className="block w-full rounded-lg border border-gray-300 pl-10 pr-4 py-2 focus:border-indigo-500 focus:ring-indigo-500"
+                className="block w-full rounded-lg border border-gray-300 pl-10 pr-4 py-2 focus:border-primary-500 focus:ring-primary-500"
               />
             </div>
           </div>
@@ -153,7 +153,7 @@ export function BusinessClientForm({ onSubmit, onClose }: BusinessClientFormProp
               id="status"
               value={client.status}
               onChange={(e) => setClient({ ...client, status: e.target.value as any })}
-              className="mt-1 block w-full rounded-lg border border-gray-300 px-4 py-2 focus:border-indigo-500 focus:ring-indigo-500"
+              className="mt-1 block w-full rounded-lg border border-gray-300 px-4 py-2 focus:border-primary-500 focus:ring-primary-500"
             >
               <option value="lead">Lead</option>
               <option value="prospect">Prospect</option>
@@ -171,7 +171,7 @@ export function BusinessClientForm({ onSubmit, onClose }: BusinessClientFormProp
               id="source"
               value={client.source}
               onChange={(e) => setClient({ ...client, source: e.target.value })}
-              className="mt-1 block w-full rounded-lg border border-gray-300 px-4 py-2 focus:border-indigo-500 focus:ring-indigo-500"
+              className="mt-1 block w-full rounded-lg border border-gray-300 px-4 py-2 focus:border-primary-500 focus:ring-primary-500"
             >
               <option value="direct">Direct</option>
               <option value="referral">Referral</option>
@@ -193,7 +193,7 @@ export function BusinessClientForm({ onSubmit, onClose }: BusinessClientFormProp
             id="address"
             value={client.address}
             onChange={(e) => setClient({ ...client, address: e.target.value })}
-            className="mt-1 block w-full rounded-lg border border-gray-300 px-4 py-2 focus:border-indigo-500 focus:ring-indigo-500"
+            className="mt-1 block w-full rounded-lg border border-gray-300 px-4 py-2 focus:border-primary-500 focus:ring-primary-500"
             rows={2}
           />
         </div>
@@ -206,7 +206,7 @@ export function BusinessClientForm({ onSubmit, onClose }: BusinessClientFormProp
             id="notes"
             value={client.notes}
             onChange={(e) => setClient({ ...client, notes: e.target.value })}
-            className="mt-1 block w-full rounded-lg border border-gray-300 px-4 py-2 focus:border-indigo-500 focus:ring-indigo-500"
+            className="mt-1 block w-full rounded-lg border border-gray-300 px-4 py-2 focus:border-primary-500 focus:ring-primary-500"
             rows={3}
           />
         </div>
@@ -223,7 +223,7 @@ export function BusinessClientForm({ onSubmit, onClose }: BusinessClientFormProp
               ...client,
               tags: e.target.value.split(',').map(tag => tag.trim()).filter(Boolean)
             })}
-            className="mt-1 block w-full rounded-lg border border-gray-300 px-4 py-2 focus:border-indigo-500 focus:ring-indigo-500"
+            className="mt-1 block w-full rounded-lg border border-gray-300 px-4 py-2 focus:border-primary-500 focus:ring-primary-500"
             placeholder="vip, enterprise, tech"
           />
         </div>
@@ -239,7 +239,7 @@ export function BusinessClientForm({ onSubmit, onClose }: BusinessClientFormProp
           <button
             type="submit"
             disabled={isSubmitting}
-            className="flex items-center rounded-lg bg-indigo-600 px-4 py-2 text-white hover:bg-indigo-500 disabled:opacity-50"
+            className="flex items-center rounded-lg bg-primary-600 px-4 py-2 text-white hover:bg-primary-500 disabled:opacity-50"
           >
             {isSubmitting ? (
               <div className="flex items-center">

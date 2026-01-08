@@ -24,9 +24,9 @@ export function RoadMap({
     switch (road.theme) {
       case 'futuristic':
         return {
-          road: 'bg-gradient-to-r from-indigo-600 to-purple-600',
-          milestone: 'bg-indigo-100 text-indigo-600',
-          completed: 'bg-indigo-600 text-white'
+          road: 'bg-gradient-to-r from-primary-600 to-primary-600',
+          milestone: 'bg-primary-100 text-primary-600',
+          completed: 'bg-primary-600 text-white'
         };
       case 'nature':
         return {
@@ -56,12 +56,12 @@ export function RoadMap({
           <p className="text-gray-600">{road.description}</p>
         </div>
         <div className="flex items-center space-x-2">
-          <div className="rounded-full bg-indigo-100 p-2">
-            <Map className="h-6 w-6 text-indigo-600" />
+          <div className="rounded-full bg-primary-100 p-2">
+            <Map className="h-6 w-6 text-primary-600" />
           </div>
           <div className="text-right">
             <p className="text-sm font-medium text-gray-900">Progress</p>
-            <p className="text-2xl font-bold text-indigo-600">{Math.round(road.progress)}%</p>
+            <p className="text-2xl font-bold text-primary-600">{Math.round(road.progress)}%</p>
           </div>
         </div>
       </div>

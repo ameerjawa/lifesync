@@ -227,7 +227,7 @@ export function SettingsPanel() {
                       onClick={() => setActiveTab(tab.id)}
                       className={`flex w-full items-center space-x-3 px-6 py-3 text-sm font-medium ${
                         activeTab === tab.id
-                          ? 'bg-indigo-50 text-indigo-600'
+                          ? 'bg-primary-50 text-primary-600'
                           : 'text-gray-700 hover:bg-gray-50 hover:text-gray-900'
                       }`}
                     >
@@ -258,7 +258,7 @@ export function SettingsPanel() {
                     <button
                       onClick={handleSave}
                       disabled={isSaving}
-                      className="inline-flex items-center rounded-lg bg-indigo-600 px-4 py-2 text-white hover:bg-indigo-500 disabled:opacity-50"
+                      className="inline-flex items-center rounded-lg bg-primary-600 px-4 py-2 text-white hover:bg-primary-500 disabled:opacity-50"
                     >
                       {isSaving ? (
                         <>

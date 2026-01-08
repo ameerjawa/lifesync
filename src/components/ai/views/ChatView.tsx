@@ -39,7 +39,7 @@ export function ChatView({ onSubmit, input, setInput }: ChatViewProps) {
             <div
               className={`rounded-lg px-4 py-2 max-w-[80%] shadow-sm ${
                 message.role === 'user'
-                  ? 'bg-indigo-600 text-white'
+                  ? 'bg-primary-600 text-white'
                   : 'bg-gray-100 text-gray-900'
               }`}
             >
@@ -68,13 +68,13 @@ export function ChatView({ onSubmit, input, setInput }: ChatViewProps) {
             value={input}
             onChange={(e) => setInput(e.target.value)}
             placeholder="Type your message..."
-            className="flex-1 rounded-lg border border-gray-300 bg-white px-4 py-2 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500 transition-colors"
+            className="flex-1 rounded-lg border border-gray-300 bg-white px-4 py-2 shadow-sm focus:border-primary-500 focus:outline-none focus:ring-1 focus:ring-primary-500 transition-colors"
             disabled={isProcessing}
           />
           <button
             type="submit"
             disabled={isProcessing || !input.trim()}
-            className="rounded-lg bg-indigo-600 p-2 text-white hover:bg-indigo-500 disabled:opacity-50 transition-colors shadow-sm"
+            className="rounded-lg bg-primary-600 p-2 text-white hover:bg-primary-500 disabled:opacity-50 transition-colors shadow-sm"
           >
             <Send className="h-5 w-5" />
           </button>

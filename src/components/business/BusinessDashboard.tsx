@@ -94,8 +94,8 @@ export function BusinessDashboard() {
       <div className="min-h-screen bg-gray-50 flex items-center justify-center p-4">
         <div className="max-w-md w-full">
           <div className="bg-white rounded-2xl p-8 shadow-xl text-center">
-            <div className="bg-indigo-100 rounded-full p-4 w-16 h-16 mx-auto mb-6">
-              <Building className="h-8 w-8 text-indigo-600" />
+            <div className="bg-primary-100 rounded-full p-4 w-16 h-16 mx-auto mb-6">
+              <Building className="h-8 w-8 text-primary-600" />
             </div>
             <h2 className="text-2xl font-bold text-gray-900 mb-4">
               Business Suite
@@ -105,7 +105,7 @@ export function BusinessDashboard() {
             </p>
             <button
               onClick={() => setShowUpgradePrompt(true)}
-              className="w-full bg-indigo-600 text-white rounded-lg px-6 py-3 font-medium hover:bg-indigo-500 transition-colors"
+              className="w-full bg-primary-600 text-white rounded-lg px-6 py-3 font-medium hover:bg-primary-500 transition-colors"
             >
               Upgrade to Access Business Suite
             </button>
@@ -130,7 +130,7 @@ export function BusinessDashboard() {
   if (isLoading) {
     return (
       <div className="min-h-screen flex items-center justify-center">
-        <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-indigo-600"></div>
+        <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-primary-600"></div>
       </div>
     );
   }
@@ -189,7 +189,7 @@ export function BusinessDashboard() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
             <div className="flex items-center">
-              <Building className="h-8 w-8 text-indigo-600 mr-3" />
+              <Building className="h-8 w-8 text-primary-600 mr-3" />
               <div>
                 <h1 className="text-xl font-bold text-gray-900">
                   {profile?.company_name || 'Business Suite'}
@@ -198,7 +198,7 @@ export function BusinessDashboard() {
               </div>
             </div>
             <div className="flex items-center space-x-4">
-              <span className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-indigo-100 text-indigo-800">
+              <span className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-primary-100 text-primary-800">
                 {plan === 'premium' ? 'Premium' : 'Enterprise'} Plan
               </span>
             </div>
@@ -218,7 +218,7 @@ export function BusinessDashboard() {
                   onClick={() => setActiveTab(item.id)}
                   className={`flex items-center px-3 py-4 text-sm font-medium border-b-2 whitespace-nowrap ${
                     activeTab === item.id
-                      ? 'border-indigo-500 text-indigo-600'
+                      ? 'border-primary-500 text-primary-600'
                       : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
                   }`}
                 >

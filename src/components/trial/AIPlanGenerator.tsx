@@ -67,7 +67,7 @@ export function AIPlanGenerator() {
           animate={{ opacity: 1, y: 0 }}
           className="bg-white rounded-lg shadow-lg overflow-hidden"
         >
-          <div className="bg-gradient-to-r from-indigo-600 to-purple-600 px-6 py-8 text-white">
+          <div className="bg-gradient-to-r from-primary-600 to-primary-600 px-6 py-8 text-white">
             <div className="flex items-center justify-center mb-4">
               <div className="bg-white/20 p-3 rounded-full">
                 <Brain className="h-8 w-8" />
@@ -86,22 +86,22 @@ export function AIPlanGenerator() {
               <div className="space-y-6">
                 <div className="space-y-4">
                   <div className="flex items-center text-gray-700">
-                    <Calendar className="h-5 w-5 mr-3 text-indigo-600" />
+                    <Calendar className="h-5 w-5 mr-3 text-primary-600" />
                     <span>7-day task schedule optimized for your goals</span>
                   </div>
                   <div className="flex items-center text-gray-700">
-                    <Target className="h-5 w-5 mr-3 text-indigo-600" />
+                    <Target className="h-5 w-5 mr-3 text-primary-600" />
                     <span>Personalized milestones and checkpoints</span>
                   </div>
                   <div className="flex items-center text-gray-700">
-                    <Sparkles className="h-5 w-5 mr-3 text-indigo-600" />
+                    <Sparkles className="h-5 w-5 mr-3 text-primary-600" />
                     <span>AI-powered recommendations and insights</span>
                   </div>
                 </div>
 
                 <button
                   onClick={generatePlan}
-                  className="w-full flex items-center justify-center px-4 py-3 border border-transparent rounded-lg text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                  className="w-full flex items-center justify-center px-4 py-3 border border-transparent rounded-lg text-white bg-primary-600 hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500"
                 >
                   Generate My Plan
                   <Sparkles className="ml-2 h-5 w-5" />
@@ -109,7 +109,7 @@ export function AIPlanGenerator() {
               </div>
             ) : isGenerating ? (
               <div className="text-center py-8">
-                <Loader2 className="h-8 w-8 animate-spin text-indigo-600 mx-auto mb-4" />
+                <Loader2 className="h-8 w-8 animate-spin text-primary-600 mx-auto mb-4" />
                 <p className="text-gray-600">Generating your personalized plan...</p>
               </div>
             ) : (
@@ -129,7 +129,7 @@ export function AIPlanGenerator() {
                 </p>
                 <button
                   onClick={() => window.location.href = '/dashboard'}
-                  className="inline-flex items-center px-4 py-2 border border-transparent rounded-lg text-white bg-indigo-600 hover:bg-indigo-700"
+                  className="inline-flex items-center px-4 py-2 border border-transparent rounded-lg text-white bg-primary-600 hover:bg-primary-700"
                 >
                   View My Dashboard
                   <ArrowRight className="ml-2 h-5 w-5" />

@@ -113,7 +113,7 @@ export function BusinessCalendar() {
   if (isLoading) {
     return (
       <div className="flex h-64 items-center justify-center">
-        <div className="h-8 w-8 animate-spin rounded-full border-2 border-indigo-600 border-t-transparent" />
+        <div className="h-8 w-8 animate-spin rounded-full border-2 border-primary-600 border-t-transparent" />
       </div>
     );
   }
@@ -123,7 +123,7 @@ export function BusinessCalendar() {
       <div className="bg-white rounded-lg shadow-sm p-6">
         <div className="flex items-center justify-between mb-6">
           <div className="flex items-center space-x-4">
-            <CalendarIcon className="h-6 w-6 text-indigo-600" />
+            <CalendarIcon className="h-6 w-6 text-primary-600" />
             <h2 className="text-2xl font-bold text-gray-900">{monthName}</h2>
           </div>
           <div className="flex items-center space-x-4">
@@ -132,7 +132,7 @@ export function BusinessCalendar() {
                 onClick={() => setFilterType('all')}
                 className={`px-3 py-1 rounded-lg text-sm font-medium transition-colors ${
                   filterType === 'all'
-                    ? 'bg-indigo-100 text-indigo-700'
+                    ? 'bg-primary-100 text-primary-700'
                     : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
                 }`}
               >
@@ -142,7 +142,7 @@ export function BusinessCalendar() {
                 onClick={() => setFilterType('task')}
                 className={`px-3 py-1 rounded-lg text-sm font-medium transition-colors ${
                   filterType === 'task'
-                    ? 'bg-indigo-100 text-indigo-700'
+                    ? 'bg-primary-100 text-primary-700'
                     : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
                 }`}
               >
@@ -152,7 +152,7 @@ export function BusinessCalendar() {
                 onClick={() => setFilterType('project')}
                 className={`px-3 py-1 rounded-lg text-sm font-medium transition-colors ${
                   filterType === 'project'
-                    ? 'bg-indigo-100 text-indigo-700'
+                    ? 'bg-primary-100 text-primary-700'
                     : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
                 }`}
               >
@@ -161,7 +161,7 @@ export function BusinessCalendar() {
             </div>
             <button
               onClick={goToToday}
-              className="px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition-colors"
+              className="px-4 py-2 bg-primary-600 text-white rounded-lg hover:bg-primary-700 transition-colors"
             >
               Today
             </button>
@@ -201,8 +201,8 @@ export function BusinessCalendar() {
                 className={`
                   aspect-square p-2 rounded-lg text-sm transition-all
                   ${!day ? 'invisible' : ''}
-                  ${isToday(day) ? 'bg-indigo-100 font-semibold' : ''}
-                  ${isSelected(day) ? 'ring-2 ring-indigo-600 bg-indigo-50' : ''}
+                  ${isToday(day) ? 'bg-primary-100 font-semibold' : ''}
+                  ${isSelected(day) ? 'ring-2 ring-primary-600 bg-primary-50' : ''}
                   ${!isToday(day) && !isSelected(day) ? 'hover:bg-gray-100' : ''}
                 `}
                 whileHover={day ? { scale: 1.05 } : {}}
@@ -219,7 +219,7 @@ export function BusinessCalendar() {
                             className={`h-1.5 w-1.5 rounded-full ${
                               event.type === 'task'
                                 ? 'bg-green-500'
-                                : 'bg-purple-500'
+                                : 'bg-primary-500'
                             }`}
                           />
                         ))}
@@ -258,14 +258,14 @@ export function BusinessCalendar() {
                   className={`flex items-center justify-between p-4 rounded-lg border ${
                     event.type === 'task'
                       ? 'bg-green-50 border-green-200'
-                      : 'bg-purple-50 border-purple-200'
+                      : 'bg-primary-50 border-primary-200'
                   }`}
                 >
                   <div className="flex items-center space-x-3">
                     {event.type === 'task' ? (
                       <CheckCircle className="h-5 w-5 text-green-600" />
                     ) : (
-                      <Target className="h-5 w-5 text-purple-600" />
+                      <Target className="h-5 w-5 text-primary-600" />
                     )}
                     <div>
                       <p className="font-medium text-gray-900">{event.title}</p>
@@ -300,9 +300,9 @@ export function BusinessCalendar() {
         <div className="bg-white rounded-lg shadow-sm p-6">
           <div className="flex items-center justify-between mb-4">
             <h3 className="font-semibold text-gray-900">Upcoming This Week</h3>
-            <Clock className="h-5 w-5 text-indigo-600" />
+            <Clock className="h-5 w-5 text-primary-600" />
           </div>
-          <p className="text-3xl font-bold text-indigo-600">
+          <p className="text-3xl font-bold text-primary-600">
             {tasks.filter(task => {
               if (!task.due_date) return false;
               const dueDate = new Date(task.due_date);

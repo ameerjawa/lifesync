@@ -51,8 +51,8 @@ export function SavingsGoalList({ goals }: SavingsGoalListProps) {
               >
                 <div className="flex items-start justify-between mb-3">
                   <div className="flex items-center">
-                    <div className="rounded-full bg-indigo-100 p-2 mr-3">
-                      <Target className="h-5 w-5 text-indigo-600" />
+                    <div className="rounded-full bg-primary-100 p-2 mr-3">
+                      <Target className="h-5 w-5 text-primary-600" />
                     </div>
                     <div>
                       <h4 className="font-medium text-gray-900 mb-1">{goal.name}</h4>
@@ -65,7 +65,7 @@ export function SavingsGoalList({ goals }: SavingsGoalListProps) {
                     <p className="text-sm text-gray-500">
                       ${goal.current_amount.toLocaleString()} of ${goal.target_amount.toLocaleString()}
                     </p>
-                    <p className="text-sm text-indigo-600 font-medium">
+                    <p className="text-sm text-primary-600 font-medium">
                       ${remaining.toLocaleString()} to go
                     </p>
                   </div>
@@ -74,7 +74,7 @@ export function SavingsGoalList({ goals }: SavingsGoalListProps) {
                 <div className="relative pt-1">
                   <div className="flex mb-2 items-center justify-between">
                     <div>
-                      <span className="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-indigo-600 bg-indigo-200">
+                      <span className="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-primary-600 bg-primary-200">
                         {progress.toFixed(1)}%
                       </span>
                     </div>
@@ -88,7 +88,7 @@ export function SavingsGoalList({ goals }: SavingsGoalListProps) {
                         progress >= 100
                           ? 'bg-green-500'
                           : progress >= 75
-                          ? 'bg-indigo-500'
+                          ? 'bg-primary-500'
                           : progress >= 50
                           ? 'bg-yellow-500'
                           : 'bg-red-500'

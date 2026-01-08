@@ -19,7 +19,7 @@ export function GuestBanner() {
     <motion.div
       initial={{ opacity: 0, y: -20 }}
       animate={{ opacity: 1, y: 0 }}
-      className="bg-gradient-to-r from-indigo-600 to-purple-600 text-white px-4 py-3"
+      className="bg-gradient-to-r from-primary-600 to-primary-600 text-white px-4 py-3"
     >
       <div className="max-w-7xl mx-auto flex items-center">
         <Clock className="h-5 w-5 mr-2" />

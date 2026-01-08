@@ -116,12 +116,12 @@ export function ProjectDashboard() {
   return (
     <div className="space-y-6">
       {/* Header */}
-      <div className="relative overflow-hidden rounded-2xl bg-gradient-to-r from-indigo-600 to-purple-600 p-8 text-white shadow-xl">
+      <div className="relative overflow-hidden rounded-2xl bg-gradient-to-r from-primary-600 to-primary-600 p-8 text-white shadow-xl">
         <div className="relative z-10">
           <div className="flex items-center justify-between">
             <div>
               <h2 className="text-3xl font-bold">Project Management</h2>
-              <p className="mt-2 text-indigo-100">AI-powered project insights and optimization</p>
+              <p className="mt-2 text-primary-100">AI-powered project insights and optimization</p>
             </div>
             <div className="flex space-x-4">
               <button
@@ -133,7 +133,7 @@ export function ProjectDashboard() {
               </button>
               <button
                 onClick={() => setShowProjectForm(true)}
-                className="flex items-center rounded-lg bg-white px-4 py-2 text-indigo-600 shadow-md transition-all hover:bg-indigo-50"
+                className="flex items-center rounded-lg bg-white px-4 py-2 text-primary-600 shadow-md transition-all hover:bg-primary-50"
               >
                 <Plus className="mr-2 h-5 w-5" />
                 New Project
@@ -171,10 +171,10 @@ export function ProjectDashboard() {
           <div className="flex items-center justify-between">
             <div>
               <p className="text-sm font-medium text-gray-500">Team Utilization</p>
-              <p className="mt-2 text-3xl font-semibold text-indigo-600">{projectMetrics.teamUtilization}%</p>
+              <p className="mt-2 text-3xl font-semibold text-primary-600">{projectMetrics.teamUtilization}%</p>
             </div>
-            <div className="rounded-full bg-indigo-100 p-3">
-              <Users className="h-6 w-6 text-indigo-600" />
+            <div className="rounded-full bg-primary-100 p-3">
+              <Users className="h-6 w-6 text-primary-600" />
             </div>
           </div>
         </motion.div>
@@ -205,10 +205,10 @@ export function ProjectDashboard() {
           <div className="flex items-center justify-between">
             <div>
               <p className="text-sm font-medium text-gray-500">Upcoming Deadlines</p>
-              <p className="mt-2 text-3xl font-semibold text-purple-600">{projectMetrics.upcomingDeadlines}</p>
+              <p className="mt-2 text-3xl font-semibold text-primary-600">{projectMetrics.upcomingDeadlines}</p>
             </div>
-            <div className="rounded-full bg-purple-100 p-3">
-              <Calendar className="h-6 w-6 text-purple-600" />
+            <div className="rounded-full bg-primary-100 p-3">
+              <Calendar className="h-6 w-6 text-primary-600" />
             </div>
           </div>
         </motion.div>
@@ -222,13 +222,13 @@ export function ProjectDashboard() {
           className="rounded-lg bg-white p-6 shadow-lg"
         >
           <h3 className="mb-4 flex items-center text-lg font-semibold text-gray-900">
-            <Brain className="mr-2 h-6 w-6 text-indigo-600" />
+            <Brain className="mr-2 h-6 w-6 text-primary-600" />
             AI Recommendations
           </h3>
           <div className="space-y-4">
-            <div className="rounded-lg bg-indigo-50 p-4">
-              <h4 className="font-medium text-indigo-900">Resource Optimization</h4>
-              <p className="mt-1 text-sm text-indigo-700">
+            <div className="rounded-lg bg-primary-50 p-4">
+              <h4 className="font-medium text-primary-900">Resource Optimization</h4>
+              <p className="mt-1 text-sm text-primary-700">
                 Consider reallocating 2 developers from Project A to Project B to meet the upcoming deadline.
               </p>
             </div>
@@ -238,9 +238,9 @@ export function ProjectDashboard() {
                 Schedule a review meeting for the high-risk components identified in Project C.
               </p>
             </div>
-            <div className="rounded-lg bg-purple-50 p-4">
-              <h4 className="font-medium text-purple-900">Timeline Optimization</h4>
-              <p className="mt-1 text-sm text-purple-700">
+            <div className="rounded-lg bg-primary-50 p-4">
+              <h4 className="font-medium text-primary-900">Timeline Optimization</h4>
+              <p className="mt-1 text-sm text-primary-700">
                 Based on current velocity, consider adjusting sprint capacity by 15%.
               </p>
             </div>
@@ -254,7 +254,7 @@ export function ProjectDashboard() {
           className="rounded-lg bg-white p-6 shadow-lg"
         >
           <h3 className="mb-4 flex items-center text-lg font-semibold text-gray-900">
-            <TrendingUp className="mr-2 h-6 w-6 text-indigo-600" />
+            <TrendingUp className="mr-2 h-6 w-6 text-primary-600" />
             Performance Metrics
           </h3>
           <div className="space-y-4">
@@ -271,18 +271,18 @@ export function ProjectDashboard() {
               <span className="text-sm text-gray-600">Code Quality</span>
               <div className="flex items-center">
                 <div className="h-2 w-32 overflow-hidden rounded-full bg-gray-200">
-                  <div className="h-full w-[92%] bg-indigo-500"></div>
+                  <div className="h-full w-[92%] bg-primary-500"></div>
                 </div>
-                <span className="ml-2 text-sm font-medium text-indigo-600">92%</span>
+                <span className="ml-2 text-sm font-medium text-primary-600">92%</span>
               </div>
             </div>
             <div className="flex items-center justify-between">
               <span className="text-sm text-gray-600">Team Satisfaction</span>
               <div className="flex items-center">
                 <div className="h-2 w-32 overflow-hidden rounded-full bg-gray-200">
-                  <div className="h-full w-[88%] bg-purple-500"></div>
+                  <div className="h-full w-[88%] bg-primary-500"></div>
                 </div>
-                <span className="ml-2 text-sm font-medium text-purple-600">88%</span>
+                <span className="ml-2 text-sm font-medium text-primary-600">88%</span>
               </div>
             </div>
           </div>
@@ -297,12 +297,12 @@ export function ProjectDashboard() {
         className="rounded-lg bg-white p-6 shadow-lg"
       >
         <h3 className="mb-4 flex items-center text-lg font-semibold text-gray-900">
-          <Clock className="mr-2 h-6 w-6 text-indigo-600" />
+          <Clock className="mr-2 h-6 w-6 text-primary-600" />
           Active Projects
         </h3>
         {isLoading ? (
           <div className="flex items-center justify-center py-8">
-            <div className="h-8 w-8 animate-spin rounded-full border-b-2 border-indigo-600"></div>
+            <div className="h-8 w-8 animate-spin rounded-full border-b-2 border-primary-600"></div>
           </div>
         ) : projects.length === 0 ? (
           <div className="py-8 text-center">
@@ -343,7 +343,7 @@ export function ProjectDashboard() {
                       <div className="flex space-x-2 ml-4">
                         <button
                           onClick={() => handleViewProject(project.id)}
-                          className="p-2 text-gray-400 hover:text-indigo-600 hover:bg-indigo-50 rounded-lg transition-colors"
+                          className="p-2 text-gray-400 hover:text-primary-600 hover:bg-primary-50 rounded-lg transition-colors"
                           title="View details"
                         >
                           <Eye className="h-4 w-4" />
@@ -417,7 +417,7 @@ export function ProjectDashboard() {
                   name="title"
                   required
                   defaultValue={currentProject?.title || ''}
-                  className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500"
+                  className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 focus:border-primary-500 focus:outline-none focus:ring-primary-500"
                 />
               </div>
 
@@ -430,7 +430,7 @@ export function ProjectDashboard() {
                   name="description"
                   rows={3}
                   defaultValue={currentProject?.description || ''}
-                  className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500"
+                  className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 focus:border-primary-500 focus:outline-none focus:ring-primary-500"
                 />
               </div>
 
@@ -443,7 +443,7 @@ export function ProjectDashboard() {
                     id="status"
                     name="status"
                     defaultValue={currentProject?.status || 'planning'}
-                    className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500"
+                    className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 focus:border-primary-500 focus:outline-none focus:ring-primary-500"
                   >
                     <option value="planning">Planning</option>
                     <option value="in_progress">In Progress</option>
@@ -461,7 +461,7 @@ export function ProjectDashboard() {
                     id="priority"
                     name="priority"
                     defaultValue={currentProject?.priority || 'medium'}
-                    className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500"
+                    className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 focus:border-primary-500 focus:outline-none focus:ring-primary-500"
                   >
                     <option value="low">Low</option>
                     <option value="medium">Medium</option>
@@ -480,7 +480,7 @@ export function ProjectDashboard() {
                     id="start_date"
                     name="start_date"
                     defaultValue={currentProject?.start_date || ''}
-                    className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500"
+                    className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 focus:border-primary-500 focus:outline-none focus:ring-primary-500"
                   />
                 </div>
 
@@ -493,7 +493,7 @@ export function ProjectDashboard() {
                     id="target_date"
                     name="target_date"
                     defaultValue={currentProject?.target_date || ''}
-                    className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500"
+                    className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 focus:border-primary-500 focus:outline-none focus:ring-primary-500"
                   />
                 </div>
               </div>
@@ -512,7 +512,7 @@ export function ProjectDashboard() {
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="rounded-md bg-indigo-600 px-4 py-2 text-white hover:bg-indigo-700 disabled:opacity-50"
+                  className="rounded-md bg-primary-600 px-4 py-2 text-white hover:bg-primary-700 disabled:opacity-50"
                 >
                   {isSubmitting ? 'Saving...' : editingProject ? 'Update Project' : 'Create Project'}
                 </button>
@@ -606,7 +606,7 @@ export function ProjectDashboard() {
                 <div className="flex items-center">
                   <div className="h-4 w-full overflow-hidden rounded-full bg-gray-200">
                     <div
-                      className="h-full bg-indigo-600 transition-all"
+                      className="h-full bg-primary-600 transition-all"
                       style={{ width: `${viewingProject.completion_percentage}%` }}
                     ></div>
                   </div>
@@ -647,7 +647,7 @@ export function ProjectDashboard() {
                     setSelectedProject(null);
                     handleEditProject(viewingProject);
                   }}
-                  className="flex items-center rounded-md bg-indigo-600 px-4 py-2 text-white hover:bg-indigo-700"
+                  className="flex items-center rounded-md bg-primary-600 px-4 py-2 text-white hover:bg-primary-700"
                 >
                   <Edit className="mr-2 h-4 w-4" />
                   Edit Project

@@ -39,7 +39,7 @@ export function GoalsList({ category, timeframe }: GoalsListProps) {
   const getCategoryColor = (type: string) => {
     switch (type) {
       case 'tasks':
-        return 'text-purple-600 bg-purple-100';
+        return 'text-primary-600 bg-primary-100';
       case 'health':
         return 'text-green-600 bg-green-100';
       case 'finance':
@@ -181,7 +181,7 @@ export function GoalsList({ category, timeframe }: GoalsListProps) {
                   <div
                     className={`h-full rounded-full ${
                       goal.progress >= 100 ? 'bg-green-500' :
-                      goal.progress >= 75 ? 'bg-indigo-500' :
+                      goal.progress >= 75 ? 'bg-primary-500' :
                       goal.progress >= 50 ? 'bg-yellow-500' :
                       'bg-red-500'
                     }`}

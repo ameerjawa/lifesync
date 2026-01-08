@@ -65,8 +65,8 @@ export function RoadCreator({ onSubmit, onClose }: RoadCreatorProps) {
       </button>
 
       <div className="mb-6 flex items-center">
-        <div className="mr-4 rounded-full bg-indigo-100 p-3">
-          <Map className="h-6 w-6 text-indigo-600" />
+        <div className="mr-4 rounded-full bg-primary-100 p-3">
+          <Map className="h-6 w-6 text-primary-600" />
         </div>
         <div>
           <h3 className="text-lg font-semibold text-gray-900">Create New Road</h3>
@@ -89,7 +89,7 @@ export function RoadCreator({ onSubmit, onClose }: RoadCreatorProps) {
             id="goal"
             value={road.goal_id}
             onChange={(e) => setRoad({ ...road, goal_id: e.target.value })}
-            className="mt-1 block w-full rounded-lg border border-gray-300 px-4 py-2 focus:border-indigo-500 focus:ring-indigo-500"
+            className="mt-1 block w-full rounded-lg border border-gray-300 px-4 py-2 focus:border-primary-500 focus:ring-primary-500"
             required
           >
             <option value="">Select a goal</option>
@@ -115,7 +115,7 @@ export function RoadCreator({ onSubmit, onClose }: RoadCreatorProps) {
             id="title"
             value={road.title}
             onChange={(e) => setRoad({ ...road, title: e.target.value })}
-            className="mt-1 block w-full rounded-lg border border-gray-300 px-4 py-2 focus:border-indigo-500 focus:ring-indigo-500"
+            className="mt-1 block w-full rounded-lg border border-gray-300 px-4 py-2 focus:border-primary-500 focus:ring-primary-500"
             required
           />
         </div>
@@ -128,7 +128,7 @@ export function RoadCreator({ onSubmit, onClose }: RoadCreatorProps) {
             id="description"
             value={road.description}
             onChange={(e) => setRoad({ ...road, description: e.target.value })}
-            className="mt-1 block w-full rounded-lg border border-gray-300 px-4 py-2 focus:border-indigo-500 focus:ring-indigo-500"
+            className="mt-1 block w-full rounded-lg border border-gray-300 px-4 py-2 focus:border-primary-500 focus:ring-primary-500"
             rows={3}
             required
           />
@@ -142,7 +142,7 @@ export function RoadCreator({ onSubmit, onClose }: RoadCreatorProps) {
             id="theme"
             value={road.theme}
             onChange={(e) => setRoad({ ...road, theme: e.target.value as Road['theme'] })}
-            className="mt-1 block w-full rounded-lg border border-gray-300 px-4 py-2 focus:border-indigo-500 focus:ring-indigo-500"
+            className="mt-1 block w-full rounded-lg border border-gray-300 px-4 py-2 focus:border-primary-500 focus:ring-primary-500"
           >
             <option value="futuristic">Futuristic</option>
             <option value="nature">Nature</option>
@@ -161,7 +161,7 @@ export function RoadCreator({ onSubmit, onClose }: RoadCreatorProps) {
           <button
             type="submit"
             disabled={isSubmitting || availableGoals.length === 0}
-            className="flex items-center rounded-lg bg-indigo-600 px-4 py-2 text-white hover:bg-indigo-500 disabled:opacity-50"
+            className="flex items-center rounded-lg bg-primary-600 px-4 py-2 text-white hover:bg-primary-500 disabled:opacity-50"
           >
             {isSubmitting ? (
               <div className="flex items-center">

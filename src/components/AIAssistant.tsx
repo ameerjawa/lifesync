@@ -58,7 +58,7 @@ function AIAssistantContent() {
 
         <button
           onClick={() => setIsOpen(true)}
-          className="flex h-12 w-12 items-center justify-center rounded-full bg-indigo-600 text-white shadow-lg hover:bg-indigo-500"
+          className="flex h-12 w-12 items-center justify-center rounded-full bg-primary-600 text-white shadow-lg hover:bg-primary-500"
         >
           <MessageSquare className="h-6 w-6" />
         </button>

@@ -57,7 +57,7 @@ function UpgradePage() {
   if (!user) {
     return (
       <div className="min-h-screen flex items-center justify-center">
-        <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-indigo-600"></div>
+        <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-primary-600"></div>
       </div>
     );
   }
@@ -142,7 +142,7 @@ function UpgradePage() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 className={`relative bg-white rounded-xl shadow-sm overflow-hidden cursor-pointer transition-all ${
-                  isSelected && isPaid ? 'ring-2 ring-indigo-600 shadow-lg' : ''
+                  isSelected && isPaid ? 'ring-2 ring-primary-600 shadow-lg' : ''
                 }`}
                 onClick={() => isPaid && setSelectedPlan(key as 'premium' | 'enterprise')}
               >
@@ -156,8 +156,8 @@ function UpgradePage() {
 
                 {isSelected && isPaid && (
                   <div className="absolute top-4 right-4">
-                    <div className="bg-indigo-100 rounded-full p-1">
-                      <CheckCircle className="w-5 h-5 text-indigo-600" />
+                    <div className="bg-primary-100 rounded-full p-1">
+                      <CheckCircle className="w-5 h-5 text-primary-600" />
                     </div>
                   </div>
                 )}
@@ -207,7 +207,7 @@ function UpgradePage() {
             <button
               onClick={handleUpgrade}
               disabled={isProcessing}
-              className="inline-flex items-center px-8 py-3 border border-transparent text-base font-medium rounded-lg text-white bg-indigo-600 hover:bg-indigo-700 disabled:opacity-50"
+              className="inline-flex items-center px-8 py-3 border border-transparent text-base font-medium rounded-lg text-white bg-primary-600 hover:bg-primary-700 disabled:opacity-50"
             >
               {isProcessing ? (
                 <div className="flex items-center">

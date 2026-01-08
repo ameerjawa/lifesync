@@ -164,8 +164,8 @@ export function Overview() {
                 ${financeMetrics.totalBalance.toLocaleString()}
               </p>
             </div>
-            <div className="rounded-full bg-indigo-100 p-3">
-              <Wallet className="h-6 w-6 text-indigo-600" />
+            <div className="rounded-full bg-primary-100 p-3">
+              <Wallet className="h-6 w-6 text-primary-600" />
             </div>
           </div>
         </motion.div>
@@ -183,8 +183,8 @@ export function Overview() {
                 ${financeMetrics.monthlySavings.toLocaleString()}
               </p>
             </div>
-            <div className="rounded-full bg-purple-100 p-3">
-              <TrendingUp className="h-6 w-6 text-purple-600" />
+            <div className="rounded-full bg-primary-100 p-3">
+              <TrendingUp className="h-6 w-6 text-primary-600" />
             </div>
           </div>
         </motion.div>
@@ -383,7 +383,7 @@ export function Overview() {
                   className="flex w-full items-center justify-between rounded-lg border p-4 hover:bg-gray-50 transition-colors"
                 >
                   <div className="flex items-center">
-                    <Wallet className="mr-3 h-5 w-5 text-indigo-500" />
+                    <Wallet className="mr-3 h-5 w-5 text-primary-500" />
                     <span className="font-medium text-gray-700">Add Transaction</span>
                   </div>
                   <Plus className="h-5 w-5 text-gray-400" />
@@ -393,7 +393,7 @@ export function Overview() {
                   <select
                     name="type"
                     required
-                    className="w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+                    className="w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500"
                   >
                     <option value="expense">Expense</option>
                     <option value="income">Income</option>
@@ -402,7 +402,7 @@ export function Overview() {
                     name="description"
                     placeholder="Description"
                     required
-                    className="w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+                    className="w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500"
                   />
                   <input
                     name="amount"
@@ -410,13 +410,13 @@ export function Overview() {
                     step="0.01"
                     placeholder="Amount"
                     required
-                    className="w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+                    className="w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500"
                   />
                   {accounts.length > 0 && (
                     <select
                       name="account_id"
                       required
-                      className="w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+                      className="w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500"
                     >
                       <option value="">Select account</option>
                       {accounts.map(account => (
@@ -430,7 +430,7 @@ export function Overview() {
                     <button
                       type="submit"
                       disabled={isSubmitting || accounts.length === 0}
-                      className="flex-1 px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 disabled:opacity-50"
+                      className="flex-1 px-4 py-2 bg-primary-600 text-white rounded-lg hover:bg-primary-700 disabled:opacity-50"
                     >
                       {isSubmitting ? 'Adding...' : 'Add'}
                     </button>

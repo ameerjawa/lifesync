@@ -99,7 +99,7 @@ export function RecurringTaskForm({ onSubmit, onClose }: RecurringTaskFormProps)
                 id="title"
                 value={task.title}
                 onChange={(e) => setTask({ ...task, title: e.target.value })}
-                className="mt-1 block w-full rounded-lg border border-gray-300 px-4 py-2 focus:border-indigo-500 focus:ring-indigo-500"
+                className="mt-1 block w-full rounded-lg border border-gray-300 px-4 py-2 focus:border-primary-500 focus:ring-primary-500"
                 required
               />
             </div>
@@ -112,7 +112,7 @@ export function RecurringTaskForm({ onSubmit, onClose }: RecurringTaskFormProps)
                 id="description"
                 value={task.description}
                 onChange={(e) => setTask({ ...task, description: e.target.value })}
-                className="mt-1 block w-full rounded-lg border border-gray-300 px-4 py-2 focus:border-indigo-500 focus:ring-indigo-500"
+                className="mt-1 block w-full rounded-lg border border-gray-300 px-4 py-2 focus:border-primary-500 focus:ring-primary-500"
                 rows={3}
               />
             </div>
@@ -125,7 +125,7 @@ export function RecurringTaskForm({ onSubmit, onClose }: RecurringTaskFormProps)
                 id="priority"
                 value={task.priority}
                 onChange={(e) => setTask({ ...task, priority: e.target.value as Task['priority'] })}
-                className="mt-1 block w-full rounded-lg border border-gray-300 px-4 py-2 focus:border-indigo-500 focus:ring-indigo-500"
+                className="mt-1 block w-full rounded-lg border border-gray-300 px-4 py-2 focus:border-primary-500 focus:ring-primary-500"
               >
                 <option value="low">Low</option>
                 <option value="medium">Medium</option>
@@ -142,7 +142,7 @@ export function RecurringTaskForm({ onSubmit, onClose }: RecurringTaskFormProps)
                 id="estimated_hours"
                 value={task.estimated_hours}
                 onChange={(e) => setTask({ ...task, estimated_hours: e.target.value })}
-                className="mt-1 block w-full rounded-lg border border-gray-300 px-4 py-2 focus:border-indigo-500 focus:ring-indigo-500"
+                className="mt-1 block w-full rounded-lg border border-gray-300 px-4 py-2 focus:border-primary-500 focus:ring-primary-500"
                 min="0"
                 step="0.5"
               />
@@ -160,7 +160,7 @@ export function RecurringTaskForm({ onSubmit, onClose }: RecurringTaskFormProps)
                   ...task,
                   labels: e.target.value.split(',').map(label => label.trim()).filter(Boolean)
                 })}
-                className="mt-1 block w-full rounded-lg border border-gray-300 px-4 py-2 focus:border-indigo-500 focus:ring-indigo-500"
+                className="mt-1 block w-full rounded-lg border border-gray-300 px-4 py-2 focus:border-primary-500 focus:ring-primary-500"
                 placeholder="Enter labels"
               />
             </div>
@@ -183,7 +183,7 @@ export function RecurringTaskForm({ onSubmit, onClose }: RecurringTaskFormProps)
                   // Reset days of week if not weekly
                   days_of_week: e.target.value === 'weekly' ? recurring.days_of_week : []
                 })}
-                className="mt-1 block w-full rounded-lg border border-gray-300 px-4 py-2 focus:border-indigo-500 focus:ring-indigo-500"
+                className="mt-1 block w-full rounded-lg border border-gray-300 px-4 py-2 focus:border-primary-500 focus:ring-primary-500"
               >
                 <option value="daily">Daily</option>
                 <option value="weekly">Weekly</option>
@@ -205,7 +205,7 @@ export function RecurringTaskForm({ onSubmit, onClose }: RecurringTaskFormProps)
                     ...recurring, 
                     interval_count: Math.max(1, parseInt(e.target.value) || 1)
                   })}
-                  className="block w-20 rounded-lg border border-gray-300 px-4 py-2 focus:border-indigo-500 focus:ring-indigo-500"
+                  className="block w-20 rounded-lg border border-gray-300 px-4 py-2 focus:border-primary-500 focus:ring-primary-500"
                   min="1"
                   required
                 />
@@ -234,7 +234,7 @@ export function RecurringTaskForm({ onSubmit, onClose }: RecurringTaskFormProps)
                             : recurring.days_of_week.filter(d => d !== day);
                           setRecurring({ ...recurring, days_of_week: days });
                         }}
-                        className="rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+                        className="rounded border-gray-300 text-primary-600 focus:ring-primary-500"
                       />
                       <span className="ml-2 capitalize">{day.slice(0, 3)}</span>
                     </label>
@@ -252,7 +252,7 @@ export function RecurringTaskForm({ onSubmit, onClose }: RecurringTaskFormProps)
                 id="start_date"
                 value={recurring.start_date}
                 onChange={(e) => setRecurring({ ...recurring, start_date: e.target.value })}
-                className="mt-1 block w-full rounded-lg border border-gray-300 px-4 py-2 focus:border-indigo-500 focus:ring-indigo-500"
+                className="mt-1 block w-full rounded-lg border border-gray-300 px-4 py-2 focus:border-primary-500 focus:ring-primary-500"
                 required
                 min={new Date().toISOString().split('T')[0]}
               />
@@ -267,7 +267,7 @@ export function RecurringTaskForm({ onSubmit, onClose }: RecurringTaskFormProps)
                 id="end_date"
                 value={recurring.end_date}
                 onChange={(e) => setRecurring({ ...recurring, end_date: e.target.value })}
-                className="mt-1 block w-full rounded-lg border border-gray-300 px-4 py-2 focus:border-indigo-500 focus:ring-indigo-500"
+                className="mt-1 block w-full rounded-lg border border-gray-300 px-4 py-2 focus:border-primary-500 focus:ring-primary-500"
                 min={recurring.start_date}
               />
             </div>
@@ -284,7 +284,7 @@ export function RecurringTaskForm({ onSubmit, onClose }: RecurringTaskFormProps)
           </button>
           <button
             type="submit"
-            className="rounded-lg bg-indigo-600 px-4 py-2 text-white hover:bg-indigo-500"
+            className="rounded-lg bg-primary-600 px-4 py-2 text-white hover:bg-primary-500"
           >
             Create Recurring Task
           </button>

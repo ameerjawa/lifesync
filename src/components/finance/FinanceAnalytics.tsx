@@ -200,7 +200,7 @@ export function FinanceAnalytics({
           <select
             value={selectedDateRange}
             onChange={(e) => onDateRangeChange(e.target.value as any)}
-            className="rounded-lg border-gray-300 text-sm focus:border-indigo-500 focus:ring-indigo-500"
+            className="rounded-lg border-gray-300 text-sm focus:border-primary-500 focus:ring-primary-500"
           >
             <option value="week">This Week</option>
             <option value="month">This Month</option>

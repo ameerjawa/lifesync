@@ -99,7 +99,7 @@ export function AccountForm({ onSubmit, onClose }: AccountFormProps) {
             id="name"
             value={account.name}
             onChange={(e) => setAccount({ ...account, name: e.target.value })}
-            className="mt-1 block w-full rounded-lg border border-gray-300 px-4 py-2 focus:border-indigo-500 focus:ring-indigo-500"
+            className="mt-1 block w-full rounded-lg border border-gray-300 px-4 py-2 focus:border-primary-500 focus:ring-primary-500"
             required
           />
         </div>
@@ -112,7 +112,7 @@ export function AccountForm({ onSubmit, onClose }: AccountFormProps) {
             id="type"
             value={account.type}
             onChange={(e) => setAccount({ ...account, type: e.target.value as Account['type'] })}
-            className="mt-1 block w-full rounded-lg border border-gray-300 px-4 py-2 focus:border-indigo-500 focus:ring-indigo-500"
+            className="mt-1 block w-full rounded-lg border border-gray-300 px-4 py-2 focus:border-primary-500 focus:ring-primary-500"
             required
           >
             <option value="checking">Checking</option>
@@ -137,7 +137,7 @@ export function AccountForm({ onSubmit, onClose }: AccountFormProps) {
               id="balance"
               value={account.balance}
               onChange={(e) => setAccount({ ...account, balance: e.target.value })}
-              className="block w-full rounded-lg border border-gray-300 pl-10 pr-4 py-2 focus:border-indigo-500 focus:ring-indigo-500"
+              className="block w-full rounded-lg border border-gray-300 pl-10 pr-4 py-2 focus:border-primary-500 focus:ring-primary-500"
               placeholder="0.00"
               step="0.01"
               required
@@ -153,7 +153,7 @@ export function AccountForm({ onSubmit, onClose }: AccountFormProps) {
             id="currency"
             value={account.currency}
             onChange={(e) => setAccount({ ...account, currency: e.target.value })}
-            className="mt-1 block w-full rounded-lg border border-gray-300 px-4 py-2 focus:border-indigo-500 focus:ring-indigo-500"
+            className="mt-1 block w-full rounded-lg border border-gray-300 px-4 py-2 focus:border-primary-500 focus:ring-primary-500"
             required
           >
             <option value="USD">USD - US Dollar</option>
@@ -174,7 +174,7 @@ export function AccountForm({ onSubmit, onClose }: AccountFormProps) {
             id="institution"
             value={account.institution}
             onChange={(e) => setAccount({ ...account, institution: e.target.value })}
-            className="mt-1 block w-full rounded-lg border border-gray-300 px-4 py-2 focus:border-indigo-500 focus:ring-indigo-500"
+            className="mt-1 block w-full rounded-lg border border-gray-300 px-4 py-2 focus:border-primary-500 focus:ring-primary-500"
             placeholder="Bank or institution name"
           />
         </div>
@@ -188,7 +188,7 @@ export function AccountForm({ onSubmit, onClose }: AccountFormProps) {
             id="account_number"
             value={account.account_number}
             onChange={(e) => setAccount({ ...account, account_number: e.target.value })}
-            className="mt-1 block w-full rounded-lg border border-gray-300 px-4 py-2 focus:border-indigo-500 focus:ring-indigo-500"
+            className="mt-1 block w-full rounded-lg border border-gray-300 px-4 py-2 focus:border-primary-500 focus:ring-primary-500"
             placeholder="Last 4 digits only"
           />
         </div>
@@ -199,7 +199,7 @@ export function AccountForm({ onSubmit, onClose }: AccountFormProps) {
             id="is_active"
             checked={account.is_active}
             onChange={(e) => setAccount({ ...account, is_active: e.target.checked })}
-            className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+            className="h-4 w-4 rounded border-gray-300 text-primary-600 focus:ring-primary-500"
           />
           <label htmlFor="is_active" className="ml-2 block text-sm text-gray-700">
             Account is active
@@ -217,7 +217,7 @@ export function AccountForm({ onSubmit, onClose }: AccountFormProps) {
           <button
             type="submit"
             disabled={isSubmitting}
-            className="rounded-lg bg-indigo-600 px-4 py-2 text-white hover:bg-indigo-500 disabled:opacity-50"
+            className="rounded-lg bg-primary-600 px-4 py-2 text-white hover:bg-primary-500 disabled:opacity-50"
           >
             {isSubmitting ? (
               <div className="flex items-center">

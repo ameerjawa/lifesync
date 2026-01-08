@@ -87,8 +87,8 @@ export function AdminOverview() {
           className="rounded-lg bg-white p-6 shadow-lg"
         >
           <div className="flex items-center">
-            <div className="rounded-full bg-indigo-100 p-3">
-              <Users className="h-6 w-6 text-indigo-600" />
+            <div className="rounded-full bg-primary-100 p-3">
+              <Users className="h-6 w-6 text-primary-600" />
             </div>
             <div className="ml-4">
               <p className="text-sm font-medium text-gray-500">Total Users</p>
@@ -123,8 +123,8 @@ export function AdminOverview() {
           className="rounded-lg bg-white p-6 shadow-lg"
         >
           <div className="flex items-center">
-            <div className="rounded-full bg-purple-100 p-3">
-              <TrendingUp className="h-6 w-6 text-purple-600" />
+            <div className="rounded-full bg-primary-100 p-3">
+              <TrendingUp className="h-6 w-6 text-primary-600" />
             </div>
             <div className="ml-4">
               <p className="text-sm font-medium text-gray-500">Conversion Rate</p>
@@ -159,13 +159,13 @@ export function AdminOverview() {
           className="rounded-lg bg-white p-6 shadow-lg"
         >
           <div className="flex items-center">
-            <div className="rounded-full bg-purple-100 p-3">
-              <Building className="h-6 w-6 text-purple-600" />
+            <div className="rounded-full bg-primary-100 p-3">
+              <Building className="h-6 w-6 text-primary-600" />
             </div>
             <div className="ml-4">
               <p className="text-sm font-medium text-gray-500">Business Accounts</p>
               <p className="text-2xl font-semibold text-gray-900">{businessStats.totalBusinesses}</p>
-              <p className="text-sm text-purple-600">{businessStats.activeBusinesses} active</p>
+              <p className="text-sm text-primary-600">{businessStats.activeBusinesses} active</p>
             </div>
           </div>
         </motion.div>
@@ -296,7 +296,7 @@ export function AdminOverview() {
                     <td className="px-6 py-4 whitespace-nowrap">
                       <span className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${
                         user.plan === 'premium' ? 'bg-green-100 text-green-800' :
-                        user.plan === 'enterprise' ? 'bg-purple-100 text-purple-800' :
+                        user.plan === 'enterprise' ? 'bg-primary-100 text-primary-800' :
                         'bg-gray-100 text-gray-800'
                       }`}>
                         {user.plan}

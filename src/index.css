@@ -1,3 +1,108 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  * {
+    @apply transition-colors duration-200;
+  }
+
+  body {
+    @apply bg-gradient-to-br from-slate-50 via-teal-50/30 to-emerald-50/30;
+  }
+
+  ::-webkit-scrollbar {
+    @apply w-2 h-2;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-slate-100;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-primary-400 rounded-full hover:bg-primary-500;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply bg-gradient-to-r from-primary-500 to-primary-600 text-white px-6 py-3 rounded-xl font-medium
+           shadow-lg shadow-primary-500/30 hover:shadow-xl hover:shadow-primary-500/40
+           hover:scale-105 active:scale-95 transition-all duration-200;
+  }
+
+  .btn-secondary {
+    @apply bg-gradient-to-r from-secondary-500 to-secondary-600 text-white px-6 py-3 rounded-xl font-medium
+           shadow-lg shadow-secondary-500/30 hover:shadow-xl hover:shadow-secondary-500/40
+           hover:scale-105 active:scale-95 transition-all duration-200;
+  }
+
+  .card {
+    @apply bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg border border-slate-200/50
+           hover:shadow-xl hover:border-primary-200/50 transition-all duration-300;
+  }
+
+  .card-hover {
+    @apply card hover:-translate-y-1 hover:shadow-2xl;
+  }
+
+  .input-primary {
+    @apply w-full px-4 py-3 rounded-xl border-2 border-slate-200
+           focus:border-primary-400 focus:ring-4 focus:ring-primary-100
+           bg-white/50 backdrop-blur-sm transition-all duration-200
+           placeholder:text-slate-400;
+  }
+
+  .badge-primary {
+    @apply px-3 py-1 rounded-full text-xs font-semibold bg-gradient-to-r from-primary-100 to-primary-200
+           text-primary-700 border border-primary-300/50;
+  }
+
+  .badge-secondary {
+    @apply px-3 py-1 rounded-full text-xs font-semibold bg-gradient-to-r from-secondary-100 to-secondary-200
+           text-secondary-700 border border-secondary-300/50;
+  }
+
+  .gradient-text {
+    @apply bg-gradient-to-r from-primary-600 via-accent-600 to-secondary-600 bg-clip-text text-transparent;
+  }
+
+  .glass-effect {
+    @apply bg-white/30 backdrop-blur-md border border-white/40 shadow-xl;
+  }
+
+  .hover-lift {
+    @apply transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl;
+  }
+
+  .shimmer-effect {
+    @apply relative overflow-hidden;
+  }
+
+  .shimmer-effect::after {
+    content: '';
+    @apply absolute inset-0 bg-gradient-shimmer animate-shimmer;
+  }
+}
+
+@layer utilities {
+  .text-shadow {
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+
+  .text-shadow-lg {
+    text-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  }
+
+  .glow-primary {
+    box-shadow: 0 0 20px rgba(20, 184, 166, 0.4);
+  }
+
+  .glow-secondary {
+    box-shadow: 0 0 20px rgba(16, 185, 129, 0.4);
+  }
+
+  .border-gradient {
+    border-image: linear-gradient(to right, #14b8a6, #10b981) 1;
+  }
+}

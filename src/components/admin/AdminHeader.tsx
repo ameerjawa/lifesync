@@ -31,7 +31,7 @@ export function AdminHeader({ activeTab, onTabChange }: AdminHeaderProps) {
             onClick={() => onTabChange('features')}
             className={`flex items-center px-4 py-2 rounded-lg ${
               activeTab === 'features'
-                ? 'bg-indigo-600 text-white'
+                ? 'bg-primary-600 text-white'
                 : 'text-gray-600 hover:bg-gray-100'
             }`}
           >
@@ -42,7 +42,7 @@ export function AdminHeader({ activeTab, onTabChange }: AdminHeaderProps) {
             onClick={() => onTabChange('plans')}
             className={`flex items-center px-4 py-2 rounded-lg ${
               activeTab === 'plans'
-                ? 'bg-indigo-600 text-white'
+                ? 'bg-primary-600 text-white'
                 : 'text-gray-600 hover:bg-gray-100'
             }`}
           >
@@ -53,7 +53,7 @@ export function AdminHeader({ activeTab, onTabChange }: AdminHeaderProps) {
             onClick={() => onTabChange('users')}
             className={`flex items-center px-4 py-2 rounded-lg ${
               activeTab === 'users'
-                ? 'bg-indigo-600 text-white'
+                ? 'bg-primary-600 text-white'
                 : 'text-gray-600 hover:bg-gray-100'
             }`}
           >

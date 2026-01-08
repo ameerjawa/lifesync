@@ -32,7 +32,7 @@ export function ProfileSettings({
               <User className="h-full w-full p-4 text-gray-400" />
             )}
           </div>
-          <label className="absolute bottom-0 right-0 cursor-pointer rounded-full bg-indigo-600 p-2 text-white hover:bg-indigo-500">
+          <label className="absolute bottom-0 right-0 cursor-pointer rounded-full bg-primary-600 p-2 text-white hover:bg-primary-500">
             <Camera className="h-4 w-4" />
             <input
               type="file"
@@ -59,7 +59,7 @@ export function ProfileSettings({
             id="fullName"
             value={formData.full_name}
             onChange={(e) => setFormData({ ...formData, full_name: e.target.value })}
-            className="mt-1 block w-full rounded-lg border border-gray-300 px-4 py-2 focus:border-indigo-500 focus:ring-indigo-500"
+            className="mt-1 block w-full rounded-lg border border-gray-300 px-4 py-2 focus:border-primary-500 focus:ring-primary-500"
           />
         </div>
 
@@ -94,7 +94,7 @@ export function ProfileSettings({
               id="company"
               value={formData.company}
               onChange={(e) => setFormData({ ...formData, company: e.target.value })}
-              className="block w-full rounded-r-lg border-0 px-4 py-2 focus:border-indigo-500 focus:ring-indigo-500"
+              className="block w-full rounded-r-lg border-0 px-4 py-2 focus:border-primary-500 focus:ring-primary-500"
             />
           </div>
         </div>
@@ -112,7 +112,7 @@ export function ProfileSettings({
               id="phone"
               value={formData.phone}
               onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-              className="block w-full rounded-r-lg border-0 px-4 py-2 focus:border-indigo-500 focus:ring-indigo-500"
+              className="block w-full rounded-r-lg border-0 px-4 py-2 focus:border-primary-500 focus:ring-primary-500"
             />
           </div>
         </div>
@@ -130,7 +130,7 @@ export function ProfileSettings({
               id="website"
               value={formData.website}
               onChange={(e) => setFormData({ ...formData, website: e.target.value })}
-              className="block w-full rounded-r-lg border-0 px-4 py-2 focus:border-indigo-500 focus:ring-indigo-500"
+              className="block w-full rounded-r-lg border-0 px-4 py-2 focus:border-primary-500 focus:ring-primary-500"
             />
           </div>
         </div>
@@ -148,7 +148,7 @@ export function ProfileSettings({
               id="address"
               value={formData.address}
               onChange={(e) => setFormData({ ...formData, address: e.target.value })}
-              className="block w-full rounded-r-lg border-0 px-4 py-2 focus:border-indigo-500 focus:ring-indigo-500"
+              className="block w-full rounded-r-lg border-0 px-4 py-2 focus:border-primary-500 focus:ring-primary-500"
             />
           </div>
         </div>
@@ -165,7 +165,7 @@ export function ProfileSettings({
               id="timezone"
               value={formData.timezone}
               onChange={(e) => setFormData({ ...formData, timezone: e.target.value })}
-              className="block w-full rounded-r-lg border-0 px-4 py-2 focus:border-indigo-500 focus:ring-indigo-500"
+              className="block w-full rounded-r-lg border-0 px-4 py-2 focus:border-primary-500 focus:ring-primary-500"
             >
               {Intl.supportedValuesOf('timeZone').map((tz) => (
                 <option key={tz} value={tz}>{tz}</option>
@@ -186,7 +186,7 @@ export function ProfileSettings({
               id="language"
               value={formData.language}
               onChange={(e) => setFormData({ ...formData, language: e.target.value })}
-              className="block w-full rounded-r-lg border-0 px-4 py-2 focus:border-indigo-500 focus:ring-indigo-500"
+              className="block w-full rounded-r-lg border-0 px-4 py-2 focus:border-primary-500 focus:ring-primary-500"
             >
               <option value="en">English</option>
               <option value="es">Español</option>

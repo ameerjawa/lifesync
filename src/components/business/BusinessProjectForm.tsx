@@ -68,8 +68,8 @@ export function BusinessProjectForm({ clients, project: existingProject, onSubmi
       </button>
 
       <div className="mb-6 flex items-center">
-        <div className="mr-4 rounded-full bg-indigo-100 p-3">
-          <Target className="h-6 w-6 text-indigo-600" />
+        <div className="mr-4 rounded-full bg-primary-100 p-3">
+          <Target className="h-6 w-6 text-primary-600" />
         </div>
         <div>
           <h3 className="text-lg font-semibold text-gray-900">
@@ -98,7 +98,7 @@ export function BusinessProjectForm({ clients, project: existingProject, onSubmi
               id="name"
               value={project.name}
               onChange={(e) => setProject({ ...project, name: e.target.value })}
-              className="mt-1 block w-full rounded-lg border border-gray-300 px-4 py-2 focus:border-indigo-500 focus:ring-indigo-500"
+              className="mt-1 block w-full rounded-lg border border-gray-300 px-4 py-2 focus:border-primary-500 focus:ring-primary-500"
               required
             />
           </div>
@@ -111,7 +111,7 @@ export function BusinessProjectForm({ clients, project: existingProject, onSubmi
               id="client"
               value={project.client_id}
               onChange={(e) => setProject({ ...project, client_id: e.target.value })}
-              className="mt-1 block w-full rounded-lg border border-gray-300 px-4 py-2 focus:border-indigo-500 focus:ring-indigo-500"
+              className="mt-1 block w-full rounded-lg border border-gray-300 px-4 py-2 focus:border-primary-500 focus:ring-primary-500"
             >
               <option value="">Select Client</option>
               {clients.map((client) => (
@@ -130,7 +130,7 @@ export function BusinessProjectForm({ clients, project: existingProject, onSubmi
               id="status"
               value={project.status}
               onChange={(e) => setProject({ ...project, status: e.target.value as any })}
-              className="mt-1 block w-full rounded-lg border border-gray-300 px-4 py-2 focus:border-indigo-500 focus:ring-indigo-500"
+              className="mt-1 block w-full rounded-lg border border-gray-300 px-4 py-2 focus:border-primary-500 focus:ring-primary-500"
             >
               <option value="planning">Planning</option>
               <option value="active">Active</option>
@@ -148,7 +148,7 @@ export function BusinessProjectForm({ clients, project: existingProject, onSubmi
               id="priority"
               value={project.priority}
               onChange={(e) => setProject({ ...project, priority: e.target.value as any })}
-              className="mt-1 block w-full rounded-lg border border-gray-300 px-4 py-2 focus:border-indigo-500 focus:ring-indigo-500"
+              className="mt-1 block w-full rounded-lg border border-gray-300 px-4 py-2 focus:border-primary-500 focus:ring-primary-500"
             >
               <option value="low">Low</option>
               <option value="medium">Medium</option>
@@ -170,7 +170,7 @@ export function BusinessProjectForm({ clients, project: existingProject, onSubmi
                 id="start_date"
                 value={project.start_date}
                 onChange={(e) => setProject({ ...project, start_date: e.target.value })}
-                className="block w-full rounded-lg border border-gray-300 pl-10 pr-4 py-2 focus:border-indigo-500 focus:ring-indigo-500"
+                className="block w-full rounded-lg border border-gray-300 pl-10 pr-4 py-2 focus:border-primary-500 focus:ring-primary-500"
               />
             </div>
           </div>
@@ -188,7 +188,7 @@ export function BusinessProjectForm({ clients, project: existingProject, onSubmi
                 id="due_date"
                 value={project.due_date}
                 onChange={(e) => setProject({ ...project, due_date: e.target.value })}
-                className="block w-full rounded-lg border border-gray-300 pl-10 pr-4 py-2 focus:border-indigo-500 focus:ring-indigo-500"
+                className="block w-full rounded-lg border border-gray-300 pl-10 pr-4 py-2 focus:border-primary-500 focus:ring-primary-500"
                 min={project.start_date}
               />
             </div>
@@ -203,7 +203,7 @@ export function BusinessProjectForm({ clients, project: existingProject, onSubmi
             id="description"
             value={project.description}
             onChange={(e) => setProject({ ...project, description: e.target.value })}
-            className="mt-1 block w-full rounded-lg border border-gray-300 px-4 py-2 focus:border-indigo-500 focus:ring-indigo-500"
+            className="mt-1 block w-full rounded-lg border border-gray-300 px-4 py-2 focus:border-primary-500 focus:ring-primary-500"
             rows={3}
           />
         </div>
@@ -221,7 +221,7 @@ export function BusinessProjectForm({ clients, project: existingProject, onSubmi
               id="budget"
               value={project.budget}
               onChange={(e) => setProject({ ...project, budget: e.target.value })}
-              className="block w-full rounded-lg border border-gray-300 pl-10 pr-4 py-2 focus:border-indigo-500 focus:ring-indigo-500"
+              className="block w-full rounded-lg border border-gray-300 pl-10 pr-4 py-2 focus:border-primary-500 focus:ring-primary-500"
               min="0"
               step="0.01"
             />
@@ -240,7 +240,7 @@ export function BusinessProjectForm({ clients, project: existingProject, onSubmi
               ...project,
               tags: e.target.value.split(',').map(tag => tag.trim()).filter(Boolean)
             })}
-            className="mt-1 block w-full rounded-lg border border-gray-300 px-4 py-2 focus:border-indigo-500 focus:ring-indigo-500"
+            className="mt-1 block w-full rounded-lg border border-gray-300 px-4 py-2 focus:border-primary-500 focus:ring-primary-500"
             placeholder="web development, mobile app, design"
           />
         </div>
@@ -256,7 +256,7 @@ export function BusinessProjectForm({ clients, project: existingProject, onSubmi
           <button
             type="submit"
             disabled={isSubmitting}
-            className="flex items-center rounded-lg bg-indigo-600 px-4 py-2 text-white hover:bg-indigo-500 disabled:opacity-50"
+            className="flex items-center rounded-lg bg-primary-600 px-4 py-2 text-white hover:bg-primary-500 disabled:opacity-50"
           >
             {isSubmitting ? (
               <div className="flex items-center">

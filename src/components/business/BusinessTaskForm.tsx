@@ -69,8 +69,8 @@ export function BusinessTaskForm({ projects, teamMembers, onSubmit, onClose }: B
       </button>
 
       <div className="mb-6 flex items-center">
-        <div className="mr-4 rounded-full bg-indigo-100 p-3">
-          <Briefcase className="h-6 w-6 text-indigo-600" />
+        <div className="mr-4 rounded-full bg-primary-100 p-3">
+          <Briefcase className="h-6 w-6 text-primary-600" />
         </div>
         <div>
           <h3 className="text-lg font-semibold text-gray-900">Create New Task</h3>
@@ -95,7 +95,7 @@ export function BusinessTaskForm({ projects, teamMembers, onSubmit, onClose }: B
               id="title"
               value={task.title}
               onChange={(e) => setTask({ ...task, title: e.target.value })}
-              className="mt-1 block w-full rounded-lg border border-gray-300 px-4 py-2 focus:border-indigo-500 focus:ring-indigo-500"
+              className="mt-1 block w-full rounded-lg border border-gray-300 px-4 py-2 focus:border-primary-500 focus:ring-primary-500"
               required
             />
           </div>
@@ -108,7 +108,7 @@ export function BusinessTaskForm({ projects, teamMembers, onSubmit, onClose }: B
               id="project"
               value={task.project_id}
               onChange={(e) => setTask({ ...task, project_id: e.target.value })}
-              className="mt-1 block w-full rounded-lg border border-gray-300 px-4 py-2 focus:border-indigo-500 focus:ring-indigo-500"
+              className="mt-1 block w-full rounded-lg border border-gray-300 px-4 py-2 focus:border-primary-500 focus:ring-primary-500"
             >
               <option value="">No Project</option>
               {projects.map((project) => (
@@ -127,7 +127,7 @@ export function BusinessTaskForm({ projects, teamMembers, onSubmit, onClose }: B
               id="assignee"
               value={task.assignee_id}
               onChange={(e) => setTask({ ...task, assignee_id: e.target.value })}
-              className="mt-1 block w-full rounded-lg border border-gray-300 px-4 py-2 focus:border-indigo-500 focus:ring-indigo-500"
+              className="mt-1 block w-full rounded-lg border border-gray-300 px-4 py-2 focus:border-primary-500 focus:ring-primary-500"
             >
               <option value="">Unassigned</option>
               {teamMembers.map((member) => (
@@ -146,7 +146,7 @@ export function BusinessTaskForm({ projects, teamMembers, onSubmit, onClose }: B
               id="priority"
               value={task.priority}
               onChange={(e) => setTask({ ...task, priority: e.target.value as any })}
-              className="mt-1 block w-full rounded-lg border border-gray-300 px-4 py-2 focus:border-indigo-500 focus:ring-indigo-500"
+              className="mt-1 block w-full rounded-lg border border-gray-300 px-4 py-2 focus:border-primary-500 focus:ring-primary-500"
             >
               <option value="low">Low</option>
               <option value="medium">Medium</option>
@@ -168,7 +168,7 @@ export function BusinessTaskForm({ projects, teamMembers, onSubmit, onClose }: B
                 id="due_date"
                 value={task.due_date}
                 onChange={(e) => setTask({ ...task, due_date: e.target.value })}
-                className="block w-full rounded-lg border border-gray-300 pl-10 pr-4 py-2 focus:border-indigo-500 focus:ring-indigo-500"
+                className="block w-full rounded-lg border border-gray-300 pl-10 pr-4 py-2 focus:border-primary-500 focus:ring-primary-500"
               />
             </div>
           </div>
@@ -186,7 +186,7 @@ export function BusinessTaskForm({ projects, teamMembers, onSubmit, onClose }: B
                 id="estimated_hours"
                 value={task.estimated_hours}
                 onChange={(e) => setTask({ ...task, estimated_hours: e.target.value })}
-                className="block w-full rounded-lg border border-gray-300 pl-10 pr-4 py-2 focus:border-indigo-500 focus:ring-indigo-500"
+                className="block w-full rounded-lg border border-gray-300 pl-10 pr-4 py-2 focus:border-primary-500 focus:ring-primary-500"
                 min="0"
                 step="0.5"
               />
@@ -202,7 +202,7 @@ export function BusinessTaskForm({ projects, teamMembers, onSubmit, onClose }: B
             id="description"
             value={task.description}
             onChange={(e) => setTask({ ...task, description: e.target.value })}
-            className="mt-1 block w-full rounded-lg border border-gray-300 px-4 py-2 focus:border-indigo-500 focus:ring-indigo-500"
+            className="mt-1 block w-full rounded-lg border border-gray-300 px-4 py-2 focus:border-primary-500 focus:ring-primary-500"
             rows={3}
           />
         </div>
@@ -215,7 +215,7 @@ export function BusinessTaskForm({ projects, teamMembers, onSubmit, onClose }: B
               id="billable"
               checked={task.billable}
               onChange={(e) => setTask({ ...task, billable: e.target.checked })}
-              className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+              className="h-4 w-4 rounded border-gray-300 text-primary-600 focus:ring-primary-500"
             />
             <label htmlFor="billable" className="ml-2 block text-sm font-medium text-gray-700">
               This is a billable task
@@ -236,7 +236,7 @@ export function BusinessTaskForm({ projects, teamMembers, onSubmit, onClose }: B
                   id="hourly_rate"
                   value={task.hourly_rate}
                   onChange={(e) => setTask({ ...task, hourly_rate: e.target.value })}
-                  className="block w-full rounded-lg border border-gray-300 pl-10 pr-4 py-2 focus:border-indigo-500 focus:ring-indigo-500"
+                  className="block w-full rounded-lg border border-gray-300 pl-10 pr-4 py-2 focus:border-primary-500 focus:ring-primary-500"
                   min="0"
                   step="0.01"
                 />
@@ -257,7 +257,7 @@ export function BusinessTaskForm({ projects, teamMembers, onSubmit, onClose }: B
               ...task,
               tags: e.target.value.split(',').map(tag => tag.trim()).filter(Boolean)
             })}
-            className="mt-1 block w-full rounded-lg border border-gray-300 px-4 py-2 focus:border-indigo-500 focus:ring-indigo-500"
+            className="mt-1 block w-full rounded-lg border border-gray-300 px-4 py-2 focus:border-primary-500 focus:ring-primary-500"
             placeholder="development, design, testing"
           />
         </div>
@@ -273,7 +273,7 @@ export function BusinessTaskForm({ projects, teamMembers, onSubmit, onClose }: B
           <button
             type="submit"
             disabled={isSubmitting}
-            className="flex items-center rounded-lg bg-indigo-600 px-4 py-2 text-white hover:bg-indigo-500 disabled:opacity-50"
+            className="flex items-center rounded-lg bg-primary-600 px-4 py-2 text-white hover:bg-primary-500 disabled:opacity-50"
           >
             {isSubmitting ? (
               <div className="flex items-center">

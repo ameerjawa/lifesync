@@ -98,9 +98,9 @@ export function InsightsView() {
     <div className="space-y-6">
       <div className="grid grid-cols-2 gap-4">
         {metricData.map((metric, index) => (
-          <div key={index} className="rounded-lg bg-indigo-50 p-4">
-            <h4 className="font-medium text-indigo-900">{metric.label}</h4>
-            <p className="mt-2 text-2xl font-bold text-indigo-600">
+          <div key={index} className="rounded-lg bg-primary-50 p-4">
+            <h4 className="font-medium text-primary-900">{metric.label}</h4>
+            <p className="mt-2 text-2xl font-bold text-primary-600">
               {metric.value}
             </p>
           </div>
@@ -112,7 +112,7 @@ export function InsightsView() {
         <div className="space-y-2">
           {insights.map((insight, index) => (
             <div key={index} className="flex items-start space-x-2 text-sm">
-              <Brain className="h-5 w-5 text-indigo-600 flex-shrink-0" />
+              <Brain className="h-5 w-5 text-primary-600 flex-shrink-0" />
               <p className="text-gray-600">{insight}</p>
             </div>
           ))}

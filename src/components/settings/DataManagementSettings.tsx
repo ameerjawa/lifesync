@@ -15,7 +15,7 @@ export function DataManagementSettings() {
         {/* Data Export */}
         <div className="rounded-lg border border-gray-200 p-4">
           <h4 className="flex items-center text-sm font-medium text-gray-900">
-            <Download className="mr-2 h-5 w-5 text-indigo-600" />
+            <Download className="mr-2 h-5 w-5 text-primary-600" />
             Export Your Data
           </h4>
           <p className="mt-1 text-sm text-gray-500">
@@ -24,13 +24,13 @@ export function DataManagementSettings() {
           <div className="mt-4 space-y-4">
             <div className="flex items-center justify-between">
               <span className="text-sm text-gray-700">Complete data export</span>
-              <button className="rounded-lg bg-indigo-600 px-4 py-2 text-sm text-white hover:bg-indigo-500">
+              <button className="rounded-lg bg-primary-600 px-4 py-2 text-sm text-white hover:bg-primary-500">
                 Export All Data
               </button>
             </div>
             <div className="flex items-center justify-between">
               <span className="text-sm text-gray-700">Export specific data</span>
-              <select className="rounded-lg border border-gray-300 px-4 py-2 focus:border-indigo-500 focus:ring-indigo-500">
+              <select className="rounded-lg border border-gray-300 px-4 py-2 focus:border-primary-500 focus:ring-primary-500">
                 <option value="tasks">Tasks</option>
                 <option value="health">Health Data</option>
                 <option value="finance">Financial Data</option>
@@ -42,7 +42,7 @@ export function DataManagementSettings() {
         {/* Data Import */}
         <div className="rounded-lg border border-gray-200 p-4">
           <h4 className="flex items-center text-sm font-medium text-gray-900">
-            <Upload className="mr-2 h-5 w-5 text-indigo-600" />
+            <Upload className="mr-2 h-5 w-5 text-primary-600" />
             Import Data
           </h4>
           <p className="mt-1 text-sm text-gray-500">
@@ -53,7 +53,7 @@ export function DataManagementSettings() {
               <span className="sr-only">Choose file</span>
               <input
                 type="file"
-                className="block w-full text-sm text-gray-500 file:mr-4 file:rounded-full file:border-0 file:bg-indigo-50 file:px-4 file:py-2 file:text-sm file:font-semibold file:text-indigo-600 hover:file:bg-indigo-100"
+                className="block w-full text-sm text-gray-500 file:mr-4 file:rounded-full file:border-0 file:bg-primary-50 file:px-4 file:py-2 file:text-sm file:font-semibold file:text-primary-600 hover:file:bg-primary-100"
               />
             </label>
           </div>
@@ -62,7 +62,7 @@ export function DataManagementSettings() {
         {/* Data Retention */}
         <div className="rounded-lg border border-gray-200 p-4">
           <h4 className="flex items-center text-sm font-medium text-gray-900">
-            <Database className="mr-2 h-5 w-5 text-indigo-600" />
+            <Database className="mr-2 h-5 w-5 text-primary-600" />
             Data Retention
           </h4>
           <p className="mt-1 text-sm text-gray-500">
@@ -73,7 +73,7 @@ export function DataManagementSettings() {
               <label className="block text-sm text-gray-700">
                 Keep activity history for
               </label>
-              <select className="mt-1 block w-full rounded-lg border border-gray-300 px-4 py-2 focus:border-indigo-500 focus:ring-indigo-500">
+              <select className="mt-1 block w-full rounded-lg border border-gray-300 px-4 py-2 focus:border-primary-500 focus:ring-primary-500">
                 <option value="30">30 days</option>
                 <option value="90">90 days</option>
                 <option value="180">180 days</option>
@@ -84,7 +84,7 @@ export function DataManagementSettings() {
             <label className="flex items-center">
               <input
                 type="checkbox"
-                className="rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+                className="rounded border-gray-300 text-primary-600 focus:ring-primary-500"
               />
               <span className="ml-2 text-sm text-gray-700">
                 Automatically delete inactive data

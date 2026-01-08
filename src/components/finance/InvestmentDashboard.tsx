@@ -127,7 +127,7 @@ export function InvestmentDashboard({ investments, onAddInvestment }: Investment
                 onClick={() => setSelectedTimeframe(timeframe as any)}
                 className={`rounded-lg px-2 py-1 text-sm ${
                   selectedTimeframe === timeframe
-                    ? 'bg-indigo-600 text-white'
+                    ? 'bg-primary-600 text-white'
                     : 'text-gray-600 hover:bg-gray-100'
                 }`}
               >
@@ -152,7 +152,7 @@ export function InvestmentDashboard({ investments, onAddInvestment }: Investment
             onClick={() => setActiveView('portfolio')}
             className={`flex items-center rounded-lg px-4 py-2 ${
               activeView === 'portfolio'
-                ? 'bg-indigo-600 text-white'
+                ? 'bg-primary-600 text-white'
                 : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
             }`}
           >
@@ -163,7 +163,7 @@ export function InvestmentDashboard({ investments, onAddInvestment }: Investment
             onClick={() => setActiveView('allocation')}
             className={`flex items-center rounded-lg px-4 py-2 ${
               activeView === 'allocation'
-                ? 'bg-indigo-600 text-white'
+                ? 'bg-primary-600 text-white'
                 : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
             }`}
           >
@@ -174,7 +174,7 @@ export function InvestmentDashboard({ investments, onAddInvestment }: Investment
             onClick={() => setActiveView('performance')}
             className={`flex items-center rounded-lg px-4 py-2 ${
               activeView === 'performance'
-                ? 'bg-indigo-600 text-white'
+                ? 'bg-primary-600 text-white'
                 : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
             }`}
           >
@@ -185,7 +185,7 @@ export function InvestmentDashboard({ investments, onAddInvestment }: Investment
             onClick={() => setActiveView('history')}
             className={`flex items-center rounded-lg px-4 py-2 ${
               activeView === 'history'
-                ? 'bg-indigo-600 text-white'
+                ? 'bg-primary-600 text-white'
                 : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
             }`}
           >
@@ -195,7 +195,7 @@ export function InvestmentDashboard({ investments, onAddInvestment }: Investment
         </div>
         <button
           onClick={() => setIsAddingInvestment(true)}
-          className="flex items-center rounded-lg bg-indigo-600 px-4 py-2 text-white hover:bg-indigo-500"
+          className="flex items-center rounded-lg bg-primary-600 px-4 py-2 text-white hover:bg-primary-500"
         >
           <Plus className="mr-2 h-5 w-5" />
           Add Investment

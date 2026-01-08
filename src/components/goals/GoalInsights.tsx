@@ -58,7 +58,7 @@ export function GoalInsights({ category }: GoalInsightsProps) {
       case 'warning':
         return 'text-orange-600 bg-orange-100';
       case 'suggestion':
-        return 'text-purple-600 bg-purple-100';
+        return 'text-primary-600 bg-primary-100';
       default:
         return 'text-gray-600 bg-gray-100';
     }

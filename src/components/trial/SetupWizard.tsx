@@ -46,13 +46,13 @@ export function SetupWizard() {
         <div className="mb-8">
           <div className="flex items-center justify-between mb-2">
             <span className="text-sm font-medium text-gray-700">Setup Progress</span>
-            <span className="text-sm font-medium text-indigo-600">{setupProgress}%</span>
+            <span className="text-sm font-medium text-primary-600">{setupProgress}%</span>
           </div>
           <div className="h-2 bg-gray-200 rounded-full">
             <motion.div
               initial={{ width: 0 }}
               animate={{ width: `${setupProgress}%` }}
-              className="h-full bg-indigo-600 rounded-full"
+              className="h-full bg-primary-600 rounded-full"
             />
           </div>
         </div>
@@ -66,8 +66,8 @@ export function SetupWizard() {
             className="bg-white rounded-lg shadow-sm p-6"
           >
             <div className="flex items-center mb-4">
-              <div className="w-8 h-8 rounded-full bg-indigo-100 flex items-center justify-center mr-3">
-                <Brain className="w-5 h-5 text-indigo-600" />
+              <div className="w-8 h-8 rounded-full bg-primary-100 flex items-center justify-center mr-3">
+                <Brain className="w-5 h-5 text-primary-600" />
               </div>
               <h3 className="text-lg font-semibold text-gray-900">Create Your First Task</h3>
               {setupProgress >= 33 && (
@@ -79,11 +79,11 @@ export function SetupWizard() {
                 <input
                   type="text"
                   placeholder="What would you like to accomplish?"
-                  className="w-full rounded-lg border-gray-300 focus:border-indigo-500 focus:ring-indigo-500"
+                  className="w-full rounded-lg border-gray-300 focus:border-primary-500 focus:ring-primary-500"
                 />
                 <button
                   onClick={() => handleTaskCreation({ title: 'Sample Task' })}
-                  className="w-full flex items-center justify-center px-4 py-2 border border-transparent rounded-lg shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700"
+                  className="w-full flex items-center justify-center px-4 py-2 border border-transparent rounded-lg shadow-sm text-sm font-medium text-white bg-primary-600 hover:bg-primary-700"
                 >
                   Create Task
                   <ArrowRight className="ml-2 w-4 h-4" />
@@ -112,7 +112,7 @@ export function SetupWizard() {
                 <input
                   type="number"
                   placeholder="Monthly budget amount"
-                  className="w-full rounded-lg border-gray-300 focus:border-indigo-500 focus:ring-indigo-500"
+                  className="w-full rounded-lg border-gray-300 focus:border-primary-500 focus:ring-primary-500"
                 />
                 <button
                   onClick={() => handleBudgetCreation({ amount: 1000 })}
@@ -142,7 +142,7 @@ export function SetupWizard() {
             </div>
             {currentStep === 3 && (
               <div className="space-y-4">
-                <select className="w-full rounded-lg border-gray-300 focus:border-indigo-500 focus:ring-indigo-500">
+                <select className="w-full rounded-lg border-gray-300 focus:border-primary-500 focus:ring-primary-500">
                   <option value="">Select a goal type</option>
                   <option value="weight">Weight Goal</option>
                   <option value="steps">Daily Steps</option>
@@ -165,11 +165,11 @@ export function SetupWizard() {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="mt-8 bg-gradient-to-r from-indigo-600 to-purple-600 rounded-lg shadow-lg p-6 text-white"
+            className="mt-8 bg-gradient-to-r from-primary-600 to-primary-600 rounded-lg shadow-lg p-6 text-white"
           >
             <h3 className="text-xl font-semibold mb-4">🎉 Setup Complete!</h3>
             <p className="mb-4">Ready to generate your personalized 7-day plan?</p>
-            <button className="w-full bg-white text-indigo-600 rounded-lg px-4 py-2 font-medium hover:bg-gray-50 transition-colors">
+            <button className="w-full bg-white text-primary-600 rounded-lg px-4 py-2 font-medium hover:bg-gray-50 transition-colors">
               Generate My Plan
             </button>
           </motion.div>

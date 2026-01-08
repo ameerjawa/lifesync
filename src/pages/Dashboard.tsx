@@ -116,7 +116,7 @@ function Dashboard() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-teal-50/30 to-emerald-50/30">
       {/* Guest Banner */}
       {isGuest && <GuestBanner />}
 
@@ -124,24 +124,24 @@ function Dashboard() {
       {isTrialActive && <TrialBanner />}
 
       {/* Sidebar */}
-      <div 
-        className={`fixed inset-y-0 left-0 z-50 w-64 bg-white shadow-lg transform transition-transform duration-300 ease-in-out
-          ${isSidebarOpen ? 'translate-x-0' : '-translate-x-full'} lg:translate-x-0`}
+      <div
+        className={`fixed inset-y-0 left-0 z-50 w-64 glass-effect border-r border-primary-200/30 shadow-2xl transform transition-all duration-300 ease-in-out
+          ${isSidebarOpen ? 'translate-x-0' : '-translate-x-full'} lg:translate-x-0 animate-slide-in-right`}
       >
-        <div className="flex items-center justify-between h-16 px-4 border-b">
-          <h1 className="text-xl font-bold text-indigo-600">LifeSync</h1>
-          <button 
+        <div className="flex items-center justify-between h-16 px-4 border-b border-primary-200/30">
+          <h1 className="text-2xl font-bold gradient-text">LifeSync</h1>
+          <button
             onClick={() => setIsSidebarOpen(false)}
-            className="lg:hidden p-2 rounded-md hover:bg-gray-100"
+            className="lg:hidden p-2 rounded-lg hover:bg-primary-100/50 transition-all"
           >
             <X className="h-5 w-5 text-gray-500" />
           </button>
         </div>
 
         {/* Profile Section */}
-        <div className="p-4 border-b">
-          <div className="flex items-center space-x-3">
-            <div className="h-10 w-10 rounded-full bg-gray-200 flex items-center justify-center">
+        <div className="p-4 border-b border-primary-200/30">
+          <div className="flex items-center space-x-3 p-3 rounded-xl bg-gradient-to-r from-primary-50/50 to-secondary-50/50 hover:from-primary-100/50 hover:to-secondary-100/50 transition-all duration-300 hover-lift cursor-pointer">
+            <div className="h-12 w-12 rounded-full bg-gradient-to-br from-primary-400 to-secondary-500 flex items-center justify-center shadow-lg ring-2 ring-white/50">
               {profile?.avatar_url ? (
                 <img
                   src={profile.avatar_url}
@@ -149,68 +149,73 @@ function Dashboard() {
                   className="h-full w-full rounded-full object-cover"
                 />
               ) : (
-                <User className="h-6 w-6 text-gray-400" />
+                <User className="h-6 w-6 text-white" />
               )}
             </div>
             <div>
-              <p className="font-medium text-gray-900">{profile?.full_name || 'User'}</p>
-              <p className="text-sm text-gray-500">{profile?.email}</p>
+              <p className="font-bold text-gray-900">{profile?.full_name || 'User'}</p>
+              <p className="text-sm text-gray-600">{profile?.email}</p>
             </div>
           </div>
         </div>
 
-        <nav className="p-4 space-y-1">
-          {navigation.map((item) => (
+        <nav className="p-4 space-y-1 overflow-y-auto max-h-[calc(100vh-300px)]">
+          {navigation.map((item, index) => (
             <button
               key={item.name}
               onClick={() => setActiveTab(item.id)}
-              className={`flex w-full items-center px-4 py-3 text-gray-700 rounded-lg hover:bg-indigo-50 hover:text-indigo-600 group ${
-                activeTab === item.id ? 'bg-indigo-50 text-indigo-600' : ''
+              style={{ animationDelay: `${index * 50}ms` }}
+              className={`flex w-full items-center px-4 py-3 text-gray-700 rounded-xl hover:scale-105 active:scale-95 transition-all duration-200 group animate-fade-in ${
+                activeTab === item.id
+                  ? 'bg-gradient-to-r from-primary-500 to-primary-600 text-white shadow-lg shadow-primary-500/30'
+                  : 'hover:bg-white/50'
               }`}
             >
-              <item.icon className={`h-5 w-5 mr-3 ${
-                activeTab === item.id ? 'text-indigo-600' : 'text-gray-400 group-hover:text-indigo-600'
+              <item.icon className={`h-5 w-5 mr-3 transition-all ${
+                activeTab === item.id ? 'text-white' : 'text-gray-400 group-hover:text-primary-600 group-hover:scale-110'
               }`} />
-              {item.name}
+              <span className="font-medium">{item.name}</span>
               {item.premium && !isGuest && plan === 'free' && (
-                <span className="ml-auto text-xs font-medium text-indigo-600 bg-indigo-100 px-2 py-1 rounded-full">
-                  Premium
+                <span className="ml-auto badge-primary text-xs">
+                  Pro
                 </span>
               )}
             </button>
           ))}
 
           {/* Settings and Admin Panel */}
-          <div className="pt-4 border-t">
+          <div className="pt-4 border-t border-primary-200/30 mt-4">
             <button
               onClick={() => setActiveTab('settings')}
-              className={`flex w-full items-center px-4 py-3 text-gray-700 rounded-lg hover:bg-indigo-50 hover:text-indigo-600 group ${
-                activeTab === 'settings' ? 'bg-indigo-50 text-indigo-600' : ''
+              className={`flex w-full items-center px-4 py-3 text-gray-700 rounded-xl hover:scale-105 active:scale-95 transition-all duration-200 group ${
+                activeTab === 'settings'
+                  ? 'bg-gradient-to-r from-primary-500 to-primary-600 text-white shadow-lg shadow-primary-500/30'
+                  : 'hover:bg-white/50'
               }`}
             >
-              <Settings className={`h-5 w-5 mr-3 ${
-                activeTab === 'settings' ? 'text-indigo-600' : 'text-gray-400 group-hover:text-indigo-600'
+              <Settings className={`h-5 w-5 mr-3 transition-all ${
+                activeTab === 'settings' ? 'text-white' : 'text-gray-400 group-hover:text-primary-600 group-hover:scale-110'
               }`} />
-              Settings
+              <span className="font-medium">Settings</span>
             </button>
 
             {/* Admin Panel Button - Only shown for admin users */}
             {profile?.role === 'admin' && (
               <button
                 onClick={handleAdminPanel}
-                className="flex w-full items-center px-4 py-3 text-purple-700 rounded-lg hover:bg-purple-50 group"
+                className="flex w-full items-center px-4 py-3 text-gray-700 rounded-xl hover:scale-105 active:scale-95 transition-all duration-200 group hover:bg-white/50 mt-1"
               >
-                <Shield className="h-5 w-5 mr-3 text-purple-400 group-hover:text-purple-600" />
-                Admin Panel
+                <Shield className="h-5 w-5 mr-3 text-primary-400 group-hover:text-primary-600 group-hover:scale-110 transition-all" />
+                <span className="font-medium">Admin Panel</span>
               </button>
             )}
 
             <button
               onClick={handleSignOut}
-              className="flex w-full items-center px-4 py-3 text-red-600 rounded-lg hover:bg-red-50 group"
+              className="flex w-full items-center px-4 py-3 text-red-600 rounded-xl hover:bg-red-50/80 hover:scale-105 active:scale-95 transition-all duration-200 group mt-1"
             >
-              <LogOut className="h-5 w-5 mr-3 text-red-400 group-hover:text-red-600" />
-              Sign Out
+              <LogOut className="h-5 w-5 mr-3 text-red-400 group-hover:text-red-600 group-hover:scale-110 transition-all" />
+              <span className="font-medium">Sign Out</span>
             </button>
           </div>
         </nav>
@@ -219,19 +224,24 @@ function Dashboard() {
       {/* Main Content */}
       <div className={`lg:pl-64 flex flex-col min-h-screen`}>
         {/* Header */}
-        <header className="sticky top-0 z-40 bg-white border-b">
-          <div className="flex items-center justify-between h-16 px-4">
-            <button 
+        <header className="sticky top-0 z-40 glass-effect border-b border-primary-200/30 shadow-md backdrop-blur-md animate-fade-in-down">
+          <div className="flex items-center justify-between h-16 px-6">
+            <button
               onClick={() => setIsSidebarOpen(true)}
-              className="lg:hidden p-2 rounded-md hover:bg-gray-100"
+              className="lg:hidden p-2 rounded-xl hover:bg-primary-100/50 transition-all hover:scale-110 active:scale-95"
             >
-              <Menu className="h-5 w-5 text-gray-500" />
+              <Menu className="h-6 w-6 text-gray-600" />
             </button>
+            <div className="hidden lg:block">
+              <h2 className="text-xl font-bold text-gray-900">
+                {navigation.find(item => item.id === activeTab)?.name || 'Dashboard'}
+              </h2>
+            </div>
           </div>
         </header>
 
         {/* Main Content */}
-        <main className="flex-1 p-4">
+        <main className="flex-1 p-6 animate-fade-in">
           <div className="max-w-7xl mx-auto">
             {renderContent()}
           </div>

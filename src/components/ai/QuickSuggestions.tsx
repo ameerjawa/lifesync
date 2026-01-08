@@ -132,7 +132,7 @@ export function QuickSuggestions() {
               onClick={suggestion.action}
               className="flex items-center space-x-2 rounded-lg bg-white px-3 py-2 text-sm text-gray-700 hover:bg-gray-100 border border-gray-200 shadow-sm transition-all hover:shadow"
             >
-              <Icon className="h-4 w-4 text-indigo-600" />
+              <Icon className="h-4 w-4 text-primary-600" />
               <span>{suggestion.text}</span>
             </button>
           );

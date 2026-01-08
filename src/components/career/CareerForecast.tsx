@@ -109,8 +109,8 @@ export function CareerForecast() {
               animate={{ opacity: 1, x: 0 }}
               className="relative pl-10"
             >
-              <div className="absolute left-0 top-1.5 h-8 w-8 rounded-full bg-indigo-100 flex items-center justify-center">
-                <Briefcase className="h-5 w-5 text-indigo-600" />
+              <div className="absolute left-0 top-1.5 h-8 w-8 rounded-full bg-primary-100 flex items-center justify-center">
+                <Briefcase className="h-5 w-5 text-primary-600" />
               </div>
               <h4 className="text-lg font-medium text-gray-900">Senior Role</h4>
               <p className="text-sm text-gray-500">Expected: Q4 2025</p>
@@ -137,8 +137,8 @@ export function CareerForecast() {
               transition={{ delay: 0.2 }}
               className="relative pl-10"
             >
-              <div className="absolute left-0 top-1.5 h-8 w-8 rounded-full bg-purple-100 flex items-center justify-center">
-                <DollarSign className="h-5 w-5 text-purple-600" />
+              <div className="absolute left-0 top-1.5 h-8 w-8 rounded-full bg-primary-100 flex items-center justify-center">
+                <DollarSign className="h-5 w-5 text-primary-600" />
               </div>
               <h4 className="text-lg font-medium text-gray-900">Engineering Manager</h4>
               <p className="text-sm text-gray-500">Expected: Q3 2029</p>
@@ -157,7 +157,7 @@ export function CareerForecast() {
           className="rounded-lg bg-white p-6 shadow-lg"
         >
           <div className="flex items-center">
-            <TrendingUp className="h-6 w-6 text-indigo-600" />
+            <TrendingUp className="h-6 w-6 text-primary-600" />
             <h3 className="ml-2 text-lg font-semibold text-gray-900">Industry Trends</h3>
           </div>
           <ul className="mt-4 space-y-2 text-sm text-gray-600">
@@ -193,7 +193,7 @@ export function CareerForecast() {
           className="rounded-lg bg-white p-6 shadow-lg"
         >
           <div className="flex items-center">
-            <Briefcase className="h-6 w-6 text-purple-600" />
+            <Briefcase className="h-6 w-6 text-primary-600" />
             <h3 className="ml-2 text-lg font-semibold text-gray-900">Opportunities</h3>
           </div>
           <ul className="mt-4 space-y-2 text-sm text-gray-600">

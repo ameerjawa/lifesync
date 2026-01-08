@@ -81,10 +81,10 @@ export function UpskillRecommendations() {
       <div className="rounded-lg bg-white p-6 shadow-lg">
         <div className="mb-6 flex items-center justify-between">
           <div className="flex items-center">
-            <BookOpen className="h-6 w-6 text-indigo-600" />
+            <BookOpen className="h-6 w-6 text-primary-600" />
             <h3 className="ml-2 text-lg font-semibold text-gray-900">Recommended Courses</h3>
           </div>
-          <button className="text-sm text-indigo-600 hover:text-indigo-500">
+          <button className="text-sm text-primary-600 hover:text-primary-500">
             View All
           </button>
         </div>
@@ -99,7 +99,7 @@ export function UpskillRecommendations() {
             >
               <div className="flex items-center justify-between">
                 <h4 className="font-medium text-gray-900">{course.title}</h4>
-                <span className="rounded-full bg-indigo-100 px-2 py-1 text-xs font-medium text-indigo-800">
+                <span className="rounded-full bg-primary-100 px-2 py-1 text-xs font-medium text-primary-800">
                   {course.level}
                 </span>
               </div>
@@ -124,11 +124,11 @@ export function UpskillRecommendations() {
               <div className="mt-4">
                 <div className="flex items-center justify-between text-sm">
                   <span className="text-gray-500">Progress</span>
-                  <span className="font-medium text-indigo-600">{course.progress}%</span>
+                  <span className="font-medium text-primary-600">{course.progress}%</span>
                 </div>
                 <div className="mt-1 h-2 w-full rounded-full bg-gray-200">
                   <div
-                    className="h-full rounded-full bg-indigo-600"
+                    className="h-full rounded-full bg-primary-600"
                     style={{ width: `${course.progress}%` }}
                   ></div>
                 </div>
@@ -145,7 +145,7 @@ export function UpskillRecommendations() {
                 ))}
               </div>
 
-              <button className="mt-4 w-full rounded-lg bg-indigo-600 px-4 py-2 text-white hover:bg-indigo-500">
+              <button className="mt-4 w-full rounded-lg bg-primary-600 px-4 py-2 text-white hover:bg-primary-500">
                 {course.progress > 0 ? 'Continue Course' : 'Start Course'}
               </button>
             </motion.div>
@@ -156,7 +156,7 @@ export function UpskillRecommendations() {
       {/* Recommended Certifications */}
       <div className="rounded-lg bg-white p-6 shadow-lg">
         <div className="mb-6 flex items-center">
-          <Award className="h-6 w-6 text-indigo-600" />
+          <Award className="h-6 w-6 text-primary-600" />
           <h3 className="ml-2 text-lg font-semibold text-gray-900">Recommended Certifications</h3>
         </div>
 
@@ -192,7 +192,7 @@ export function UpskillRecommendations() {
                 </div>
               </div>
 
-              <button className="mt-4 w-full rounded-lg border border-indigo-600 px-4 py-2 text-indigo-600 hover:bg-indigo-50">
+              <button className="mt-4 w-full rounded-lg border border-primary-600 px-4 py-2 text-primary-600 hover:bg-primary-50">
                 Learn More
               </button>
             </motion.div>
@@ -203,7 +203,7 @@ export function UpskillRecommendations() {
       {/* Learning Path */}
       <div className="rounded-lg bg-white p-6 shadow-lg">
         <div className="mb-6 flex items-center">
-          <TrendingUp className="h-6 w-6 text-indigo-600" />
+          <TrendingUp className="h-6 w-6 text-primary-600" />
           <h3 className="ml-2 text-lg font-semibold text-gray-900">Your Learning Path</h3>
         </div>
 
@@ -229,8 +229,8 @@ export function UpskillRecommendations() {
               transition={{ delay: 0.1 }}
               className="relative pl-10"
             >
-              <div className="absolute left-0 top-1.5 h-8 w-8 rounded-full bg-indigo-100 flex items-center justify-center">
-                <ArrowRight className="h-5 w-5 text-indigo-600" />
+              <div className="absolute left-0 top-1.5 h-8 w-8 rounded-full bg-primary-100 flex items-center justify-center">
+                <ArrowRight className="h-5 w-5 text-primary-600" />
               </div>
               <h4 className="text-lg font-medium text-gray-900">Advanced Skills</h4>
               <p className="text-sm text-gray-500">Specialize in key technologies</p>

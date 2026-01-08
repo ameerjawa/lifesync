@@ -74,7 +74,7 @@ export function BusinessOverview({ onNavigate }: BusinessOverviewProps) {
   if (isLoading) {
     return (
       <div className="flex h-64 items-center justify-center">
-        <div className="h-8 w-8 animate-spin rounded-full border-2 border-indigo-600 border-t-transparent" />
+        <div className="h-8 w-8 animate-spin rounded-full border-2 border-primary-600 border-t-transparent" />
       </div>
     );
   }
@@ -135,15 +135,15 @@ export function BusinessOverview({ onNavigate }: BusinessOverviewProps) {
           className="bg-white rounded-lg p-6 shadow-sm"
         >
           <div className="flex items-center">
-            <div className="rounded-full bg-purple-100 p-3">
-              <Target className="h-6 w-6 text-purple-600" />
+            <div className="rounded-full bg-primary-100 p-3">
+              <Target className="h-6 w-6 text-primary-600" />
             </div>
             <div className="ml-4">
               <p className="text-sm font-medium text-gray-500">Active Projects</p>
               <p className="text-2xl font-semibold text-gray-900">
                 {analytics?.projects.active || 0}
               </p>
-              <p className="text-sm text-purple-600">
+              <p className="text-sm text-primary-600">
                 {analytics?.projects.completed || 0} completed
               </p>
             </div>
@@ -382,10 +382,10 @@ export function BusinessOverview({ onNavigate }: BusinessOverviewProps) {
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
           <button
             onClick={() => onNavigate?.('projects')}
-            className="flex items-center justify-center p-4 bg-indigo-50 rounded-lg hover:bg-indigo-100 transition-colors"
+            className="flex items-center justify-center p-4 bg-primary-50 rounded-lg hover:bg-primary-100 transition-colors"
           >
-            <Target className="h-6 w-6 text-indigo-600 mr-3" />
-            <span className="font-medium text-indigo-900">New Project</span>
+            <Target className="h-6 w-6 text-primary-600 mr-3" />
+            <span className="font-medium text-primary-900">New Project</span>
           </button>
           <button
             onClick={() => onNavigate?.('clients')}
@@ -396,10 +396,10 @@ export function BusinessOverview({ onNavigate }: BusinessOverviewProps) {
           </button>
           <button
             onClick={() => onNavigate?.('invoices')}
-            className="flex items-center justify-center p-4 bg-purple-50 rounded-lg hover:bg-purple-100 transition-colors"
+            className="flex items-center justify-center p-4 bg-primary-50 rounded-lg hover:bg-primary-100 transition-colors"
           >
-            <FileText className="h-6 w-6 text-purple-600 mr-3" />
-            <span className="font-medium text-purple-900">Create Invoice</span>
+            <FileText className="h-6 w-6 text-primary-600 mr-3" />
+            <span className="font-medium text-primary-900">Create Invoice</span>
           </button>
           <button
             onClick={() => onNavigate?.('expenses')}

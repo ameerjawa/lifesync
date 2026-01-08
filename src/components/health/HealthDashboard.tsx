@@ -29,7 +29,7 @@ const metricTypes: Array<{
 }> = [
   { type: 'weight', label: 'Weight', icon: Scale, unit: 'kg', color: 'text-blue-600', gradient: 'from-blue-500 to-cyan-500' },
   { type: 'steps', label: 'Steps', icon: Activity, unit: 'steps', color: 'text-green-600', gradient: 'from-green-500 to-emerald-500' },
-  { type: 'sleep', label: 'Sleep', icon: Moon, unit: 'hours', color: 'text-purple-600', gradient: 'from-purple-500 to-indigo-500' },
+  { type: 'sleep', label: 'Sleep', icon: Moon, unit: 'hours', color: 'text-primary-600', gradient: 'from-primary-500 to-primary-500' },
   { type: 'water', label: 'Water', icon: Droplets, unit: 'ml', color: 'text-cyan-600', gradient: 'from-cyan-500 to-blue-500' },
   { type: 'mood', label: 'Mood', icon: Smile, unit: 'rating', color: 'text-yellow-600', gradient: 'from-yellow-500 to-orange-500' },
   { type: 'exercise', label: 'Exercise', icon: Activity, unit: 'minutes', color: 'text-red-600', gradient: 'from-red-500 to-rose-500' },
@@ -76,7 +76,7 @@ export function HealthDashboard() {
   if (isLoading) {
     return (
       <div className="flex h-64 items-center justify-center">
-        <div className="h-8 w-8 animate-spin rounded-full border-2 border-indigo-600 border-t-transparent" />
+        <div className="h-8 w-8 animate-spin rounded-full border-2 border-primary-600 border-t-transparent" />
       </div>
     );
   }
@@ -84,12 +84,12 @@ export function HealthDashboard() {
   return (
     <div className="space-y-6">
       {/* Header */}
-      <div className="relative overflow-hidden rounded-2xl bg-gradient-to-r from-indigo-600 to-purple-600 p-8 text-white shadow-xl">
+      <div className="relative overflow-hidden rounded-2xl bg-gradient-to-r from-primary-600 to-primary-600 p-8 text-white shadow-xl">
         <div className="relative z-10">
           <div className="flex items-center justify-between">
             <div>
               <h2 className="text-3xl font-bold">Health Tracking</h2>
-              <p className="mt-2 text-indigo-100">Monitor and improve your well-being</p>
+              <p className="mt-2 text-primary-100">Monitor and improve your well-being</p>
             </div>
             <div className="flex space-x-4">
               <button
@@ -101,7 +101,7 @@ export function HealthDashboard() {
               </button>
               <button
                 onClick={() => setIsAddingMetric(true)}
-                className="flex items-center rounded-lg bg-white px-4 py-2 text-indigo-600 shadow-md transition-all hover:bg-indigo-50"
+                className="flex items-center rounded-lg bg-white px-4 py-2 text-primary-600 shadow-md transition-all hover:bg-primary-50"
               >
                 <Plus className="mr-2 h-5 w-5" />
                 Add Metric
@@ -162,7 +162,7 @@ export function HealthDashboard() {
               <select
                 value={selectedDateRange}
                 onChange={(e) => setDateRange(e.target.value as any)}
-                className="rounded-lg border-gray-300 text-sm focus:border-indigo-500 focus:ring-indigo-500"
+                className="rounded-lg border-gray-300 text-sm focus:border-primary-500 focus:ring-primary-500"
               >
                 <option value="week">This Week</option>
                 <option value="month">This Month</option>

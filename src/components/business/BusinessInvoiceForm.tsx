@@ -114,8 +114,8 @@ export function BusinessInvoiceForm({ clients, projects, onSubmit, onClose }: Bu
       </button>
 
       <div className="mb-6 flex items-center">
-        <div className="mr-4 rounded-full bg-indigo-100 p-3">
-          <FileText className="h-6 w-6 text-indigo-600" />
+        <div className="mr-4 rounded-full bg-primary-100 p-3">
+          <FileText className="h-6 w-6 text-primary-600" />
         </div>
         <div>
           <h3 className="text-lg font-semibold text-gray-900">Create New Invoice</h3>
@@ -141,7 +141,7 @@ export function BusinessInvoiceForm({ clients, projects, onSubmit, onClose }: Bu
               id="invoice_number"
               value={invoice.invoice_number}
               onChange={(e) => setInvoice({ ...invoice, invoice_number: e.target.value })}
-              className="mt-1 block w-full rounded-lg border border-gray-300 px-4 py-2 focus:border-indigo-500 focus:ring-indigo-500"
+              className="mt-1 block w-full rounded-lg border border-gray-300 px-4 py-2 focus:border-primary-500 focus:ring-primary-500"
               required
             />
           </div>
@@ -154,7 +154,7 @@ export function BusinessInvoiceForm({ clients, projects, onSubmit, onClose }: Bu
               id="client"
               value={invoice.client_id}
               onChange={(e) => setInvoice({ ...invoice, client_id: e.target.value })}
-              className="mt-1 block w-full rounded-lg border border-gray-300 px-4 py-2 focus:border-indigo-500 focus:ring-indigo-500"
+              className="mt-1 block w-full rounded-lg border border-gray-300 px-4 py-2 focus:border-primary-500 focus:ring-primary-500"
             >
               <option value="">Select Client</option>
               {clients.map((client) => (
@@ -173,7 +173,7 @@ export function BusinessInvoiceForm({ clients, projects, onSubmit, onClose }: Bu
               id="project"
               value={invoice.project_id}
               onChange={(e) => setInvoice({ ...invoice, project_id: e.target.value })}
-              className="mt-1 block w-full rounded-lg border border-gray-300 px-4 py-2 focus:border-indigo-500 focus:ring-indigo-500"
+              className="mt-1 block w-full rounded-lg border border-gray-300 px-4 py-2 focus:border-primary-500 focus:ring-primary-500"
             >
               <option value="">No Project</option>
               {projects.map((project) => (
@@ -197,7 +197,7 @@ export function BusinessInvoiceForm({ clients, projects, onSubmit, onClose }: Bu
                 id="issue_date"
                 value={invoice.issue_date}
                 onChange={(e) => setInvoice({ ...invoice, issue_date: e.target.value })}
-                className="block w-full rounded-lg border border-gray-300 pl-10 pr-4 py-2 focus:border-indigo-500 focus:ring-indigo-500"
+                className="block w-full rounded-lg border border-gray-300 pl-10 pr-4 py-2 focus:border-primary-500 focus:ring-primary-500"
                 required
               />
             </div>
@@ -216,7 +216,7 @@ export function BusinessInvoiceForm({ clients, projects, onSubmit, onClose }: Bu
                 id="due_date"
                 value={invoice.due_date}
                 onChange={(e) => setInvoice({ ...invoice, due_date: e.target.value })}
-                className="block w-full rounded-lg border border-gray-300 pl-10 pr-4 py-2 focus:border-indigo-500 focus:ring-indigo-500"
+                className="block w-full rounded-lg border border-gray-300 pl-10 pr-4 py-2 focus:border-primary-500 focus:ring-primary-500"
                 required
                 min={invoice.issue_date}
               />
@@ -231,7 +231,7 @@ export function BusinessInvoiceForm({ clients, projects, onSubmit, onClose }: Bu
               id="currency"
               value={invoice.currency}
               onChange={(e) => setInvoice({ ...invoice, currency: e.target.value })}
-              className="mt-1 block w-full rounded-lg border border-gray-300 px-4 py-2 focus:border-indigo-500 focus:ring-indigo-500"
+              className="mt-1 block w-full rounded-lg border border-gray-300 px-4 py-2 focus:border-primary-500 focus:ring-primary-500"
             >
               <option value="USD">USD</option>
               <option value="EUR">EUR</option>
@@ -248,7 +248,7 @@ export function BusinessInvoiceForm({ clients, projects, onSubmit, onClose }: Bu
             <button
               type="button"
               onClick={addLineItem}
-              className="flex items-center text-sm text-indigo-600 hover:text-indigo-500"
+              className="flex items-center text-sm text-primary-600 hover:text-primary-500"
             >
               <Plus className="h-4 w-4 mr-1" />
               Add Item
@@ -266,7 +266,7 @@ export function BusinessInvoiceForm({ clients, projects, onSubmit, onClose }: Bu
                     type="text"
                     value={item.description}
                     onChange={(e) => updateLineItem(index, 'description', e.target.value)}
-                    className="mt-1 block w-full rounded-lg border border-gray-300 px-4 py-2 focus:border-indigo-500 focus:ring-indigo-500"
+                    className="mt-1 block w-full rounded-lg border border-gray-300 px-4 py-2 focus:border-primary-500 focus:ring-primary-500"
                     placeholder="Service or product description"
                   />
                 </div>
@@ -278,7 +278,7 @@ export function BusinessInvoiceForm({ clients, projects, onSubmit, onClose }: Bu
                     type="number"
                     value={item.quantity}
                     onChange={(e) => updateLineItem(index, 'quantity', Number(e.target.value))}
-                    className="mt-1 block w-full rounded-lg border border-gray-300 px-4 py-2 focus:border-indigo-500 focus:ring-indigo-500"
+                    className="mt-1 block w-full rounded-lg border border-gray-300 px-4 py-2 focus:border-primary-500 focus:ring-primary-500"
                     min="0"
                     step="0.01"
                   />
@@ -291,7 +291,7 @@ export function BusinessInvoiceForm({ clients, projects, onSubmit, onClose }: Bu
                     type="number"
                     value={item.rate}
                     onChange={(e) => updateLineItem(index, 'rate', Number(e.target.value))}
-                    className="mt-1 block w-full rounded-lg border border-gray-300 px-4 py-2 focus:border-indigo-500 focus:ring-indigo-500"
+                    className="mt-1 block w-full rounded-lg border border-gray-300 px-4 py-2 focus:border-primary-500 focus:ring-primary-500"
                     min="0"
                     step="0.01"
                   />
@@ -362,7 +362,7 @@ export function BusinessInvoiceForm({ clients, projects, onSubmit, onClose }: Bu
             id="notes"
             value={invoice.notes}
             onChange={(e) => setInvoice({ ...invoice, notes: e.target.value })}
-            className="mt-1 block w-full rounded-lg border border-gray-300 px-4 py-2 focus:border-indigo-500 focus:ring-indigo-500"
+            className="mt-1 block w-full rounded-lg border border-gray-300 px-4 py-2 focus:border-primary-500 focus:ring-primary-500"
             rows={3}
             placeholder="Payment terms, additional notes..."
           />
@@ -379,7 +379,7 @@ export function BusinessInvoiceForm({ clients, projects, onSubmit, onClose }: Bu
           <button
             type="submit"
             disabled={isSubmitting}
-            className="flex items-center rounded-lg bg-indigo-600 px-4 py-2 text-white hover:bg-indigo-500 disabled:opacity-50"
+            className="flex items-center rounded-lg bg-primary-600 px-4 py-2 text-white hover:bg-primary-500 disabled:opacity-50"
           >
             {isSubmitting ? (
               <div className="flex items-center">

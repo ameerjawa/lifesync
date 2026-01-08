@@ -77,7 +77,7 @@ ${formData.message}
                   id="name"
                   value={formData.name}
                   onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                  className="block w-full rounded-r-lg border-0 px-4 py-2 focus:ring-2 focus:ring-indigo-500"
+                  className="block w-full rounded-r-lg border-0 px-4 py-2 focus:ring-2 focus:ring-primary-500"
                   required
                 />
               </div>
@@ -96,7 +96,7 @@ ${formData.message}
                   id="company"
                   value={formData.company}
                   onChange={(e) => setFormData({ ...formData, company: e.target.value })}
-                  className="block w-full rounded-r-lg border-0 px-4 py-2 focus:ring-2 focus:ring-indigo-500"
+                  className="block w-full rounded-r-lg border-0 px-4 py-2 focus:ring-2 focus:ring-primary-500"
                   required
                 />
               </div>
@@ -115,7 +115,7 @@ ${formData.message}
                   id="email"
                   value={formData.email}
                   onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                  className="block w-full rounded-r-lg border-0 px-4 py-2 focus:ring-2 focus:ring-indigo-500"
+                  className="block w-full rounded-r-lg border-0 px-4 py-2 focus:ring-2 focus:ring-primary-500"
                   required
                 />
               </div>
@@ -134,7 +134,7 @@ ${formData.message}
                   id="phone"
                   value={formData.phone}
                   onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                  className="block w-full rounded-r-lg border-0 px-4 py-2 focus:ring-2 focus:ring-indigo-500"
+                  className="block w-full rounded-r-lg border-0 px-4 py-2 focus:ring-2 focus:ring-primary-500"
                   required
                 />
               </div>
@@ -148,7 +148,7 @@ ${formData.message}
                 id="message"
                 value={formData.message}
                 onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                className="mt-1 block w-full rounded-lg border-gray-300 px-4 py-2 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
+                className="mt-1 block w-full rounded-lg border-gray-300 px-4 py-2 shadow-sm focus:border-primary-500 focus:ring-primary-500"
                 rows={4}
                 required
               />

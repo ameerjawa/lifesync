@@ -299,8 +299,8 @@ export function RoadCanvas({ road, milestones, onMilestoneClick }: RoadCanvasPro
             <h3 className="text-lg font-semibold text-gray-900">{road.title}</h3>
             <p className="text-sm text-gray-500">{road.description}</p>
           </div>
-          <div className="rounded-full bg-indigo-100 px-3 py-1">
-            <span className="text-sm font-medium text-indigo-600">
+          <div className="rounded-full bg-primary-100 px-3 py-1">
+            <span className="text-sm font-medium text-primary-600">
               {Math.round(road.progress)}% Complete
             </span>
           </div>

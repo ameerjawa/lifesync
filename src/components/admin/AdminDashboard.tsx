@@ -96,7 +96,7 @@ export function AdminDashboard() {
         <div className="fixed inset-y-0 left-0 w-64 bg-white border-r">
           <div className="flex h-16 items-center justify-between px-4 border-b">
             <div className="flex items-center">
-              <Shield className="h-6 w-6 text-indigo-600" />
+              <Shield className="h-6 w-6 text-primary-600" />
               <span className="ml-2 font-semibold text-gray-900">Admin Panel</span>
             </div>
           </div>
@@ -105,7 +105,7 @@ export function AdminDashboard() {
             <button
               onClick={() => setActiveTab('overview')}
               className={`flex w-full items-center px-4 py-2 text-sm font-medium rounded-lg ${
-                activeTab === 'overview' ? 'bg-indigo-50 text-indigo-600' : 'text-gray-600 hover:bg-gray-50'
+                activeTab === 'overview' ? 'bg-primary-50 text-primary-600' : 'text-gray-600 hover:bg-gray-50'
               }`}
             >
               <Home className="mr-3 h-5 w-5" />
@@ -115,7 +115,7 @@ export function AdminDashboard() {
             <button
               onClick={() => setActiveTab('features')}
               className={`flex w-full items-center px-4 py-2 text-sm font-medium rounded-lg ${
-                activeTab === 'features' ? 'bg-indigo-50 text-indigo-600' : 'text-gray-600 hover:bg-gray-50'
+                activeTab === 'features' ? 'bg-primary-50 text-primary-600' : 'text-gray-600 hover:bg-gray-50'
               }`}
             >
               <Flag className="mr-3 h-5 w-5" />
@@ -125,7 +125,7 @@ export function AdminDashboard() {
             <button
               onClick={() => setActiveTab('plans')}
               className={`flex w-full items-center px-4 py-2 text-sm font-medium rounded-lg ${
-                activeTab === 'plans' ? 'bg-indigo-50 text-indigo-600' : 'text-gray-600 hover:bg-gray-50'
+                activeTab === 'plans' ? 'bg-primary-50 text-primary-600' : 'text-gray-600 hover:bg-gray-50'
               }`}
             >
               <DollarSign className="mr-3 h-5 w-5" />
@@ -135,7 +135,7 @@ export function AdminDashboard() {
             <button
               onClick={() => setActiveTab('users')}
               className={`flex w-full items-center px-4 py-2 text-sm font-medium rounded-lg ${
-                activeTab === 'users' ? 'bg-indigo-50 text-indigo-600' : 'text-gray-600 hover:bg-gray-50'
+                activeTab === 'users' ? 'bg-primary-50 text-primary-600' : 'text-gray-600 hover:bg-gray-50'
               }`}
             >
               <Users className="mr-3 h-5 w-5" />
@@ -145,7 +145,7 @@ export function AdminDashboard() {
             <button
               onClick={() => setActiveTab('analytics')}
               className={`flex w-full items-center px-4 py-2 text-sm font-medium rounded-lg ${
-                activeTab === 'analytics' ? 'bg-indigo-50 text-indigo-600' : 'text-gray-600 hover:bg-gray-50'
+                activeTab === 'analytics' ? 'bg-primary-50 text-primary-600' : 'text-gray-600 hover:bg-gray-50'
               }`}
             >
               <BarChart2 className="mr-3 h-5 w-5" />
@@ -155,7 +155,7 @@ export function AdminDashboard() {
             <button
               onClick={() => setActiveTab('notifications')}
               className={`flex w-full items-center px-4 py-2 text-sm font-medium rounded-lg ${
-                activeTab === 'notifications' ? 'bg-indigo-50 text-indigo-600' : 'text-gray-600 hover:bg-gray-50'
+                activeTab === 'notifications' ? 'bg-primary-50 text-primary-600' : 'text-gray-600 hover:bg-gray-50'
               }`}
             >
               <Bell className="mr-3 h-5 w-5" />
@@ -165,7 +165,7 @@ export function AdminDashboard() {
             <button
               onClick={() => setActiveTab('settings')}
               className={`flex w-full items-center px-4 py-2 text-sm font-medium rounded-lg ${
-                activeTab === 'settings' ? 'bg-indigo-50 text-indigo-600' : 'text-gray-600 hover:bg-gray-50'
+                activeTab === 'settings' ? 'bg-primary-50 text-primary-600' : 'text-gray-600 hover:bg-gray-50'
               }`}
             >
               <Settings className="mr-3 h-5 w-5" />
@@ -195,7 +195,7 @@ export function AdminDashboard() {
 
             {isLoading ? (
               <div className="flex h-64 items-center justify-center">
-                <div className="h-8 w-8 animate-spin rounded-full border-2 border-indigo-600 border-t-transparent"></div>
+                <div className="h-8 w-8 animate-spin rounded-full border-2 border-primary-600 border-t-transparent"></div>
               </div>
             ) : (
               <>

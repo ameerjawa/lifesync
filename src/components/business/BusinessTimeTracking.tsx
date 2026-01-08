@@ -96,7 +96,7 @@ export function BusinessTimeTracking() {
     <div className="space-y-6">
       <div className="bg-white rounded-lg shadow-sm p-6">
         <h2 className="text-2xl font-bold text-gray-900 mb-6 flex items-center">
-          <Clock className="h-6 w-6 text-indigo-600 mr-3" />
+          <Clock className="h-6 w-6 text-primary-600 mr-3" />
           Time Tracking
         </h2>
 
@@ -110,7 +110,7 @@ export function BusinessTimeTracking() {
                 value={currentEntry.project_id || ''}
                 onChange={e => setCurrentEntry({ ...currentEntry, project_id: e.target.value })}
                 disabled={isTracking}
-                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
+                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent"
               >
                 <option value="">Select a project</option>
                 {projects.map(project => (
@@ -129,7 +129,7 @@ export function BusinessTimeTracking() {
                 value={currentEntry.task_id || ''}
                 onChange={e => setCurrentEntry({ ...currentEntry, task_id: e.target.value })}
                 disabled={isTracking || !currentEntry.project_id}
-                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
+                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent"
               >
                 <option value="">No specific task</option>
                 {tasks
@@ -153,7 +153,7 @@ export function BusinessTimeTracking() {
               onChange={e => setCurrentEntry({ ...currentEntry, description: e.target.value })}
               disabled={isTracking}
               placeholder="What are you working on?"
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
+              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent"
             />
           </div>
 
@@ -164,7 +164,7 @@ export function BusinessTimeTracking() {
                 checked={currentEntry.billable || false}
                 onChange={e => setCurrentEntry({ ...currentEntry, billable: e.target.checked })}
                 disabled={isTracking}
-                className="w-4 h-4 text-indigo-600 border-gray-300 rounded focus:ring-indigo-500"
+                className="w-4 h-4 text-primary-600 border-gray-300 rounded focus:ring-primary-500"
               />
               <span className="text-sm text-gray-700">Billable</span>
             </label>
@@ -178,7 +178,7 @@ export function BusinessTimeTracking() {
                   onChange={e => setCurrentEntry({ ...currentEntry, hourly_rate: parseFloat(e.target.value) })}
                   disabled={isTracking}
                   placeholder="$/hr"
-                  className="w-24 px-3 py-1 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
+                  className="w-24 px-3 py-1 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent"
                 />
               </div>
             )}
@@ -226,9 +226,9 @@ export function BusinessTimeTracking() {
         <div className="bg-white rounded-lg shadow-sm p-6">
           <div className="flex items-center justify-between mb-4">
             <h3 className="font-semibold text-gray-900">Total Hours</h3>
-            <Clock className="h-5 w-5 text-indigo-600" />
+            <Clock className="h-5 w-5 text-primary-600" />
           </div>
-          <p className="text-3xl font-bold text-indigo-600">{totalHours.toFixed(2)}</p>
+          <p className="text-3xl font-bold text-primary-600">{totalHours.toFixed(2)}</p>
           <p className="text-sm text-gray-500 mt-1">Hours tracked</p>
         </div>
 
@@ -246,9 +246,9 @@ export function BusinessTimeTracking() {
         <div className="bg-white rounded-lg shadow-sm p-6">
           <div className="flex items-center justify-between mb-4">
             <h3 className="font-semibold text-gray-900">Revenue</h3>
-            <DollarSign className="h-5 w-5 text-purple-600" />
+            <DollarSign className="h-5 w-5 text-primary-600" />
           </div>
-          <p className="text-3xl font-bold text-purple-600">${totalRevenue.toFixed(2)}</p>
+          <p className="text-3xl font-bold text-primary-600">${totalRevenue.toFixed(2)}</p>
           <p className="text-sm text-gray-500 mt-1">From billable hours</p>
         </div>
       </div>

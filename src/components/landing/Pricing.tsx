@@ -46,29 +46,29 @@ export function Pricing({ onStartTrial, onSignUp }: PricingProps) {
           </div>
           <ul className="space-y-4 mb-8">
             <li className="flex items-center">
-              <CheckCircle2 className="h-5 w-5 text-indigo-600 mr-2" />
+              <CheckCircle2 className="h-5 w-5 text-primary-600 mr-2" />
               Smart task management
             </li>
             <li className="flex items-center">
-              <CheckCircle2 className="h-5 w-5 text-indigo-600 mr-2" />
+              <CheckCircle2 className="h-5 w-5 text-primary-600 mr-2" />
               Basic health tracking
             </li>
             <li className="flex items-center">
-              <CheckCircle2 className="h-5 w-5 text-indigo-600 mr-2" />
+              <CheckCircle2 className="h-5 w-5 text-primary-600 mr-2" />
               Simple budget planning
             </li>
             <li className="flex items-center">
-              <CheckCircle2 className="h-5 w-5 text-indigo-600 mr-2" />
+              <CheckCircle2 className="h-5 w-5 text-primary-600 mr-2" />
               Daily insights
             </li>
             <li className="flex items-center">
-              <CheckCircle2 className="h-5 w-5 text-indigo-600 mr-2" />
+              <CheckCircle2 className="h-5 w-5 text-primary-600 mr-2" />
               Mobile app access
             </li>
           </ul>
           <button
             onClick={onSignUp}
-            className="w-full py-3 rounded-lg bg-indigo-600 text-white hover:bg-indigo-500 transition-colors flex items-center justify-center"
+            className="w-full py-3 rounded-lg bg-primary-600 text-white hover:bg-primary-500 transition-colors flex items-center justify-center"
           >
             Sign Up Free
             <ArrowRight className="ml-2 h-5 w-5" />
@@ -80,7 +80,7 @@ export function Pricing({ onStartTrial, onSignUp }: PricingProps) {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.1 }}
-          className="rounded-xl bg-indigo-600 text-white p-8 ring-4 ring-indigo-600 ring-opacity-50 relative mt-6"
+          className="rounded-xl bg-primary-600 text-white p-8 ring-4 ring-primary-600 ring-opacity-50 relative mt-6"
         >
           {/* Trial Badge */}
           <div className="absolute -top-3 left-1/2 transform -translate-x-1/2 z-10">
@@ -126,7 +126,7 @@ export function Pricing({ onStartTrial, onSignUp }: PricingProps) {
           </ul>
           <button
             onClick={onStartTrial}
-            className="w-full py-3 rounded-lg bg-white text-indigo-600 hover:bg-gray-100 transition-colors flex items-center justify-center"
+            className="w-full py-3 rounded-lg bg-white text-primary-600 hover:bg-gray-100 transition-colors flex items-center justify-center"
           >
             Start 7-Day Free Trial
             <ArrowRight className="ml-2 h-5 w-5" />
@@ -150,33 +150,33 @@ export function Pricing({ onStartTrial, onSignUp }: PricingProps) {
           </p>
           <ul className="space-y-4 mb-8">
             <li className="flex items-center">
-              <CheckCircle2 className="h-5 w-5 text-indigo-600 mr-2" />
+              <CheckCircle2 className="h-5 w-5 text-primary-600 mr-2" />
               All Premium features
             </li>
             <li className="flex items-center">
-              <CheckCircle2 className="h-5 w-5 text-indigo-600 mr-2" />
+              <CheckCircle2 className="h-5 w-5 text-primary-600 mr-2" />
               Team collaboration
             </li>
             <li className="flex items-center">
-              <CheckCircle2 className="h-5 w-5 text-indigo-600 mr-2" />
+              <CheckCircle2 className="h-5 w-5 text-primary-600 mr-2" />
               Corporate wellness
             </li>
             <li className="flex items-center">
-              <CheckCircle2 className="h-5 w-5 text-indigo-600 mr-2" />
+              <CheckCircle2 className="h-5 w-5 text-primary-600 mr-2" />
               Custom integrations
             </li>
             <li className="flex items-center">
-              <CheckCircle2 className="h-5 w-5 text-indigo-600 mr-2" />
+              <CheckCircle2 className="h-5 w-5 text-primary-600 mr-2" />
               Dedicated support
             </li>
             <li className="flex items-center">
-              <CheckCircle2 className="h-5 w-5 text-indigo-600 mr-2" />
+              <CheckCircle2 className="h-5 w-5 text-primary-600 mr-2" />
               Advanced security
             </li>
           </ul>
           <button
             onClick={() => setShowContactForm(true)}
-            className="w-full py-3 rounded-lg bg-indigo-600 text-white hover:bg-indigo-500 transition-colors flex items-center justify-center"
+            className="w-full py-3 rounded-lg bg-primary-600 text-white hover:bg-primary-500 transition-colors flex items-center justify-center"
           >
             Contact Sales
             <ArrowRight className="ml-2 h-5 w-5" />

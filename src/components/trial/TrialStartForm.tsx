@@ -35,8 +35,8 @@ export function TrialStartForm() {
     >
       <div className="text-center mb-8">
         <div className="flex items-center justify-center mb-4">
-          <div className="bg-indigo-100 p-3 rounded-full">
-            <Sparkles className="h-6 w-6 text-indigo-600" />
+          <div className="bg-primary-100 p-3 rounded-full">
+            <Sparkles className="h-6 w-6 text-primary-600" />
           </div>
         </div>
         <h2 className="text-2xl font-bold text-gray-900 mb-2">
@@ -64,7 +64,7 @@ export function TrialStartForm() {
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             placeholder="you@example.com"
-            className="w-full px-4 py-2 rounded-lg border border-gray-300 focus:ring-indigo-500 focus:border-indigo-500"
+            className="w-full px-4 py-2 rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500"
             required
           />
         </div>
@@ -72,7 +72,7 @@ export function TrialStartForm() {
         <button
           type="submit"
           disabled={isLoading}
-          className="w-full flex items-center justify-center px-4 py-3 border border-transparent rounded-lg shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 disabled:opacity-50"
+          className="w-full flex items-center justify-center px-4 py-3 border border-transparent rounded-lg shadow-sm text-white bg-primary-600 hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500 disabled:opacity-50"
         >
           {isLoading ? (
             <Loader2 className="w-5 h-5 animate-spin" />
@@ -86,11 +86,11 @@ export function TrialStartForm() {
 
         <p className="text-center text-sm text-gray-500 mt-4">
           By starting a trial, you agree to our{' '}
-          <a href="/terms" className="text-indigo-600 hover:text-indigo-500">
+          <a href="/terms" className="text-primary-600 hover:text-primary-500">
             Terms of Service
           </a>{' '}
           and{' '}
-          <a href="/privacy" className="text-indigo-600 hover:text-indigo-500">
+          <a href="/privacy" className="text-primary-600 hover:text-primary-500">
             Privacy Policy
           </a>
         </p>

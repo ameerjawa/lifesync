@@ -16,7 +16,7 @@ export function AccessibilitySettings() {
           <label className="block text-sm font-medium text-gray-700">
             Text Size
           </label>
-          <select className="mt-1 block w-full rounded-lg border border-gray-300 px-4 py-2 focus:border-indigo-500 focus:ring-indigo-500">
+          <select className="mt-1 block w-full rounded-lg border border-gray-300 px-4 py-2 focus:border-primary-500 focus:ring-primary-500">
             <option value="normal">Normal</option>
             <option value="large">Large</option>
             <option value="x-large">Extra Large</option>
@@ -28,7 +28,7 @@ export function AccessibilitySettings() {
           <label className="block text-sm font-medium text-gray-700">
             Contrast
           </label>
-          <select className="mt-1 block w-full rounded-lg border border-gray-300 px-4 py-2 focus:border-indigo-500 focus:ring-indigo-500">
+          <select className="mt-1 block w-full rounded-lg border border-gray-300 px-4 py-2 focus:border-primary-500 focus:ring-primary-500">
             <option value="normal">Normal</option>
             <option value="high">High Contrast</option>
           </select>
@@ -39,7 +39,7 @@ export function AccessibilitySettings() {
           <label className="flex items-center">
             <input
               type="checkbox"
-              className="rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+              className="rounded border-gray-300 text-primary-600 focus:ring-primary-500"
             />
             <span className="ml-2 text-sm text-gray-700">Reduce motion</span>
           </label>
@@ -53,7 +53,7 @@ export function AccessibilitySettings() {
           <label className="flex items-center">
             <input
               type="checkbox"
-              className="rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+              className="rounded border-gray-300 text-primary-600 focus:ring-primary-500"
             />
             <span className="ml-2 text-sm text-gray-700">Enhanced screen reader support</span>
           </label>
@@ -67,7 +67,7 @@ export function AccessibilitySettings() {
           <label className="flex items-center">
             <input
               type="checkbox"
-              className="rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+              className="rounded border-gray-300 text-primary-600 focus:ring-primary-500"
             />
             <span className="ml-2 text-sm text-gray-700">Enhanced keyboard navigation</span>
           </label>
@@ -81,7 +81,7 @@ export function AccessibilitySettings() {
           <label className="block text-sm font-medium text-gray-700">
             Color Blindness Support
           </label>
-          <select className="mt-1 block w-full rounded-lg border border-gray-300 px-4 py-2 focus:border-indigo-500 focus:ring-indigo-500">
+          <select className="mt-1 block w-full rounded-lg border border-gray-300 px-4 py-2 focus:border-primary-500 focus:ring-primary-500">
             <option value="none">None</option>
             <option value="protanopia">Protanopia</option>
             <option value="deuteranopia">Deuteranopia</option>

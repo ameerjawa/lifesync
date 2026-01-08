@@ -45,7 +45,7 @@ export function FeatureManagement({
         <h2 className="text-xl font-semibold text-gray-900">Feature Flags</h2>
         <button
           onClick={() => setIsAddingFeature(true)}
-          className="flex items-center px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-500"
+          className="flex items-center px-4 py-2 bg-primary-600 text-white rounded-lg hover:bg-primary-500"
         >
           <Plus className="mr-2 h-5 w-5" />
           Add Feature
@@ -64,7 +64,7 @@ export function FeatureManagement({
                 type="text"
                 value={newFeature.name}
                 onChange={(e) => setNewFeature({ ...newFeature, name: e.target.value })}
-                className="mt-1 block w-full rounded-lg border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
+                className="mt-1 block w-full rounded-lg border-gray-300 shadow-sm focus:border-primary-500 focus:ring-primary-500"
               />
             </div>
             <div>
@@ -75,7 +75,7 @@ export function FeatureManagement({
                 type="text"
                 value={newFeature.description}
                 onChange={(e) => setNewFeature({ ...newFeature, description: e.target.value })}
-                className="mt-1 block w-full rounded-lg border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
+                className="mt-1 block w-full rounded-lg border-gray-300 shadow-sm focus:border-primary-500 focus:ring-primary-500"
               />
             </div>
             <div className="flex justify-end space-x-3">
@@ -87,7 +87,7 @@ export function FeatureManagement({
               </button>
               <button
                 onClick={handleAddFeature}
-                className="px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-500"
+                className="px-4 py-2 bg-primary-600 text-white rounded-lg hover:bg-primary-500"
               >
                 Add Feature
               </button>
@@ -129,7 +129,7 @@ export function FeatureManagement({
                       type="text"
                       value={editingFeature.name}
                       onChange={(e) => setEditingFeature({ ...editingFeature, name: e.target.value })}
-                      className="rounded-lg border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
+                      className="rounded-lg border-gray-300 shadow-sm focus:border-primary-500 focus:ring-primary-500"
                     />
                   ) : (
                     feature.name
@@ -141,7 +141,7 @@ export function FeatureManagement({
                       type="text"
                       value={editingFeature.description}
                       onChange={(e) => setEditingFeature({ ...editingFeature, description: e.target.value })}
-                      className="rounded-lg border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
+                      className="rounded-lg border-gray-300 shadow-sm focus:border-primary-500 focus:ring-primary-500"
                     />
                   ) : (
                     feature.description

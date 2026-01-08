@@ -23,7 +23,7 @@ export function UserDetails({ user, onUpdate }: UserDetailsProps) {
                   type="email"
                   value={user.email}
                   onChange={(e) => onUpdate({ email: e.target.value })}
-                  className="rounded-lg border-gray-300 focus:border-indigo-500 focus:ring-indigo-500"
+                  className="rounded-lg border-gray-300 focus:border-primary-500 focus:ring-primary-500"
                 />
               </div>
             </div>
@@ -35,7 +35,7 @@ export function UserDetails({ user, onUpdate }: UserDetailsProps) {
                   type="tel"
                   value={user.phone || ''}
                   onChange={(e) => onUpdate({ phone: e.target.value })}
-                  className="rounded-lg border-gray-300 focus:border-indigo-500 focus:ring-indigo-500"
+                  className="rounded-lg border-gray-300 focus:border-primary-500 focus:ring-primary-500"
                 />
               </div>
             </div>
@@ -47,7 +47,7 @@ export function UserDetails({ user, onUpdate }: UserDetailsProps) {
                   type="text"
                   value={user.company || ''}
                   onChange={(e) => onUpdate({ company: e.target.value })}
-                  className="rounded-lg border-gray-300 focus:border-indigo-500 focus:ring-indigo-500"
+                  className="rounded-lg border-gray-300 focus:border-primary-500 focus:ring-primary-500"
                 />
               </div>
             </div>
@@ -59,7 +59,7 @@ export function UserDetails({ user, onUpdate }: UserDetailsProps) {
                   type="url"
                   value={user.website || ''}
                   onChange={(e) => onUpdate({ website: e.target.value })}
-                  className="rounded-lg border-gray-300 focus:border-indigo-500 focus:ring-indigo-500"
+                  className="rounded-lg border-gray-300 focus:border-primary-500 focus:ring-primary-500"
                 />
               </div>
             </div>

@@ -42,7 +42,7 @@ export function UserList({ users, onEdit, onDelete, onRoleChange }: UserListProp
               <select
                 value={user.role}
                 onChange={(e) => onRoleChange(user.id, e.target.value as 'user' | 'admin')}
-                className="rounded-lg border-gray-300 text-sm focus:border-indigo-500 focus:ring-indigo-500"
+                className="rounded-lg border-gray-300 text-sm focus:border-primary-500 focus:ring-primary-500"
               >
                 <option value="user">User</option>
                 <option value="admin">Admin</option>

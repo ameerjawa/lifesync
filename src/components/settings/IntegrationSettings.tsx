@@ -78,11 +78,11 @@ export function IntegrationSettings() {
           Access your data programmatically using our API.
         </p>
         <div className="mt-4 flex items-center justify-between">
-          <button className="inline-flex items-center text-sm text-indigo-600 hover:text-indigo-500">
+          <button className="inline-flex items-center text-sm text-primary-600 hover:text-primary-500">
             View API Documentation
             <ExternalLink className="ml-1 h-4 w-4" />
           </button>
-          <button className="rounded-lg bg-indigo-600 px-4 py-2 text-sm font-medium text-white hover:bg-indigo-500">
+          <button className="rounded-lg bg-primary-600 px-4 py-2 text-sm font-medium text-white hover:bg-primary-500">
             Generate API Key
           </button>
         </div>

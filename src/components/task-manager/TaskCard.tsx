@@ -67,7 +67,7 @@ export function TaskCard({
             type="checkbox"
             checked={isSelected}
             onChange={() => onSelect(task.id)}
-            className="rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+            className="rounded border-gray-300 text-primary-600 focus:ring-primary-500"
           />
           <button
             onClick={() => onExpand(task.id)}
@@ -89,7 +89,7 @@ export function TaskCard({
         {task.labels.map((label) => (
           <span
             key={label}
-            className="rounded-full bg-indigo-100 px-2 py-1 text-xs font-medium text-indigo-800"
+            className="rounded-full bg-primary-100 px-2 py-1 text-xs font-medium text-primary-800"
           >
             {label}
           </span>
@@ -155,7 +155,7 @@ export function TaskCard({
                 <div className="mt-3">
                   <textarea
                     placeholder="Add a comment..."
-                    className="w-full rounded-lg border border-gray-300 p-2 text-sm focus:border-indigo-500 focus:ring-indigo-500"
+                    className="w-full rounded-lg border border-gray-300 p-2 text-sm focus:border-primary-500 focus:ring-primary-500"
                     rows={2}
                     onKeyDown={(e) => {
                       if (e.key === 'Enter' && !e.shiftKey) {
@@ -181,7 +181,7 @@ export function TaskCard({
                         <FileText className="mr-2 h-4 w-4 text-gray-400" />
                         <span className="text-sm text-gray-600">{attachment.name}</span>
                       </div>
-                      <button className="text-indigo-600 hover:text-indigo-500">
+                      <button className="text-primary-600 hover:text-primary-500">
                         Download
                       </button>
                     </div>
@@ -192,7 +192,7 @@ export function TaskCard({
                     <span className="sr-only">Add attachment</span>
                     <input
                       type="file"
-                      className="block w-full text-sm text-gray-500 file:mr-4 file:rounded-full file:border-0 file:bg-indigo-50 file:px-4 file:py-2 file:text-sm file:font-semibold file:text-indigo-600 hover:file:bg-indigo-100"
+                      className="block w-full text-sm text-gray-500 file:mr-4 file:rounded-full file:border-0 file:bg-primary-50 file:px-4 file:py-2 file:text-sm file:font-semibold file:text-primary-600 hover:file:bg-primary-100"
                       onChange={(e) => {
                         const file = e.target.files?.[0];
                         if (file) {

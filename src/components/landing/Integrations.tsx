@@ -64,7 +64,7 @@ export function Integrations() {
                     alt={integration.name}
                     className="h-8 w-8 rounded-lg"
                   />
-                  <Plug className="h-5 w-5 text-gray-400 group-hover:text-indigo-600 transition-colors" />
+                  <Plug className="h-5 w-5 text-gray-400 group-hover:text-primary-600 transition-colors" />
                 </div>
                 <h3 className="text-lg font-semibold text-gray-900 mb-2">{integration.name}</h3>
                 <p className="text-gray-600">{integration.description}</p>
@@ -80,7 +80,7 @@ export function Integrations() {
           >
             <button 
               onClick={() => setShowModal(true)}
-              className="inline-flex items-center text-indigo-600 font-semibold hover:text-indigo-500"
+              className="inline-flex items-center text-primary-600 font-semibold hover:text-primary-500"
             >
               View All Integrations
               <ArrowRight className="ml-2 h-5 w-5" />

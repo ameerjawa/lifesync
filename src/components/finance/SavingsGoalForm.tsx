@@ -110,7 +110,7 @@ export function SavingsGoalForm({ onSubmit, onClose, accounts }: SavingsGoalForm
             id="name"
             value={goal.name}
             onChange={(e) => setGoal({ ...goal, name: e.target.value })}
-            className="mt-1 block w-full rounded-lg border border-gray-300 px-4 py-2 focus:border-indigo-500 focus:ring-indigo-500"
+            className="mt-1 block w-full rounded-lg border border-gray-300 px-4 py-2 focus:border-primary-500 focus:ring-primary-500"
             required
           />
         </div>
@@ -128,7 +128,7 @@ export function SavingsGoalForm({ onSubmit, onClose, accounts }: SavingsGoalForm
               id="target_amount"
               value={goal.target_amount}
               onChange={(e) => setGoal({ ...goal, target_amount: e.target.value })}
-              className="block w-full rounded-lg border border-gray-300 pl-10 pr-4 py-2 focus:border-indigo-500 focus:ring-indigo-500"
+              className="block w-full rounded-lg border border-gray-300 pl-10 pr-4 py-2 focus:border-primary-500 focus:ring-primary-500"
               required
               min="0.01"
               step="0.01"
@@ -149,7 +149,7 @@ export function SavingsGoalForm({ onSubmit, onClose, accounts }: SavingsGoalForm
               id="current_amount"
               value={goal.current_amount}
               onChange={(e) => setGoal({ ...goal, current_amount: e.target.value })}
-              className="block w-full rounded-lg border border-gray-300 pl-10 pr-4 py-2 focus:border-indigo-500 focus:ring-indigo-500"
+              className="block w-full rounded-lg border border-gray-300 pl-10 pr-4 py-2 focus:border-primary-500 focus:ring-primary-500"
               min="0"
               step="0.01"
             />
@@ -169,7 +169,7 @@ export function SavingsGoalForm({ onSubmit, onClose, accounts }: SavingsGoalForm
               id="target_date"
               value={goal.target_date}
               onChange={(e) => setGoal({ ...goal, target_date: e.target.value })}
-              className="block w-full rounded-lg border border-gray-300 pl-10 pr-4 py-2 focus:border-indigo-500 focus:ring-indigo-500"
+              className="block w-full rounded-lg border border-gray-300 pl-10 pr-4 py-2 focus:border-primary-500 focus:ring-primary-500"
               required
               min={goal.start_date}
             />
@@ -184,7 +184,7 @@ export function SavingsGoalForm({ onSubmit, onClose, accounts }: SavingsGoalForm
             id="account"
             value={goal.account_id || ''}
             onChange={(e) => setGoal({ ...goal, account_id: e.target.value || null })}
-            className="mt-1 block w-full rounded-lg border border-gray-300 px-4 py-2 focus:border-indigo-500 focus:ring-indigo-500"
+            className="mt-1 block w-full rounded-lg border border-gray-300 px-4 py-2 focus:border-primary-500 focus:ring-primary-500"
           >
             <option value="">No linked account</option>
             {accounts.map((account) => (
@@ -206,7 +206,7 @@ export function SavingsGoalForm({ onSubmit, onClose, accounts }: SavingsGoalForm
           <button
             type="submit"
             disabled={isSubmitting}
-            className="rounded-lg bg-indigo-600 px-4 py-2 text-white hover:bg-indigo-500 disabled:opacity-50"
+            className="rounded-lg bg-primary-600 px-4 py-2 text-white hover:bg-primary-500 disabled:opacity-50"
           >
             {isSubmitting ? (
               <div className="flex items-center">

@@ -19,8 +19,8 @@ export function Features() {
       icon: Brain,
       title: 'AI Task Management',
       description: 'Smart task prioritization and scheduling powered by advanced AI algorithms.',
-      color: 'text-indigo-600',
-      bgColor: 'bg-indigo-100'
+      color: 'text-primary-600',
+      bgColor: 'bg-primary-100'
     },
     {
       icon: Heart,
@@ -40,8 +40,8 @@ export function Features() {
       icon: Target,
       title: 'Goal Tracking',
       description: 'Set, track, and achieve your personal and professional goals.',
-      color: 'text-purple-600',
-      bgColor: 'bg-purple-100'
+      color: 'text-primary-600',
+      bgColor: 'bg-primary-100'
     },
     {
       icon: Users,
@@ -109,19 +109,19 @@ export function Features() {
           className="mt-24 grid grid-cols-1 md:grid-cols-4 gap-8"
         >
           <div className="text-center">
-            <div className="text-4xl font-bold text-indigo-600 mb-2">50K+</div>
+            <div className="text-4xl font-bold text-primary-600 mb-2">50K+</div>
             <div className="text-gray-600">Active Users</div>
           </div>
           <div className="text-center">
-            <div className="text-4xl font-bold text-indigo-600 mb-2">1M+</div>
+            <div className="text-4xl font-bold text-primary-600 mb-2">1M+</div>
             <div className="text-gray-600">Tasks Completed</div>
           </div>
           <div className="text-center">
-            <div className="text-4xl font-bold text-indigo-600 mb-2">95%</div>
+            <div className="text-4xl font-bold text-primary-600 mb-2">95%</div>
             <div className="text-gray-600">User Satisfaction</div>
           </div>
           <div className="text-center">
-            <div className="text-4xl font-bold text-indigo-600 mb-2">24/7</div>
+            <div className="text-4xl font-bold text-primary-600 mb-2">24/7</div>
             <div className="text-gray-600">Support Available</div>
           </div>
         </motion.div>

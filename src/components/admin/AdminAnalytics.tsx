@@ -89,7 +89,7 @@ export function AdminAnalytics() {
           <select
             value={dateRange}
             onChange={(e) => setDateRange(e.target.value)}
-            className="rounded-lg border-gray-300 text-sm focus:border-indigo-500 focus:ring-indigo-500"
+            className="rounded-lg border-gray-300 text-sm focus:border-primary-500 focus:ring-primary-500"
           >
             <option value="week">Last 7 Days</option>
             <option value="month">Last 30 Days</option>
@@ -100,7 +100,7 @@ export function AdminAnalytics() {
           <select
             value={metric}
             onChange={(e) => setMetric(e.target.value)}
-            className="rounded-lg border-gray-300 text-sm focus:border-indigo-500 focus:ring-indigo-500"
+            className="rounded-lg border-gray-300 text-sm focus:border-primary-500 focus:ring-primary-500"
           >
             <option value="users">Users</option>
             <option value="revenue">Revenue</option>
@@ -113,7 +113,7 @@ export function AdminAnalytics() {
           </button>
         </div>
 
-        <button className="inline-flex items-center rounded-lg bg-indigo-600 px-4 py-2 text-sm font-medium text-white hover:bg-indigo-500">
+        <button className="inline-flex items-center rounded-lg bg-primary-600 px-4 py-2 text-sm font-medium text-white hover:bg-primary-500">
           <Download className="mr-2 h-4 w-4" />
           Export Report
         </button>
@@ -153,8 +153,8 @@ export function AdminAnalytics() {
               <p className="text-sm font-medium text-gray-500">Monthly Revenue</p>
               <p className="mt-1 text-3xl font-semibold text-gray-900">${revenueMetrics.mrr}</p>
             </div>
-            <div className="rounded-full bg-indigo-100 p-3">
-              <DollarSign className="h-6 w-6 text-indigo-600" />
+            <div className="rounded-full bg-primary-100 p-3">
+              <DollarSign className="h-6 w-6 text-primary-600" />
             </div>
           </div>
           <div className="mt-4 flex items-center text-sm">
@@ -308,7 +308,7 @@ export function AdminAnalytics() {
                 <span className="font-medium text-gray-900">{userMetrics.averageSessionTime}</span>
               </div>
               <div className="mt-2 h-2 rounded-full bg-gray-200">
-                <div className="h-2 rounded-full bg-indigo-500" style={{ width: '75%' }} />
+                <div className="h-2 rounded-full bg-primary-500" style={{ width: '75%' }} />
               </div>
             </div>
           </div>

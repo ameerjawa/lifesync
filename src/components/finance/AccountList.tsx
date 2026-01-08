@@ -41,7 +41,7 @@ export function AccountList({ accounts }: AccountListProps) {
       case 'savings':
         return 'text-green-600 bg-green-100';
       case 'investment':
-        return 'text-purple-600 bg-purple-100';
+        return 'text-primary-600 bg-primary-100';
       case 'loan':
         return 'text-orange-600 bg-orange-100';
       default:

@@ -59,7 +59,7 @@ export function BudgetOverview({ budgets = [], transactions = [], categories = [
         <h3 className="text-lg font-semibold text-gray-900">Budget Overview</h3>
         <button
           onClick={() => setIsAddingBudget(true)}
-          className="text-sm text-indigo-600 hover:text-indigo-500"
+          className="text-sm text-primary-600 hover:text-primary-500"
         >
           Manage Budgets
         </button>
@@ -118,7 +118,7 @@ export function BudgetOverview({ budgets = [], transactions = [], categories = [
           <p className="text-gray-500">No budgets set up yet.</p>
           <button
             onClick={() => setIsAddingBudget(true)}
-            className="mt-2 text-indigo-600 hover:text-indigo-500"
+            className="mt-2 text-primary-600 hover:text-primary-500"
           >
             Create your first budget
           </button>

@@ -94,7 +94,7 @@ export function HealthMetricForm({ onSubmit, onClose }: HealthMetricFormProps) {
             id="metric_type"
             value={metric.metric_type}
             onChange={(e) => setMetric({ ...metric, metric_type: e.target.value as HealthMetric['metric_type'] })}
-            className="mt-1 block w-full rounded-lg border border-gray-300 px-4 py-2 focus:border-indigo-500 focus:ring-indigo-500"
+            className="mt-1 block w-full rounded-lg border border-gray-300 px-4 py-2 focus:border-primary-500 focus:ring-primary-500"
           >
             <option value="weight">Weight</option>
             <option value="steps">Steps</option>
@@ -116,7 +116,7 @@ export function HealthMetricForm({ onSubmit, onClose }: HealthMetricFormProps) {
             id="value"
             value={metric.value}
             onChange={(e) => setMetric({ ...metric, value: e.target.value })}
-            className="mt-1 block w-full rounded-lg border border-gray-300 px-4 py-2 focus:border-indigo-500 focus:ring-indigo-500"
+            className="mt-1 block w-full rounded-lg border border-gray-300 px-4 py-2 focus:border-primary-500 focus:ring-primary-500"
             required
             step="0.01"
           />
@@ -131,7 +131,7 @@ export function HealthMetricForm({ onSubmit, onClose }: HealthMetricFormProps) {
             id="recorded_at"
             value={metric.recorded_at}
             onChange={(e) => setMetric({ ...metric, recorded_at: e.target.value })}
-            className="mt-1 block w-full rounded-lg border border-gray-300 px-4 py-2 focus:border-indigo-500 focus:ring-indigo-500"
+            className="mt-1 block w-full rounded-lg border border-gray-300 px-4 py-2 focus:border-primary-500 focus:ring-primary-500"
             required
           />
         </div>
@@ -144,7 +144,7 @@ export function HealthMetricForm({ onSubmit, onClose }: HealthMetricFormProps) {
             id="notes"
             value={metric.notes}
             onChange={(e) => setMetric({ ...metric, notes: e.target.value })}
-            className="mt-1 block w-full rounded-lg border border-gray-300 px-4 py-2 focus:border-indigo-500 focus:ring-indigo-500"
+            className="mt-1 block w-full rounded-lg border border-gray-300 px-4 py-2 focus:border-primary-500 focus:ring-primary-500"
             rows={3}
           />
         </div>
@@ -160,7 +160,7 @@ export function HealthMetricForm({ onSubmit, onClose }: HealthMetricFormProps) {
           <button
             type="submit"
             disabled={isSubmitting}
-            className="rounded-lg bg-indigo-600 px-4 py-2 text-white hover:bg-indigo-500 disabled:opacity-50"
+            className="rounded-lg bg-primary-600 px-4 py-2 text-white hover:bg-primary-500 disabled:opacity-50"
           >
             {isSubmitting ? (
               <div className="flex items-center">

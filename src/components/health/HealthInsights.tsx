@@ -32,7 +32,7 @@ export function HealthInsights({ insights }: HealthInsightsProps) {
       if (insight.trend === 'down') return 'text-red-600 bg-red-100';
       return 'text-blue-600 bg-blue-100';
     }
-    return 'text-purple-600 bg-purple-100';
+    return 'text-primary-600 bg-primary-100';
   };
 
   return (

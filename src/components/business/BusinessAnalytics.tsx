@@ -81,7 +81,7 @@ export function BusinessAnalytics() {
   if (isLoading) {
     return (
       <div className="flex h-64 items-center justify-center">
-        <div className="h-8 w-8 animate-spin rounded-full border-2 border-indigo-600 border-t-transparent" />
+        <div className="h-8 w-8 animate-spin rounded-full border-2 border-primary-600 border-t-transparent" />
       </div>
     );
   }
@@ -142,15 +142,15 @@ export function BusinessAnalytics() {
           className="bg-white rounded-lg p-6 shadow-sm"
         >
           <div className="flex items-center">
-            <div className="rounded-full bg-purple-100 p-3">
-              <Target className="h-6 w-6 text-purple-600" />
+            <div className="rounded-full bg-primary-100 p-3">
+              <Target className="h-6 w-6 text-primary-600" />
             </div>
             <div className="ml-4">
               <p className="text-sm font-medium text-gray-500">Active Projects</p>
               <p className="text-2xl font-semibold text-gray-900">
                 {analytics?.projects.active || 0}
               </p>
-              <p className="text-sm text-purple-600">
+              <p className="text-sm text-primary-600">
                 {analytics?.projects.completed || 0} completed
               </p>
             </div>
@@ -310,7 +310,7 @@ export function BusinessAnalytics() {
         <h3 className="text-lg font-semibold text-gray-900 mb-6">Performance Metrics</h3>
         <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4">
           <div className="text-center">
-            <div className="text-3xl font-bold text-indigo-600 mb-2">
+            <div className="text-3xl font-bold text-primary-600 mb-2">
               {((analytics?.team.productivity || 0)).toFixed(0)}%
             </div>
             <div className="text-sm text-gray-600">Task Completion Rate</div>
@@ -328,7 +328,7 @@ export function BusinessAnalytics() {
             <div className="text-sm text-gray-600">Total Clients</div>
           </div>
           <div className="text-center">
-            <div className="text-3xl font-bold text-purple-600 mb-2">
+            <div className="text-3xl font-bold text-primary-600 mb-2">
               {projects.length}
             </div>
             <div className="text-sm text-gray-600">Total Projects</div>

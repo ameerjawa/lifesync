@@ -59,7 +59,7 @@ export function BusinessInvoices() {
   if (isLoading) {
     return (
       <div className="flex h-64 items-center justify-center">
-        <div className="h-8 w-8 animate-spin rounded-full border-2 border-indigo-600 border-t-transparent" />
+        <div className="h-8 w-8 animate-spin rounded-full border-2 border-primary-600 border-t-transparent" />
       </div>
     );
   }
@@ -74,7 +74,7 @@ export function BusinessInvoices() {
         </div>
         <button
           onClick={() => setIsAddingInvoice(true)}
-          className="flex items-center px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-500"
+          className="flex items-center px-4 py-2 bg-primary-600 text-white rounded-lg hover:bg-primary-500"
         >
           <Plus className="mr-2 h-5 w-5" />
           New Invoice
@@ -134,7 +134,7 @@ export function BusinessInvoices() {
             onClick={() => setSelectedStatus(status as any)}
             className={`px-4 py-2 rounded-lg text-sm font-medium ${
               selectedStatus === status
-                ? 'bg-indigo-100 text-indigo-700'
+                ? 'bg-primary-100 text-primary-700'
                 : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
             }`}
           >
@@ -215,7 +215,7 @@ export function BusinessInvoices() {
                   </td>
                   <td className="px-6 py-4 whitespace-nowrap text-sm font-medium">
                     <div className="flex space-x-2">
-                      <button className="text-indigo-600 hover:text-indigo-500">
+                      <button className="text-primary-600 hover:text-primary-500">
                         <Eye className="h-4 w-4" />
                       </button>
                       <button
@@ -255,7 +255,7 @@ export function BusinessInvoices() {
             {selectedStatus === 'all' && (
               <button
                 onClick={() => setIsAddingInvoice(true)}
-                className="inline-flex items-center px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-500"
+                className="inline-flex items-center px-4 py-2 bg-primary-600 text-white rounded-lg hover:bg-primary-500"
               >
                 <Plus className="mr-2 h-5 w-5" />
                 Create Invoice

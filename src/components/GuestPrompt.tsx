@@ -27,8 +27,8 @@ export function GuestPrompt({ onClose, message }: GuestPromptProps) {
     >
       <div className="relative w-full max-w-md rounded-lg bg-white p-6 shadow-xl">
         <div className="mb-4 flex items-center justify-center">
-          <div className="bg-indigo-100 rounded-full p-3">
-            <Lock className="h-6 w-6 text-indigo-600" />
+          <div className="bg-primary-100 rounded-full p-3">
+            <Lock className="h-6 w-6 text-primary-600" />
           </div>
         </div>
         
@@ -43,7 +43,7 @@ export function GuestPrompt({ onClose, message }: GuestPromptProps) {
         <div className="space-y-3">
           <button
             onClick={handleSignup}
-            className="flex w-full items-center justify-center rounded-lg bg-indigo-600 px-4 py-2 text-white hover:bg-indigo-500"
+            className="flex w-full items-center justify-center rounded-lg bg-primary-600 px-4 py-2 text-white hover:bg-primary-500"
           >
             Sign up for free
             <ArrowRight className="ml-2 h-5 w-5" />

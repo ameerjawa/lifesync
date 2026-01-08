@@ -73,10 +73,10 @@ export function BulkActions({
         <button
           onClick={handleDuplicate}
           disabled={isDuplicating}
-          className="rounded-lg p-2 text-indigo-600 hover:bg-indigo-50 disabled:opacity-50 disabled:cursor-not-allowed"
+          className="rounded-lg p-2 text-primary-600 hover:bg-primary-50 disabled:opacity-50 disabled:cursor-not-allowed"
         >
           {isDuplicating ? (
-            <div className="h-5 w-5 animate-spin rounded-full border-2 border-indigo-600 border-t-transparent" />
+            <div className="h-5 w-5 animate-spin rounded-full border-2 border-primary-600 border-t-transparent" />
           ) : (
             <Copy className="h-5 w-5" />
           )}

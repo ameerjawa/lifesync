@@ -53,19 +53,19 @@ export function TaskHeader({
         <div className="flex space-x-2">
           <button
             onClick={() => onViewModeChange('board')}
-            className={`p-2 rounded-lg ${viewMode === 'board' ? 'bg-indigo-100 text-indigo-600' : 'text-gray-500 hover:bg-gray-100'}`}
+            className={`p-2 rounded-lg ${viewMode === 'board' ? 'bg-primary-100 text-primary-600' : 'text-gray-500 hover:bg-gray-100'}`}
           >
             <LayoutGrid className="h-5 w-5" />
           </button>
           <button
             onClick={() => onViewModeChange('list')}
-            className={`p-2 rounded-lg ${viewMode === 'list' ? 'bg-indigo-100 text-indigo-600' : 'text-gray-500 hover:bg-gray-100'}`}
+            className={`p-2 rounded-lg ${viewMode === 'list' ? 'bg-primary-100 text-primary-600' : 'text-gray-500 hover:bg-gray-100'}`}
           >
             <List className="h-5 w-5" />
           </button>
           <button
             onClick={() => onViewModeChange('timeline')}
-            className={`p-2 rounded-lg ${viewMode === 'timeline' ? 'bg-indigo-100 text-indigo-600' : 'text-gray-500 hover:bg-gray-100'}`}
+            className={`p-2 rounded-lg ${viewMode === 'timeline' ? 'bg-primary-100 text-primary-600' : 'text-gray-500 hover:bg-gray-100'}`}
           >
             <Timeline className="h-5 w-5" />
           </button>
@@ -75,7 +75,7 @@ export function TaskHeader({
         <select
           value={groupBy}
           onChange={(e) => onGroupByChange(e.target.value as any)}
-          className="rounded-lg border-gray-300 text-sm focus:border-indigo-500 focus:ring-indigo-500"
+          className="rounded-lg border-gray-300 text-sm focus:border-primary-500 focus:ring-primary-500"
         >
           <option value="none">No Grouping</option>
           <option value="status">Group by Status</option>
@@ -87,7 +87,7 @@ export function TaskHeader({
           <select
             value={sortBy}
             onChange={(e) => onSortByChange(e.target.value as any)}
-            className="rounded-lg border-gray-300 text-sm focus:border-indigo-500 focus:ring-indigo-500"
+            className="rounded-lg border-gray-300 text-sm focus:border-primary-500 focus:ring-primary-500"
           >
             <option value="dueDate">Sort by Due Date</option>
             <option value="priority">Sort by Priority</option>
@@ -111,7 +111,7 @@ export function TaskHeader({
           <button
             onClick={onToggleFilters}
             className={`flex items-center rounded-lg px-4 py-2 ${
-              showFilters ? 'bg-indigo-100 text-indigo-600' : 'text-gray-700 hover:bg-gray-100'
+              showFilters ? 'bg-primary-100 text-primary-600' : 'text-gray-700 hover:bg-gray-100'
             }`}
           >
             <Filter className="mr-2 h-5 w-5" />
@@ -119,14 +119,14 @@ export function TaskHeader({
             {Object.values(filterState).some(v => 
               Array.isArray(v) ? v.length > 0 : Boolean(v)
             ) && (
-              <span className="ml-2 rounded-full bg-indigo-600 px-2 py-0.5 text-xs text-white">
+              <span className="ml-2 rounded-full bg-primary-600 px-2 py-0.5 text-xs text-white">
                 Active
               </span>
             )}
           </button>
           <button
             onClick={onAddTemplate}
-            className="flex items-center rounded-lg bg-purple-600 px-4 py-2 text-white hover:bg-purple-500"
+            className="flex items-center rounded-lg bg-primary-600 px-4 py-2 text-white hover:bg-primary-500"
           >
             <Template className="mr-2 h-5 w-5" />
             New Template
@@ -140,7 +140,7 @@ export function TaskHeader({
           </button>
           <button
             onClick={onAddTask}
-            className="flex items-center rounded-lg bg-indigo-600 px-4 py-2 text-white hover:bg-indigo-500"
+            className="flex items-center rounded-lg bg-primary-600 px-4 py-2 text-white hover:bg-primary-500"
           >
             <Plus className="mr-2 h-5 w-5" />
             Add Task

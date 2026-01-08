@@ -56,7 +56,7 @@ export function HealthGoalForm({ onSubmit, onClose }: HealthGoalFormProps) {
             id="metric_type"
             value={goal.metric_type}
             onChange={(e) => setGoal({ ...goal, metric_type: e.target.value as HealthGoal['metric_type'] })}
-            className="mt-1 block w-full rounded-lg border border-gray-300 px-4 py-2 focus:border-indigo-500 focus:ring-indigo-500"
+            className="mt-1 block w-full rounded-lg border border-gray-300 px-4 py-2 focus:border-primary-500 focus:ring-primary-500"
           >
             <option value="weight">Weight</option>
             <option value="steps">Steps</option>
@@ -78,7 +78,7 @@ export function HealthGoalForm({ onSubmit, onClose }: HealthGoalFormProps) {
             id="target_value"
             value={goal.target_value}
             onChange={(e) => setGoal({ ...goal, target_value: e.target.value })}
-            className="mt-1 block w-full rounded-lg border border-gray-300 px-4 py-2 focus:border-indigo-500 focus:ring-indigo-500"
+            className="mt-1 block w-full rounded-lg border border-gray-300 px-4 py-2 focus:border-primary-500 focus:ring-primary-500"
             required
             step="0.01"
           />
@@ -93,7 +93,7 @@ export function HealthGoalForm({ onSubmit, onClose }: HealthGoalFormProps) {
             id="start_date"
             value={goal.start_date}
             onChange={(e) => setGoal({ ...goal, start_date: e.target.value })}
-            className="mt-1 block w-full rounded-lg border border-gray-300 px-4 py-2 focus:border-indigo-500 focus:ring-indigo-500"
+            className="mt-1 block w-full rounded-lg border border-gray-300 px-4 py-2 focus:border-primary-500 focus:ring-primary-500"
             required
           />
         </div>
@@ -107,7 +107,7 @@ export function HealthGoalForm({ onSubmit, onClose }: HealthGoalFormProps) {
             id="end_date"
             value={goal.end_date}
             onChange={(e) => setGoal({ ...goal, end_date: e.target.value })}
-            className="mt-1 block w-full rounded-lg border border-gray-300 px-4 py-2 focus:border-indigo-500 focus:ring-indigo-500"
+            className="mt-1 block w-full rounded-lg border border-gray-300 px-4 py-2 focus:border-primary-500 focus:ring-primary-500"
             required
             min={goal.start_date}
           />
@@ -123,7 +123,7 @@ export function HealthGoalForm({ onSubmit, onClose }: HealthGoalFormProps) {
           </button>
           <button
             type="submit"
-            className="rounded-lg bg-indigo-600 px-4 py-2 text-white hover:bg-indigo-500"
+            className="rounded-lg bg-primary-600 px-4 py-2 text-white hover:bg-primary-500"
           >
             Set Goal
           </button>
