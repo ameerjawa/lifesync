@@ -13,15 +13,9 @@ export function BusinessProjects() {
   const projects = useBusinessStore(state => state.projects);
   const clients = useBusinessStore(state => state.clients);
   const isLoading = useBusinessStore(state => state.isLoading);
-  const loadProjects = useBusinessStore(state => state.loadProjects);
   const addProject = useBusinessStore(state => state.addProject);
   const updateProject = useBusinessStore(state => state.updateProject);
   const deleteProject = useBusinessStore(state => state.deleteProject);
-
-  // Load projects once on mount
-  useEffect(() => {
-    loadProjects().catch(console.error);
-  }, []);
 
   const filteredProjects = projects.filter(project =>
     selectedStatus === 'all' || project.status === selectedStatus

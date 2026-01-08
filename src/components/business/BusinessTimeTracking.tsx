@@ -115,7 +115,7 @@ export function BusinessTimeTracking() {
                 <option value="">Select a project</option>
                 {projects.map(project => (
                   <option key={project.id} value={project.id}>
-                    {project.title}
+                    {project.name}
                   </option>
                 ))}
               </select>
@@ -284,7 +284,7 @@ export function BusinessTimeTracking() {
                       }`}>
                         {entry.billable ? 'Billable' : 'Non-billable'}
                       </div>
-                      <p className="font-medium text-gray-900">{project?.title || 'Unknown Project'}</p>
+                      <p className="font-medium text-gray-900">{project?.name || 'Unknown Project'}</p>
                     </div>
                     <p className="text-sm text-gray-600 mt-1">
                       {entry.description || task?.title || 'No description'}

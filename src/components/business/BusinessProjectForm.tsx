@@ -5,22 +5,23 @@ import type { BusinessProject, BusinessClient } from '../../lib/types';
 
 interface BusinessProjectFormProps {
   clients: BusinessClient[];
+  project?: BusinessProject;
   onSubmit: (project: Omit<BusinessProject, 'id' | 'business_id' | 'created_at' | 'updated_at'>) => Promise<void>;
   onClose: () => void;
 }
 
-export function BusinessProjectForm({ clients, onSubmit, onClose }: BusinessProjectFormProps) {
+export function BusinessProjectForm({ clients, project: existingProject, onSubmit, onClose }: BusinessProjectFormProps) {
   const [project, setProject] = useState({
-    name: '',
-    description: '',
-    client_id: '',
-    status: 'planning' as const,
-    priority: 'medium' as const,
-    start_date: '',
-    due_date: '',
-    budget: '',
-    team_members: [] as string[],
-    tags: [] as string[]
+    name: existingProject?.name || '',
+    description: existingProject?.description || '',
+    client_id: existingProject?.client_id || '',
+    status: (existingProject?.status || 'planning') as const,
+    priority: (existingProject?.priority || 'medium') as const,
+    start_date: existingProject?.start_date || '',
+    due_date: existingProject?.due_date || '',
+    budget: existingProject?.budget ? String(existingProject.budget) : '',
+    team_members: existingProject?.team_members || [] as string[],
+    tags: existingProject?.tags || [] as string[]
   });
 
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -71,8 +72,12 @@ export function BusinessProjectForm({ clients, onSubmit, onClose }: BusinessProj
           <Target className="h-6 w-6 text-indigo-600" />
         </div>
         <div>
-          <h3 className="text-lg font-semibold text-gray-900">Create New Project</h3>
-          <p className="text-sm text-gray-500">Set up a new business project</p>
+          <h3 className="text-lg font-semibold text-gray-900">
+            {existingProject ? 'Edit Project' : 'Create New Project'}
+          </h3>
+          <p className="text-sm text-gray-500">
+            {existingProject ? 'Update project details' : 'Set up a new business project'}
+          </p>
         </div>
       </div>
 
@@ -256,10 +261,10 @@ export function BusinessProjectForm({ clients, onSubmit, onClose }: BusinessProj
             {isSubmitting ? (
               <div className="flex items-center">
                 <div className="h-4 w-4 animate-spin rounded-full border-2 border-white border-t-transparent" />
-                <span className="ml-2">Creating...</span>
+                <span className="ml-2">{existingProject ? 'Updating...' : 'Creating...'}</span>
               </div>
             ) : (
-              'Create Project'
+              existingProject ? 'Update Project' : 'Create Project'
             )}
           </button>
         </div>

@@ -22,15 +22,10 @@ interface CalendarEvent {
 }
 
 export function BusinessCalendar() {
-  const { tasks, projects, loadTasks, loadProjects, isLoading } = useBusinessStore();
+  const { tasks, projects, isLoading } = useBusinessStore();
   const [currentDate, setCurrentDate] = useState(new Date());
   const [selectedDate, setSelectedDate] = useState<Date | null>(null);
   const [filterType, setFilterType] = useState<'all' | 'task' | 'project'>('all');
-
-  useEffect(() => {
-    loadTasks();
-    loadProjects();
-  }, [loadTasks, loadProjects]);
 
   const getDaysInMonth = (date: Date) => {
     const year = date.getFullYear();
@@ -69,11 +64,11 @@ export function BusinessCalendar() {
     });
 
     projects.forEach(project => {
-      if (project.target_date && project.target_date === dateStr) {
+      if (project.due_date && project.due_date === dateStr) {
         events.push({
           id: project.id,
-          title: project.title,
-          date: new Date(project.target_date),
+          title: project.name,
+          date: new Date(project.due_date),
           type: 'project',
           status: project.status
         });

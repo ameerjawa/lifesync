@@ -68,24 +68,25 @@ export function BusinessDashboard() {
   const loadInitialData = async () => {
     try {
       await loadBusinesses();
-
-      // If business exists, load all business data
-      if (activeBusinessId) {
-        await Promise.all([
-          loadProjects(),
-          loadTasks(),
-          loadClients(),
-          loadInvoices(),
-          loadExpenses(),
-          loadAutomations(),
-          loadTeamMembers(),
-          generateAnalytics()
-        ]);
-      }
     } catch (error) {
       console.error('Error loading business data:', error);
     }
   };
+
+  useEffect(() => {
+    if (activeBusinessId) {
+      Promise.all([
+        loadProjects(),
+        loadTasks(),
+        loadClients(),
+        loadInvoices(),
+        loadExpenses(),
+        loadAutomations(),
+        loadTeamMembers(),
+        generateAnalytics()
+      ]).catch(console.error);
+    }
+  }, [activeBusinessId]);
 
   // If user doesn't have access, show upgrade prompt
   if (!checkFeatureAccess('business_suite')) {
