@@ -1,12 +1,16 @@
 node_modules
 dist
-# .env
-# .env.*
-# !.env.example
+
+# Environment variables
+.env
+.env.*
+!.env.example
 
 # Supabase
 .branches
 .temp
+
+# OS files
 .DS_Store
 
 # Editor directories and files
@@ -18,4 +22,3 @@ dist
 *.njsproj
 *.sln
 *.sw?
-.env
