@@ -55,13 +55,13 @@ function App() {
               element={profile?.role === 'admin' ? <AdminDashboard /> : <Navigate to="/dashboard" />}
             />
           </Routes>
-        </Router>
 
-        <AuthModal
-          isOpen={authModal.open}
-          onClose={closeAuth}
-          initialMode={authModal.mode}
-        />
+          <AuthModal
+            isOpen={authModal.open}
+            onClose={closeAuth}
+            initialMode={authModal.mode}
+          />
+        </Router>
       </ToastProvider>
     </ErrorBoundary>
   );
