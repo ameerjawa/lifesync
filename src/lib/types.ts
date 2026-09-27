@@ -342,3 +342,106 @@ export interface Profile {
   updated_at: string;
   role?: 'user' | 'admin';
 }
+
+export interface Goal {
+  id: string;
+  user_id: string;
+  title: string;
+  description?: string;
+  category: 'career' | 'business' | 'money' | 'fitness' | 'health' | 'learning' | 'relationships' | 'personal' | 'travel' | 'tasks';
+  target_date: string;
+  start_date?: string;
+  status?: 'active' | 'paused' | 'completed' | 'archived';
+  priority?: 'low' | 'medium' | 'high';
+  progress?: number;
+  milestones?: string[];
+  reminder_frequency?: 'daily' | 'weekly' | 'monthly' | 'none';
+  created_at: string;
+  updated_at: string;
+}
+
+export interface Habit {
+  id: string;
+  user_id: string;
+  name: string;
+  description?: string;
+  frequency: 'daily' | 'weekly' | 'custom';
+  schedule?: string[];
+  goal_id?: string;
+  streak: number;
+  completion_history?: Record<string, boolean>;
+  why?: string;
+  reminder?: string;
+  created_at: string;
+  updated_at: string;
+}
+
+export interface DailyBig3 {
+  id: string;
+  user_id: string;
+  date: string;
+  items: { id: string; title: string; completed: boolean; task_id?: string }[];
+  created_at: string;
+  updated_at: string;
+}
+
+export interface NextMove {
+  id: string;
+  user_id: string;
+  date: string;
+  recommendation: string;
+  reasoning: string;
+  task_id?: string;
+  goal_id?: string;
+  estimated_minutes?: number;
+  accepted: boolean | null;
+  created_at: string;
+}
+
+export interface ExecutionEvent {
+  id: string;
+  user_id: string;
+  date: string;
+  event_type: 'task_completed' | 'task_missed' | 'goal_progress' | 'habit_completed' | 'plan_adjusted';
+  ref_id?: string;
+  metadata?: Record<string, any>;
+  created_at: string;
+}
+
+export interface UserContext {
+  id: string;
+  user_id: string;
+  work_schedule?: string;
+  preferred_planning_time?: string;
+  typical_availability?: string;
+  constraints?: string;
+  priorities?: string[];
+  decisions?: string[];
+  created_at: string;
+  updated_at: string;
+}
+
+export interface WeeklyReview {
+  id: string;
+  user_id: string;
+  week_start: string;
+  week_end: string;
+  wins?: string[];
+  missed?: string[];
+  goal_movement?: string;
+  habit_consistency?: number;
+  execution_patterns?: string[];
+  recommended_priorities?: string[];
+  approved: boolean;
+  created_at: string;
+}
+
+export interface Decision {
+  id: string;
+  user_id: string;
+  title: string;
+  options?: { name: string; pros?: string[]; cons?: string[]; assumptions?: string[] }[];
+  status: 'draft' | 'decided' | 'archived';
+  created_at: string;
+  updated_at: string;
+}

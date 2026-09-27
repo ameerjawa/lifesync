@@ -92,7 +92,7 @@ export function TaskProvider({ children }: { children: React.ReactNode }) {
         const demoTasks = [
           {
             id: 'demo-1',
-            title: 'Welcome to LifeSync',
+            title: 'Welcome to NEXT',
             description: 'This is a demo task to show you how the system works.',
             status: 'todo' as const,
             priority: 'medium' as const,

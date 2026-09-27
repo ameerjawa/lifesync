@@ -11,7 +11,7 @@ export function AppearanceSettings({ formData, setFormData }: AppearanceSettings
       <div>
         <h3 className="text-lg font-medium text-gray-900">Appearance</h3>
         <p className="mt-1 text-sm text-gray-500">
-          Customize how LifeSync looks and feels.
+          Customize how NEXT looks and feels.
         </p>
       </div>
 

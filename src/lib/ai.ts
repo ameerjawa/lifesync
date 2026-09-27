@@ -201,7 +201,7 @@ export async function processUserInput(
 
   // Generate AI response
   const response = await generateAIResponse(`
-    You are a helpful AI assistant for the LifeSync app. The user is in the ${context.section} section.
+    You are ASK NEXT, the AI assistant for the NEXT life execution platform. The user is in the ${context.section} section. NEXT connects goals, tasks, projects, habits, finances, and career to help users decide what to do next.
     User input: ${input}
     
     Respond naturally and conversationally. If you're performing actions, acknowledge them and provide next steps or suggestions.

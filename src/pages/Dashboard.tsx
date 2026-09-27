@@ -1,25 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { 
-  Brain, 
-  Calendar as CalendarIcon, 
-  BarChart, 
-  Clock, 
-  Heart,
-  Home,
-  Settings,
-  User,
-  Wallet,
-  Menu,
-  X,
-  LogOut,
-  Shield,
-  Map,
-  Briefcase,
-  Target,
-  Building
+import {
+  Zap, Target, ListTodo, Calendar, Heart, Wallet, Briefcase,
+  BarChart3, Settings, User, Menu, X, LogOut, Shield, ChevronDown,
+  Brain, TrendingUp, Building, Moon, Sun, Sparkles,
 } from 'lucide-react';
+import { NextLogo } from '../components/brand/NextLogo';
 import { Overview } from '../components/Overview';
+import { TodayScreen } from '../components/today/TodayScreen';
 import { TaskManager } from '../components/task-manager/TaskManager';
 import { HealthDashboard } from '../components/health/HealthDashboard';
 import { FinanceDashboard } from '../components/finance/FinanceDashboard';
@@ -30,231 +18,231 @@ import { RoadsDashboard } from '../components/roads/RoadsDashboard';
 import { CareerDashboard } from '../components/career/CareerDashboard';
 import { ProjectDashboard } from '../components/project/ProjectDashboard';
 import { BusinessDashboard } from '../components/business/BusinessDashboard';
-import { GuestBanner } from '../components/GuestBanner';
 import { AIAssistant } from '../components/AIAssistant';
 import { useAuthStore } from '../store/authStore';
 import { useGuestStore } from '../store/guestStore';
 import { useSubscriptionStore } from '../store/subscriptionStore';
 import { useTrialStore } from '../store/trialStore';
+import { GuestBanner } from '../components/GuestBanner';
 import { TrialBanner } from '../components/trial/TrialBanner';
 import { UpgradePrompt } from '../components/trial/UpgradePrompt';
 
+interface NavSection {
+  id: string;
+  label: string;
+  icon: React.ComponentType<{ className?: string }>;
+  group: 'today' | 'plan' | 'life' | 'work' | 'insights' | 'ai' | 'system';
+  premium?: boolean;
+}
+
+const NAV_SECTIONS: NavSection[] = [
+  { id: 'today', label: 'Today', icon: Zap, group: 'today' },
+  { id: 'overview', label: 'Overview', icon: TrendingUp, group: 'today' },
+
+  { id: 'goals', label: 'Goals', icon: Target, group: 'plan' },
+  { id: 'projects', label: 'Projects', icon: Building, group: 'plan', premium: true },
+  { id: 'tasks', label: 'Tasks', icon: ListTodo, group: 'plan' },
+  { id: 'roads', label: 'Roads', icon: Calendar, group: 'plan', premium: true },
+
+  { id: 'career', label: 'Career', icon: Briefcase, group: 'life', premium: true },
+  { id: 'finance', label: 'Money', icon: Wallet, group: 'life', premium: true },
+  { id: 'health', label: 'Fitness', icon: Heart, group: 'life', premium: true },
+
+  { id: 'business', label: 'Business', icon: Building, group: 'work', premium: true },
+
+  { id: 'analytics', label: 'Progress', icon: BarChart3, group: 'insights', premium: true },
+];
+
+const NAV_GROUPS: { id: NavSection['group']; label: string }[] = [
+  { id: 'today', label: 'Execute' },
+  { id: 'plan', label: 'Plan' },
+  { id: 'life', label: 'Life' },
+  { id: 'work', label: 'Work' },
+  { id: 'insights', label: 'Insights' },
+];
+
 function Dashboard() {
-  const [isSidebarOpen, setIsSidebarOpen] = useState(true);
-  const [activeTab, setActiveTab] = useState('overview');
-  const [showUpgradePrompt, setShowUpgradePrompt] = useState(false);
+  const [sidebarOpen, setSidebarOpen] = useState(false);
+  const [activeView, setActiveView] = useState('today');
+  const [showUpgrade, setShowUpgrade] = useState(false);
+  const [darkMode, setDarkMode] = useState(false);
+  const [userMenuOpen, setUserMenuOpen] = useState(false);
   const navigate = useNavigate();
+
   const { signOut, profile } = useAuthStore();
   const { isGuest } = useGuestStore();
   const { plan, loadSubscription } = useSubscriptionStore();
   const { isTrialActive, shouldShowUpgradePrompt } = useTrialStore();
 
   useEffect(() => {
-    if (!isGuest) {
-      loadSubscription();
-    }
+    if (!isGuest) loadSubscription();
   }, [isGuest, loadSubscription]);
 
   useEffect(() => {
-    if (isTrialActive && shouldShowUpgradePrompt()) {
-      setShowUpgradePrompt(true);
-    }
+    if (isTrialActive && shouldShowUpgradePrompt()) setShowUpgrade(true);
   }, [isTrialActive, shouldShowUpgradePrompt]);
 
-  const handleSignOut = async () => {
-    try {
-      await signOut();
-    } catch (error) {
-      console.error('Error signing out:', error);
+  useEffect(() => {
+    const saved = localStorage.getItem('next-dark-mode');
+    if (saved === 'true') {
+      setDarkMode(true);
+      document.documentElement.classList.add('dark');
+    }
+  }, []);
+
+  const toggleDarkMode = () => {
+    const next = !darkMode;
+    setDarkMode(next);
+    if (next) {
+      document.documentElement.classList.add('dark');
+      localStorage.setItem('next-dark-mode', 'true');
+    } else {
+      document.documentElement.classList.remove('dark');
+      localStorage.setItem('next-dark-mode', 'false');
     }
   };
 
-  const handleAdminPanel = () => {
-    navigate('/admin');
+  const handleSignOut = async () => {
+    try { await signOut(); } catch (e) { console.error('Sign out error:', e); }
   };
-
-  const navigation = [
-    { id: 'overview', name: 'Overview', href: '#', icon: Home },
-    { id: 'tasks', name: 'Tasks', href: '#', icon: Brain },
-    { id: 'health', name: 'Health', href: '#', icon: Heart, premium: true },
-    { id: 'finance', name: 'Finance', href: '#', icon: Wallet, premium: true },
-    { id: 'goals', name: 'Goals', href: '#', icon: CalendarIcon },
-    { id: 'roads', name: 'Roads', href: '#', icon: Map, premium: true },
-    { id: 'career', name: 'Career', href: '#', icon: Briefcase, premium: true },
-    { id: 'projects', name: 'Projects', href: '#', icon: Target, premium: true },
-    { id: 'business', name: 'Business Suite', href: '#', icon: Building, premium: true },
-    { id: 'analytics', name: 'Analytics', href: '#', icon: BarChart, premium: true }
-  ];
 
   const renderContent = () => {
-    switch (activeTab) {
-      case 'overview':
-        return <Overview />;
-      case 'tasks':
-        return <TaskManager />;
-      case 'health':
-        return <HealthDashboard />;
-      case 'finance':
-        return <FinanceDashboard />;
-      case 'goals':
-        return <GoalsDashboard />;
-      case 'roads':
-        return <RoadsDashboard />;
-      case 'career':
-        return <CareerDashboard />;
-      case 'projects':
-        return <ProjectDashboard />;
-      case 'business':
-        return <BusinessDashboard />;
-      case 'analytics':
-        return <AnalyticsDashboard />;
-      case 'settings':
-        return <SettingsPanel />;
-      default:
-        return <Overview />;
+    switch (activeView) {
+      case 'today': return <TodayScreen />;
+      case 'overview': return <Overview />;
+      case 'tasks': return <TaskManager />;
+      case 'health': return <HealthDashboard />;
+      case 'finance': return <FinanceDashboard />;
+      case 'goals': return <GoalsDashboard />;
+      case 'roads': return <RoadsDashboard />;
+      case 'career': return <CareerDashboard />;
+      case 'projects': return <ProjectDashboard />;
+      case 'business': return <BusinessDashboard />;
+      case 'analytics': return <AnalyticsDashboard />;
+      case 'settings': return <SettingsPanel />;
+      default: return <TodayScreen />;
     }
   };
 
-  return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-teal-50/30 to-emerald-50/30">
-      {/* Guest Banner */}
-      {isGuest && <GuestBanner />}
+  const currentLabel = NAV_SECTIONS.find(s => s.id === activeView)?.label || 'Today';
 
-      {/* Show trial banner if in trial */}
+  return (
+    <div className="min-h-screen bg-base">
+      {isGuest && <GuestBanner />}
       {isTrialActive && <TrialBanner />}
 
+      {/* Mobile overlay */}
+      {sidebarOpen && (
+        <div className="fixed inset-0 z-40 bg-black/30 lg:hidden" onClick={() => setSidebarOpen(false)} />
+      )}
+
       {/* Sidebar */}
-      <div
-        className={`fixed inset-y-0 left-0 z-50 w-64 glass-effect border-r border-primary-200/30 shadow-2xl transform transition-all duration-300 ease-in-out
-          ${isSidebarOpen ? 'translate-x-0' : '-translate-x-full'} lg:translate-x-0 animate-slide-in-right`}
-      >
-        <div className="flex items-center justify-between h-16 px-4 border-b border-primary-200/30">
-          <h1 className="text-2xl font-bold gradient-text">LifeSync</h1>
-          <button
-            onClick={() => setIsSidebarOpen(false)}
-            className="lg:hidden p-2 rounded-lg hover:bg-primary-100/50 transition-all"
-          >
-            <X className="h-5 w-5 text-gray-500" />
+      <aside className={`fixed inset-y-0 left-0 z-50 w-60 bg-elevated border-r border-default transform transition-transform duration-200 lg:translate-x-0 ${
+        sidebarOpen ? 'translate-x-0' : '-translate-x-full'
+      }`}>
+        <div className="flex items-center justify-between h-14 px-4 border-b border-default">
+          <NextLogo size="sm" />
+          <button onClick={() => setSidebarOpen(false)} className="lg:hidden p-1.5 rounded-lg hover:bg-ink-100 dark:hover:bg-ink-800">
+            <X className="h-4 w-4 text-muted" />
           </button>
         </div>
 
-        {/* Profile Section */}
-        <div className="p-4 border-b border-primary-200/30">
-          <div className="flex items-center space-x-3 p-3 rounded-xl bg-gradient-to-r from-primary-50/50 to-secondary-50/50 hover:from-primary-100/50 hover:to-secondary-100/50 transition-all duration-300 hover-lift cursor-pointer">
-            <div className="h-12 w-12 rounded-full bg-gradient-to-br from-primary-400 to-secondary-500 flex items-center justify-center shadow-lg ring-2 ring-white/50">
-              {profile?.avatar_url ? (
-                <img
-                  src={profile.avatar_url}
-                  alt={profile.full_name || 'User'}
-                  className="h-full w-full rounded-full object-cover"
-                />
-              ) : (
-                <User className="h-6 w-6 text-white" />
-              )}
+        <nav className="px-2 py-3 overflow-y-auto h-[calc(100vh-3.5rem-5rem)]">
+          {NAV_GROUPS.map(group => (
+            <div key={group.id} className="mb-4">
+              <p className="px-3 mb-1.5 section-label">{group.label}</p>
+              {NAV_SECTIONS.filter(s => s.group === group.id).map(section => (
+                <button
+                  key={section.id}
+                  onClick={() => { setActiveView(section.id); setSidebarOpen(false); }}
+                  className={`nav-item w-full ${activeView === section.id ? 'nav-item-active' : ''}`}
+                >
+                  <section.icon className="h-4 w-4 shrink-0" />
+                  <span>{section.label}</span>
+                  {section.premium && !isGuest && plan === 'free' && (
+                    <span className="ml-auto badge-neutral text-[10px] px-1.5 py-0.5">Pro</span>
+                  )}
+                </button>
+              ))}
             </div>
-            <div>
-              <p className="font-bold text-gray-900">{profile?.full_name || 'User'}</p>
-              <p className="text-sm text-gray-600">{profile?.email}</p>
-            </div>
-          </div>
-        </div>
+          ))}
+        </nav>
 
-        <nav className="p-4 space-y-1 overflow-y-auto max-h-[calc(100vh-300px)]">
-          {navigation.map((item, index) => (
-            <button
-              key={item.name}
-              onClick={() => setActiveTab(item.id)}
-              style={{ animationDelay: `${index * 50}ms` }}
-              className={`flex w-full items-center px-4 py-3 text-gray-700 rounded-xl hover:scale-105 active:scale-95 transition-all duration-200 group animate-fade-in ${
-                activeTab === item.id
-                  ? 'bg-gradient-to-r from-primary-500 to-primary-600 text-white shadow-lg shadow-primary-500/30'
-                  : 'hover:bg-white/50'
-              }`}
-            >
-              <item.icon className={`h-5 w-5 mr-3 transition-all ${
-                activeTab === item.id ? 'text-white' : 'text-gray-400 group-hover:text-primary-600 group-hover:scale-110'
-              }`} />
-              <span className="font-medium">{item.name}</span>
-              {item.premium && !isGuest && plan === 'free' && (
-                <span className="ml-auto badge-primary text-xs">
-                  Pro
+        {/* User section */}
+        <div className="absolute bottom-0 left-0 right-0 border-t border-default p-2">
+          <button
+            onClick={() => setUserMenuOpen(!userMenuOpen)}
+            className="flex w-full items-center gap-3 p-2 rounded-lg hover:bg-ink-100 dark:hover:bg-ink-800 transition-colors"
+          >
+            <div className="h-8 w-8 rounded-full bg-primary-500 flex items-center justify-center shrink-0">
+              {profile?.avatar_url ? (
+                <img src={profile.avatar_url} alt="" className="h-full w-full rounded-full object-cover" />
+              ) : (
+                <span className="text-sm font-semibold text-white">
+                  {(profile?.full_name || 'U')[0].toUpperCase()}
                 </span>
               )}
-            </button>
-          ))}
-
-          {/* Settings and Admin Panel */}
-          <div className="pt-4 border-t border-primary-200/30 mt-4">
-            <button
-              onClick={() => setActiveTab('settings')}
-              className={`flex w-full items-center px-4 py-3 text-gray-700 rounded-xl hover:scale-105 active:scale-95 transition-all duration-200 group ${
-                activeTab === 'settings'
-                  ? 'bg-gradient-to-r from-primary-500 to-primary-600 text-white shadow-lg shadow-primary-500/30'
-                  : 'hover:bg-white/50'
-              }`}
-            >
-              <Settings className={`h-5 w-5 mr-3 transition-all ${
-                activeTab === 'settings' ? 'text-white' : 'text-gray-400 group-hover:text-primary-600 group-hover:scale-110'
-              }`} />
-              <span className="font-medium">Settings</span>
-            </button>
-
-            {/* Admin Panel Button - Only shown for admin users */}
-            {profile?.role === 'admin' && (
-              <button
-                onClick={handleAdminPanel}
-                className="flex w-full items-center px-4 py-3 text-gray-700 rounded-xl hover:scale-105 active:scale-95 transition-all duration-200 group hover:bg-white/50 mt-1"
-              >
-                <Shield className="h-5 w-5 mr-3 text-primary-400 group-hover:text-primary-600 group-hover:scale-110 transition-all" />
-                <span className="font-medium">Admin Panel</span>
-              </button>
-            )}
-
-            <button
-              onClick={handleSignOut}
-              className="flex w-full items-center px-4 py-3 text-red-600 rounded-xl hover:bg-red-50/80 hover:scale-105 active:scale-95 transition-all duration-200 group mt-1"
-            >
-              <LogOut className="h-5 w-5 mr-3 text-red-400 group-hover:text-red-600 group-hover:scale-110 transition-all" />
-              <span className="font-medium">Sign Out</span>
-            </button>
-          </div>
-        </nav>
-      </div>
-
-      {/* Main Content */}
-      <div className={`lg:pl-64 flex flex-col min-h-screen`}>
-        {/* Header */}
-        <header className="sticky top-0 z-40 glass-effect border-b border-primary-200/30 shadow-md backdrop-blur-md animate-fade-in-down">
-          <div className="flex items-center justify-between h-16 px-6">
-            <button
-              onClick={() => setIsSidebarOpen(true)}
-              className="lg:hidden p-2 rounded-xl hover:bg-primary-100/50 transition-all hover:scale-110 active:scale-95"
-            >
-              <Menu className="h-6 w-6 text-gray-600" />
-            </button>
-            <div className="hidden lg:block">
-              <h2 className="text-xl font-bold text-gray-900">
-                {navigation.find(item => item.id === activeTab)?.name || 'Dashboard'}
-              </h2>
             </div>
+            <div className="flex-1 text-left min-w-0">
+              <p className="text-sm font-medium text-heading truncate">{profile?.full_name || 'User'}</p>
+              <p className="text-xs text-muted truncate">{plan === 'free' ? 'Free plan' : plan === 'premium' ? 'Pro' : plan}</p>
+            </div>
+            <ChevronDown className="h-4 w-4 text-muted shrink-0" />
+          </button>
+
+          {userMenuOpen && (
+            <div className="mt-1 space-y-0.5">
+              <button onClick={() => { setActiveView('settings'); setUserMenuOpen(false); }} className="nav-item w-full">
+                <Settings className="h-4 w-4" /> Settings
+              </button>
+              <button onClick={toggleDarkMode} className="nav-item w-full">
+                {darkMode ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
+                {darkMode ? 'Light mode' : 'Dark mode'}
+              </button>
+              {profile?.role === 'admin' && (
+                <button onClick={() => navigate('/admin')} className="nav-item w-full">
+                  <Shield className="h-4 w-4" /> Admin
+                </button>
+              )}
+              <button onClick={handleSignOut} className="nav-item w-full text-error-600 hover:text-error-700">
+                <LogOut className="h-4 w-4" /> Sign out
+              </button>
+            </div>
+          )}
+        </div>
+      </aside>
+
+      {/* Main */}
+      <div className="lg:pl-60 flex flex-col min-h-screen">
+        {/* Top bar */}
+        <header className="sticky top-0 z-30 h-14 bg-elevated/90 backdrop-blur-sm border-b border-default flex items-center justify-between px-4 sm:px-6">
+          <div className="flex items-center gap-3">
+            <button onClick={() => setSidebarOpen(true)} className="lg:hidden p-2 rounded-lg hover:bg-ink-100 dark:hover:bg-ink-800">
+              <Menu className="h-5 w-5 text-heading" />
+            </button>
+            <h1 className="text-lg font-semibold text-heading">{currentLabel}</h1>
+          </div>
+          <div className="flex items-center gap-2">
+            <button onClick={toggleDarkMode} className="p-2 rounded-lg hover:bg-ink-100 dark:hover:bg-ink-800">
+              {darkMode ? <Sun className="h-4 w-4 text-heading" /> : <Moon className="h-4 w-4 text-heading" />}
+            </button>
+            <button onClick={() => setActiveView('ai')} className="btn-ghost text-sm">
+              <Sparkles className="h-4 w-4 text-primary-500" />
+              <span className="hidden sm:inline">Ask NEXT</span>
+            </button>
           </div>
         </header>
 
-        {/* Main Content */}
-        <main className="flex-1 p-6 animate-fade-in">
+        <main className="flex-1 p-4 sm:p-6">
           <div className="max-w-7xl mx-auto">
             {renderContent()}
           </div>
         </main>
       </div>
 
-      {/* AI Assistant */}
       <AIAssistant />
 
-      {/* Upgrade prompt */}
-      {showUpgradePrompt && (
-        <UpgradePrompt onClose={() => setShowUpgradePrompt(false)} />
-      )}
+      {showUpgrade && <UpgradePrompt onClose={() => setShowUpgrade(false)} />}
     </div>
   );
 }

@@ -6,7 +6,7 @@ export function AccessibilitySettings() {
       <div>
         <h3 className="text-lg font-medium text-gray-900">Accessibility</h3>
         <p className="mt-1 text-sm text-gray-500">
-          Customize your experience to make LifeSync more accessible.
+          Customize your experience to make NEXT more accessible.
         </p>
       </div>
 
